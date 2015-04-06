@@ -1,0 +1,714 @@
+/* ==========================================================================
+   Base Styles, Bootstrap Modifications & Fonts Import
+   ========================================================================== */
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+::-moz-selection {
+    background: #f2c2c9;
+    color: #a4003a;
+    text-shadow: none;
+}
+
+::selection {
+    background: #16a085;
+    color: #a4003a;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.centered {
+	text-align: center
+}
+
+.mt {
+	margin-top: 80px;
+}
+
+.mb {
+	margin-bottom: 80px;
+}
+
+/* ==========================================================================
+   General styles
+   ========================================================================== */
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+    color: #4a4a4a;
+}
+*/
+
+    
+.navbar-brand {
+	font-weight: 700;
+}
+
+.navbar-default .navbar-brand {
+	color: #1abc9c;
+}
+
+.navbar-default {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #1abc9c;
+	background-color: transparent;
+	border-bottom: 2px solid #1abc9c
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #1abc9c;
+}
+
+/* ==========================================================================
+   Wrap Sections
+   ========================================================================== */
+
+/*Bogglo Styles*/
+
+@font-face {
+font-family: League Gothic Regular;
+src: url("../fonts/LeagueGothic-Regular.otf") format("opentype");
+}
+
+h1 {
+    color: #333333;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 40pt;   
+}
+    
+h2 {
+    color: #333333;
+    font-family: "League Gothic Regular", sans-serif;
+    font-size: 32pt;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #333333;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    text-transform: uppercase;
+}
+
+h4 {
+    color: #333333;
+    font-family: "League Gothic Regular", sans-serif;
+    font-size: 20pt;
+}
+
+/*form and headers formatting*/
+
+#logobogglo {
+    width:35%; 
+    height:35%;   
+}
+
+#logoposition {
+    position:absolute; 
+    left: 3em; 
+    top: 4em;
+}
+
+#downloadposition {
+    position:absolute; 
+    left: 65%; 
+    top: 3em;
+}
+
+#formEmail {
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#formdiv {
+    padding-top: 16%;
+    z-index: -100;
+}
+
+#playbutton {
+ padding-top: 50px;
+}
+
+#downloadbadges {
+    display:inline-block;
+}
+#applebadge {
+    width:28%;
+}
+#androidbadge {
+    width:30%;
+    margin-left: 40px;
+}
+
+/*Submit Button in Form*/
+button.btn.btn-reg.upper.fadeButton {
+  background-color: #2ab34b;
+  color: white;
+  border-radius: 0;    
+}
+
+button.btn.btn-reg.upper.fadeButton:hover {
+  background-color: #69c47b;
+  color: white;
+  border-radius: 0;    
+}
+
+/*Text Field in Form*/
+input.form-control.input-lg.input-submit {
+  border-radius: 0;
+}
+
+/*----------------------*/
+
+
+div.navbar-header {
+    margin-top 100px;
+}
+
+#callBogglo {
+    padding-top: 150px;
+    padding-left: 150px;
+}
+
+
+/*phone image and bottom color bar*/
+img#phoneasset {
+  height: 600px;
+}
+
+div#phone {
+  padding-bottom: 0px;
+}
+
+div#colorbars {
+ width: 100%   
+}
+
+img#imgbars {
+ width:100%;
+ padding-bottom: 20px;     
+}
+/*--------------*/
+
+/*Comic Styling and Formatting*/
+
+#comic{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+}
+
+.comic-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comic-padding {
+    padding-top: 50px;
+}
+
+#buycomic {
+/*    box-shadow: inset 0 0px 0 white, inset 0 -1px 0 #2ab34b;*/
+    border-bottom:6px solid #2ab34b;
+    border-bottom-width: 7px;
+    padding-top: 34px;
+}
+
+#buycomicformat {
+     margin-left: auto;
+     margin-right: auto;
+     width: 40px;
+     padding-left: 0px;
+}
+
+#sellcomic {
+/*    box-shadow: inset 0 0px 0 white, inset 0 -1px 0 #2ab34b;*/
+    border-bottom:6px solid #28bded;
+    border-bottom-width: 7px;
+    padding-top:80px;
+}
+
+#sellcomicformat {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    padding-left: 0px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.bracket.text {
+     padding-right:10px;
+}
+
+img.inline {
+    height:235px;
+    width:5.5em;
+    padding-bottom: 10px;
+}
+
+#bracketformat {
+    position: absolute;
+    padding-top: 140px;
+    margin-left: -20px;
+}
+
+.mobilebracket {
+ visibility: hidden;   
+}
+
+
+/*Foooter Formatting*/
+
+#leftfooter {
+    float:left;
+    padding-left: 3%;
+    padding-right: 10px;
+}
+
+#rightfooter {
+    float:right;
+    padding-right: 3%;
+}
+
+
+#appleIcon {
+   background-image: url(../img/downloadicons/apple.png); 
+   height: 24px;
+   width: 24px;    
+}
+
+#appleIcon:hover {
+   background-image: url(../img/downloadicons/apple-hover.png)    
+}
+
+#androidIcon {
+   background-image: url(../img/downloadicons/google-play.png); 
+   height: 24px;
+   width: 24px;    
+}
+
+#androidIcon:hover {
+   background-image: url(../img/downloadicons/google-play-hover.png)    
+}
+
+#rightfooter a {
+    color: #888888;
+    padding-right: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+}
+
+#leftfooter p {
+    color: #888888;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 100;
+}
+
+#rightfooter a:hover {
+    color: #2ab34b;
+    text-decoration: none;
+}
+
+#rightfooter i:hover {
+    color: #2ab34b;    
+}
+
+#grass {
+    display:none;
+}
+
+#hiddenSocialIcons{
+    display: none;
+}
+
+#boggloCopy1 {
+    display: inline;
+}   
+
+#boggloCopy2 {
+    display: none;
+}
+
+
+#innerDivIcons {
+    display: inline;
+}
+
+/*Fixes for Small Screens and Mobile Screens*/
+@media (max-width: 1200px) {
+   #phone {
+    display: none;   
+   }
+    
+   #bracketformat {
+       visibility: hidden;
+   }
+   .mobilebracket {
+     visibility: visible;
+     padding-top: 40px;   
+    }
+ 
+   .comic-padding {
+     padding-top:40px;
+   }
+   .comic-responsive-padding {
+     padding-top:40px;         
+}
+  #buycomicformat {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  padding-left: 0;
+  margin-top: -40px;    
+}
+    
+   #sellcomicformat {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    padding-left: 0px;
+    margin-top: -80px;   
+}
+
+#callBogglo {
+   padding-left: 0px;
+   margin-left: auto;
+   margin-right: auto;    
+  }    
+    
+}
+
+/*---------700px Media Break--------*/
+
+@media (max-width: 700px) {
+    #logobogglo {
+    width:70%; 
+    height:70%;   
+   }
+
+#logoposition {
+    position:absolute; 
+    left: 20%; 
+    top: 3em;
+   }
+
+#downloadposition {
+    position:absolute; 
+    left: 5%; 
+    top: 32em;
+   }
+
+#applebadge {
+    width:35%;
+}
+#androidbadge {
+    width:37%;
+    margin-left: 21%;
+}     
+    
+#callBogglo {
+   padding-left: 0px;
+   margin-left: auto;
+   margin-right: auto;    
+  }
+    
+#phone {
+   display:none; 
+   }
+    
+/*#buycomicformat {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  padding-left: 0;
+  margin-top: -40px;    
+}*/
+    
+img#imgbars {
+ width:100%;
+ padding-bottom: 20px;
+ height: 30px;
+}
+    
+#comic {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  margin-top: -80px;
+}
+    
+#buycomic {
+  /* box-shadow: inset 0 0px 0 white, inset 0 -1px 0 #2ab34b; */
+  border-bottom: 6px solid #2ab34b;
+  border-bottom-width: 7px;
+  padding-top: 34px;    
+    
+}
+    
+#sellcomic {
+/*    box-shadow: inset 0 0px 0 white, inset 0 -1px 0 #2ab34b;*/
+    border-bottom:6px solid #28bded;
+    border-bottom-width: 7px;
+    padding-top:80px;
+}
+
+/*#sellcomicformat {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    padding-left: 0px;
+    margin-top: -40px;   
+} */
+
+button.btn.btn-reg.upper.fadeButton {
+  background-color: #2ab34b;
+  color: white;
+  border-radius: 0;
+  width: 130px;
+  font-size: 13px;
+}
+
+#formEmail {
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+    
+#playbutton {
+ padding-top: 30px;
+}    
+
+input.form-control.input-lg.input-submit {
+  border-radius: 0;
+  font-size: 13px;
+}
+    
+#grass {
+    display:block;
+    width: 100%   
+}
+    
+#imggrass {
+    width: 100%   
+}
+
+#hiddenSocialIcons{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-left: 4%;
+    padding-bottom: 10px;
+}
+
+#hiddenSocialIcons a{
+    margin-right: 14px;
+    font-size: 20px;
+    color: #888888;
+}
+
+#hiddenSocialIcons a:hover{
+    color: #2ab34b;
+} 
+    
+#innerDivIcons {
+    display: none;
+}    
+
+#rightfooter {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#leftfooter {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}    
+    
+#boggloCopy2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+} 
+
+#boggloCopy1 {
+    display: none;
+}
+    
+#headerwrap {
+	background: url(../img/top-image-noplain.png) no-repeat center top !important;
+}    
+    }
+
+
+
+#headerwrap {
+	background: url(../img/top-image2.png) no-repeat center top;
+	/*margin-top: -70px;*/
+/*	padding-top: 30%;*/
+	text-align:center;
+	background-attachment: relative;
+	background-position: center top;
+	min-height: 650px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap h1 {
+	color:#ffffff;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	letter-spacing: 4px;
+	font-size: 80px;
+	font-weight: bold;
+}
+
+#headerwrap h4 {
+	font-weight: 400;
+	color: #ffffff
+}
+
+#social {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #f2f2f2;
+}
+
+#social i {
+	font-size: 40px;
+	color: #4a4a4a
+}
+
+#social i:hover {
+	color: #1abc9c
+}
+
+#footerwrap {
+	padding-top: 70px;
+	padding-bottom: 50px;
+	background-color: #2f2f2f;
+}
+
+#footerwrap p {
+	color: #f2f2f2;
+	margin-left: 10px;
+}
+
+#workwrap {	
+	background: url(../img/work.jpg) no-repeat center top;
+	margin-top: -70px;
+	padding-top: 250px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 650px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#workwrap h1 {
+	color:#ffffff;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	letter-spacing: 4px;
+	font-size: 80px;
+	font-weight: bold;
+}
+
+#workwrap h4 {
+	font-weight: 400;
+	color: #ffffff
+}
+
+#aboutwrap {	
+	background: url(../img/about.jpg) no-repeat center top;
+	margin-top: -70px;
+	padding-top: 250px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 550px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+
+/* Gallery */
+.gallery {
+	margin-top: 30px;
+}
+
+.gallery img:hover {
+	opacity: 0.4;
+}
