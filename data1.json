@@ -1,12 +1,12 @@
 [{
 "property2": "C. Ronaldo",
-"property3": "39"
+"property3": 39
 },
 {
 "property2": "L. Messi",
-"property3": "36"
+"property3": 36
 },
 {
 "property2": "A. Griezmann",
-"property3": "22"
+"property3": 22
 }]
