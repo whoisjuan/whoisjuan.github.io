@@ -1,0 +1,68 @@
+<head> 
+   <link rel="stylesheet" type="text/css" href="../pykcharts.1.1.0.min.css">
+  <script src="../pykcharts.1.1.0.min.js"></script>
+</head>
+<body>
+  <div id="my_chart"></div>
+  <script>
+   window.PykChartsInit = function (e) {
+   var k = new PykCharts.other.pictograph({
+
+      //Chart Container Id
+      "selector": "#my_chart",
+    
+      //Data file path
+      "data": "https://s3-ap-southeast-1.amazonaws.com/chartstore.io-data/pictograph.csv",
+    
+      //Chart Size Parameters
+      "chart_width": 620,
+      "chart_height": 400,
+    
+      //Realtime data parameters
+      "real_time_charts_last_updated_at_enable": "no",
+      "real_time_charts_refresh_frequency": 0,
+    
+      //Chart-interactive parameters
+      "transition_duration": 0,
+    
+      //Other parameters
+      "pictograph_total_count_enable": "yes",
+      "pictograph_current_count_enable": "yes",
+      "pictograph_image_per_line": 3,
+      "pictograph_image_width": 79,
+      "pictograph_image_height": 66,
+      "pictograph_total_count_size": 64,
+      "pictograph_total_count_weight": "normal",
+      "pictograph_total_count_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "pictograph_total_count_color": "grey",
+      "pictograph_current_count_size": 64,
+      "pictograph_current_count_weight": "normal",
+      "pictograph_current_count_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "pictograph_current_count_color": "#255AEE",
+      "pictograph_units_per_image_text_size": 24,
+      "pictograph_units_per_image_text_color": "grey",
+      "pictograph_units_per_image_text_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "pictograph_units_per_image_text_weight": "normal",
+    
+      //Chart title parameters
+      "title_text": "Enter title here",
+      "title_size": 2,
+      "title_weight": "bold",
+      "title_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "title_color": "#1D1D1D",
+    
+      //Chart subtitle parameters
+      "subtitle_text": "Enter subtitle here",
+      "subtitle_size": 2,
+      "subtitle_weight": "normal",
+      "subtitle_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "subtitle_color": "black",
+    
+      //Credits parameters
+      "credit_my_site_name": "PykCharts",
+      "credit_my_site_url": "http://pykcharts.com"
+   });
+   k.execute();
+  }
+   </script>
+</body>

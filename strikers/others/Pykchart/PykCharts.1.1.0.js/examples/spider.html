@@ -1,0 +1,77 @@
+<head> 
+   <link rel="stylesheet" type="text/css" href="../pykcharts.1.1.0.min.css">
+  <script src="../pykcharts.1.1.0.min.js"></script>
+</head>
+<body>
+  <div id="my_chart"></div>
+  <script>
+   window.PykChartsInit = function (e) {
+   var k = new PykCharts.multiD.spiderWeb({
+
+      //Chart Container Id
+      "selector": "#my_chart",
+
+      //Data file path
+      "data": "https://s3-ap-southeast-1.amazonaws.com/chartstore.io-data/spider.csv",
+
+      //Chart mode
+      "mode": "default",
+
+      //Chart Size Parameters
+      "chart_width": 620,
+      "chart_height": 400,
+
+      //Chart color
+      "color_mode": "saturation",
+      "saturation_color": "#255AEE",
+      "chart_color": [
+      "#255AEE"
+      ],
+
+      //X-Axis parameters
+      "axis_x_pointer_size": 12,
+      "axis_x_pointer_color": "#1D1D1D",
+
+      //Y-Axis parameters
+      "axis_y_pointer_size": 12,
+      "axis_y_pointer_color": "#1D1D1D",
+
+      //Realtime data parameters
+      "real_time_charts_last_updated_at_enable": "no",
+      "real_time_charts_refresh_frequency": 0,
+
+      //Chart border parameters
+      "border_between_chart_elements_thickness": 1,
+      "border_between_chart_elements_style": "solid",
+
+      //Chart-interactive parameters
+      "chart_onhover_highlight_enable": "yes",
+      "tooltip_enable": "yes",
+      "transition_duration": 0,
+
+      //Other parameters
+      "spiderweb_outer_radius_percent": 80,
+      "variable_circle_size_enable": "yes",
+
+      //Chart title parameters
+      "title_text": "Enter title here",
+      "title_size": 2,
+      "title_weight": "bold",
+      "title_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "title_color": "#1D1D1D",
+      
+      //Chart subtitle parameters
+      "subtitle_text": "Enter subtitle here",
+      "subtitle_size": 1,
+      "subtitle_weight": "normal",
+      "subtitle_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "subtitle_color": "black",
+      
+      //Credits parameters
+      "credit_my_site_name": "PykCharts",
+      "credit_my_site_url": "http://pykcharts"
+   });
+   k.execute();
+  }
+   </script>
+</body>

@@ -1,0 +1,71 @@
+<head> 
+   <link rel="stylesheet" type="text/css" href="../pykcharts.1.1.0.min.css">
+  <script src="../pykcharts.1.1.0.min.js"></script>
+</head>
+<body>
+  <div id="my_chart"></div>
+  <script>
+   window.PykChartsInit = function (e) {
+   var k = new PykCharts.maps.oneLayer({
+
+      //Chart container id
+      selector: "#my_chart",
+
+      //Data file path
+      data: "https://s3-ap-southeast-1.amazonaws.com/chartstore.io-data/one-layer-map.csv",
+  
+      //Chart size parameters
+      chart_width: 800,
+      chart_height: 600,
+
+      //Map selection code
+      map_code:"world",
+
+      //Chart color parameters
+      color_mode: "saturation",
+      palette_color: "Blue-1",
+      total_no_of_colors: 5,   
+      background_color: "white",
+
+      //Tooltip parameters
+      tooltip_enable : "yes",
+      tooltip_mode: "moving",
+      tooltip_position_top: 10,
+      tooltip_position_left:10,
+
+      //Chart border parameters
+      border_between_chart_elements_color: "#666666",
+      border_between_chart_elements_thickness: 0.8,
+      border_between_chart_elements_style: "dotted",
+
+      //Interactive-Chart parameters
+      click_enable: "yes",
+      onhover: "shadow",
+
+      //Chart label parameters
+      label_enable: "no",
+      label_color: "green",
+
+      //Zoom parameters
+      default_zoom_level: 80,
+
+
+      //Loading parameter
+      loading_gif_url: "http://www.sportdiver.com/sites/all/modules/platform/inline_login/loading.gif",
+
+      //Chart legends parameters
+      legends_enable: "yes",
+      legends_display: "horizontal",
+      legends_text_size: 10,
+      legends_text_color: "black",
+      legends_text_weight: "normal",
+      legends_text_family: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+      
+      //Credits parameters
+      credit_my_site_name: "PykCharts",
+      credit_my_site_url: "http://pykcharts.com"
+   });
+   k.execute();
+  }
+   </script>
+</body>

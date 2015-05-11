@@ -1,0 +1,88 @@
+<head> 
+   <link rel="stylesheet" type="text/css" href="../pykcharts.1.1.0.min.css">
+  <script src="../pykcharts.1.1.0.min.js"></script>
+</head>
+<body>
+  <div id="my_chart"></div>
+  <script>
+   window.PykChartsInit = function (e) {
+   var k = new PykCharts.oneD.percentageColumn({
+
+      //Chart Container Id
+      "selector": "#my_chart",
+
+      //Data file path
+      "data": "https://s3-ap-southeast-1.amazonaws.com/chartstore.io-data/percentage-column.csv",
+
+      //Chart mode
+      "mode": "default",
+
+      //Chart Size Parameters
+      "chart_width": 620,
+      "chart_height": 400,
+
+      //Chart color parameter
+      "color_mode": "shade",
+      "shade_color": "#255AEE",
+      "chart_color": [
+      "#255AEE"
+      ],
+
+      //Chart pointer parameters
+      "pointer_overflow_enable": "yes",
+      "pointer_thickness": 1,
+      "pointer_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "pointer_size": 13,
+      "pointer_weight": "normal",
+
+
+      //Chart highlight parameters
+      "highlight": "Hardware",
+      "highlight_color": "#08306b",
+
+      //Chart label parameters
+      "label_size": 13,
+      "label_weight": "normal",
+      "label_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+
+      //Realtime data parameters
+      "real_time_charts_last_updated_at_enable": "no",
+      "real_time_charts_refresh_frequency": 0,
+
+      //Chart border parameters
+      "border_between_chart_elements_thickness": 1,
+      "border_between_chart_elements_style": "solid",
+
+      //Clubdata parameters
+      "clubdata_enable": "yes",
+      "clubdata_text": "Others",
+      "clubdata_maximum_nodes": 5,
+
+      //Chart-interactive parameters
+      "chart_onhover_highlight_enable": "yes",
+      "tooltip_enable": "yes",
+      "transition_duration": 0,
+
+      //Chart title parameters
+      "title_text": "Enter title here",
+      "title_size": 2,
+      "title_weight": "bold",
+      "title_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "title_color": "#1D1D1D",
+
+      //Chart subtitle parameters
+      "subtitle_text": "Enter subtitle here",
+      "subtitle_size": 1,
+      "subtitle_weight": "normal",
+      "subtitle_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "subtitle_color": "black",
+
+      //Credits parameters
+      "credit_my_site_name": "PykCharts",
+      "credit_my_site_url": "http://pykcharts.com"
+   });
+   k.execute();
+  }
+   </script>
+</body>
+

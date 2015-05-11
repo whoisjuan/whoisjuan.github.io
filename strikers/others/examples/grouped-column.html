@@ -1,0 +1,106 @@
+<head> 
+   <link rel="stylesheet" type="text/css" href="../pykcharts.1.1.0.min.css">
+  <script src="../pykcharts.1.1.0.min.js"></script>
+</head>
+<body>
+  <div id="my_chart"></div>
+  <script>
+   window.PykChartsInit = function (e) {
+   var k = new PykCharts.multiD.groupedColumn({
+
+      //Chart Container Id
+      "selector": "#my_chart",
+
+      //Data file path
+      "data": "https://s3-ap-southeast-1.amazonaws.com/chartstore.io-data/grouped-column.csv",
+
+      //Chart mode
+      "mode": "default",
+
+      //Chart Size Parameters
+      "chart_width": 620,
+      "chart_height": 400,
+      "chart_margin_left": 50,
+      "chart_margin_right": 25,
+      "chart_margin_top": 35,
+      "chart_margin_bottom": 35,
+
+      //Chart color parameter
+      "color_mode": "saturation",
+      "saturation_color": "#255AEE",
+      "chart_color": [
+      "#255AEE"
+      ],
+
+      //Axis parameter
+      "axis_onhover_highlight_enable": "no",
+
+      //X-Axis parameter
+      "axis_x_enable": "yes",
+      "axis_x_title": "",
+      "axis_x_position": "bottom",
+      "axis_x_pointer_position": "bottom",
+      "axis_x_line_color": "#1D1D1D",
+      "axis_x_pointer_size": 12,
+      "axis_x_pointer_color": "#1D1D1D",
+
+      //Y-Axis parameter
+      "axis_y_enable": "yes",
+      "axis_y_title": "",
+      "axis_y_position": "left",
+      "axis_y_pointer_position": "left",
+      "axis_y_line_color": "#1D1D1D",
+      "axis_y_pointer_size": 12,
+      "axis_y_pointer_color": "#1D1D1D",
+      "axis_y_no_of_axis_value": 5,
+      "axis_y_pointer_padding": 6,
+      "axis_y_pointer_values": [],
+      "axis_y_outer_pointer_length": 0,
+      "axis_y_time_value_datatype": "",
+      "axis_y_time_value_interval": 0,
+
+      //Chart highlight parameters
+      "highlight": "2012",
+      "highlight_color": "#08306b",
+
+      //Realtime data parameters
+      "real_time_charts_last_updated_at_enable": "no",
+      "real_time_charts_refresh_frequency": 0,
+
+      //Chart border parameters
+      "border_between_chart_elements_thickness": 1,
+      "border_between_chart_elements_style": "solid",
+
+      //Chart-interactive parameters
+      "chart_onhover_highlight_enable": "yes",
+      "tooltip_enable": "yes",
+      "transition_duration": 0,
+
+      //Chart legends parameters
+      "legends_enable": "yes",
+      "legends_display": "horizontal",
+      "legends_text_weight": "normal",
+      "legends_text_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+
+      //Chart title parameters
+      "title_text": "Enter title here",
+      "title_size": 2,
+      "title_weight": "bold",
+      "title_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "title_color": "#1D1D1D",
+
+      //Chart subtitle parameters
+      "subtitle_text": "Enter subtitle here",
+      "subtitle_size": 1,
+      "subtitle_weight": "normal",
+      "subtitle_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+      "subtitle_color": "black",
+
+      //Credits parameters
+      "credit_my_site_name": "PykCharts",
+      "credit_my_site_url": "http://pykcharts.com"
+   });
+   k.execute();
+  }
+   </script>
+</body>

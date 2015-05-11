@@ -1,0 +1,214 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="PykCharts/pykcharts.1.1.0.min.css">
+    <script src="PykCharts/pykcharts.1.1.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+        body {background-color:white}
+        h1   {font-size: 15em; 
+              color:#3f3f3f; 
+              font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+              font-weight: bold;
+          }
+
+        h2 {
+            font-size: 4em;
+            color:#3f3f3f; 
+              font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+              font-weight: bold;
+              text-align: center;
+        }
+
+        #title {
+          margin-top: -160px;
+        }  
+
+        #title h1 {
+            text-align: center;
+
+        }
+
+        h2{
+          font-size: 50px;
+        }
+
+        h2#titlesub {
+          margin-top: -200px;
+          font-size: 80px;
+          padding-bottom: 150px;
+        }
+
+
+        .my_chart {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 30px;
+        }
+
+        p {
+          float: right;
+          display: inline;
+          margin-top: -650px;
+          padding-right: 40px;
+          font-size: 40px;
+          font-weight: bold;
+          color:#3f3f3f; 
+          font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+          line-height: 300%;
+        }
+
+        .spacing {
+          padding-top: 200px;
+        }
+
+        #intro {
+          margin-top: -150px;
+        }
+
+        i.fa.fa-arrow-circle-down {
+          font-size: 100px;
+          padding-top: 30px;
+          color:#3f3f3f; 
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="title"><h1>STRIKERS</h1><h2 id="titlesub">2014 / 2015</h2></div>
+    <div id="intro"><center><h3> STRIKERS is a data visualization of the scorers table and goal stats of the top football-soccer leagues in the world.<br>The bubble visualization is a representation of the scorers stats who have more than 4-5 goals.<br>
+    The data presented on the right is based on the total scoring stats of each of the leagues.<br> To see the total scoring stats and name for a player just hover the bubbles.<h3></center></div>
+    <center><a href="#starttitle"><i class="fa fa-arrow-circle-down"></i></a></center>
+    <div class="spacing">
+    <h2 id="starttitle"> LA LIGA (SPAIN) </h2>
+    <div class="my_chart" id="my_chart1"></div>
+    <p> GOALS: 936 <br> GOALS P. MATCH: 2.61 <br>PENALTY GOALS: 8.2% <br> GOALS AFTER 80th: 17.4%</p>
+    </div>
+    <div class="spacing">
+    <h2> PREMIER LEAGUE (ENGLAND) </h2>
+    <div class="my_chart" id="my_chart2"></div>
+    <p> GOALS: 915 <br> GOALS P. MATCH: 2.56 <br>PENALTY GOALS: 6.7% <br> GOALS AFTER 80th: 15.4%</p>
+    </div>
+    <div class="spacing">
+    <h2> SERIE A (ITALY) </h2>
+    <div class="my_chart" id="my_chart3"></div>
+    <p> GOALS: 910 <br> GOALS P. MATCH: 2.61 <br>PENALTY GOALS: 7.7% <br> GOALS AFTER 80th: 14.1%</p>
+    </div>
+    <div class="spacing">
+    <h2> LIGUE 1 (FRANCE)</h2>
+    <div class="my_chart" id="my_chart4"></div>
+    <p> GOALS: 890 <br> GOALS P. MATCH: 2.47 <br>PENALTY GOALS: 10.6% <br> GOALS AFTER 80th: 16.6%</p>
+    </div>
+    <center><h3>Created By Juan J. Ramirez</h3><center>
+    <script>
+        window.PykChartsInit = function (e) {
+            var k = new PykCharts.oneD.bubble({
+                "selector": "#my_chart1",
+                "data": "http://whoisjuan.github.io/data/spain.json",
+                "chart_width": 700,
+                "clubdata_enable": "no",
+                "color_mode": "shade",
+                  "shade_color": "#FC4134",
+                  "chart_color": [
+                            "#fc4134",
+                            "#fd675d",
+                            "#fd8d85",
+                            "#feb3ae",
+                            "#fed9d6"
+                  ],
+                  "label_size": 13,
+                  "label_weight": "normal",
+                  "label_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+                  "real_time_charts_last_updated_at_enable": "no",
+                  "real_time_charts_refresh_frequency": 0,
+                  "transition_duration": 0,
+                  "chart_onhover_highlight_enable": "yes",
+                  "tooltip_enable": "yes",
+                  "credit_my_site_name": "Soccer Stats",
+                  "credit_my_site_url": "http://www.soccerstats.com/",
+                  "map_code": "world"
+            });
+
+            var c = new PykCharts.oneD.bubble({
+                "selector": "#my_chart2",
+                "data": "http://whoisjuan.github.io/data/england.json",
+                "chart_width": 700,
+                "clubdata_enable": "no",
+                "color_mode": "shade",
+                "shade_color": "#0276FD",
+                "chart_color": [
+                            "#0276FD"
+                ],
+                  "label_size": 13,
+                  "label_weight": "normal",
+                  "label_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+                  "real_time_charts_last_updated_at_enable": "no",
+                  "real_time_charts_refresh_frequency": 0,
+                  "transition_duration": 0,
+                  "chart_onhover_highlight_enable": "yes",
+                  "tooltip_enable": "yes",
+                  "credit_my_site_name": "Soccer Stats",
+                  "credit_my_site_url": "http://www.soccerstats.com/",
+                  "map_code": "world"
+            });
+
+             var i = new PykCharts.oneD.bubble({
+                "selector": "#my_chart3",
+                "data": "http://whoisjuan.github.io/data/italy.json",
+                "chart_width": 700,
+                "clubdata_enable": "no",
+                "color_mode": "shade",
+                "shade_color": "#3CB371",
+                "chart_color": [
+                            "#32CD32"
+                ],
+                  "label_size": 13,
+                  "label_weight": "normal",
+                  "label_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+                  "real_time_charts_last_updated_at_enable": "no",
+                  "real_time_charts_refresh_frequency": 0,
+                  "transition_duration": 0,
+                  "chart_onhover_highlight_enable": "yes",
+                  "tooltip_enable": "yes",
+                  "credit_my_site_name": "Soccer Stats",
+                  "credit_my_site_url": "http://www.soccerstats.com/",
+                  "map_code": "world"
+            });
+
+            var f = new PykCharts.oneD.bubble({
+                "selector": "#my_chart4",
+                "data": "http://whoisjuan.github.io/data/france.json",
+                "chart_width": 700,
+                "clubdata_enable": "no",
+                "color_mode": "shade",
+                "shade_color": "#b27300",
+                "chart_color": [
+                            "#cc8400"
+                ],
+                  "label_size": 13,
+                  "label_weight": "normal",
+                  "label_family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+                  "real_time_charts_last_updated_at_enable": "no",
+                  "real_time_charts_refresh_frequency": 0,
+                  "transition_duration": 0,
+                  "chart_onhover_highlight_enable": "yes",
+                  "tooltip_enable": "yes",
+                  "credit_my_site_name": "Soccer Stats",
+                  "credit_my_site_url": "http://www.soccerstats.com/",
+                  "map_code": "world"
+            }); 
+
+
+            k.execute();
+            c.execute();
+            i.execute();
+            f.execute();
+        }
+    </script>
+</body>
+</html>
+

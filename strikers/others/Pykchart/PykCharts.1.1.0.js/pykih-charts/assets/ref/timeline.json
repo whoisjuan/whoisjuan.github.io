@@ -1,0 +1,225 @@
+[
+  {
+    "iso2": "IN_AP",
+    "timestamp": 2014,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_AR",
+    "timestamp": 2013,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_AS",
+    "timestamp": 2012,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_BR",
+    "timestamp": 2011,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_CG",
+    "timestamp": 2010,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_GA",
+    "timestamp": 2009,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_GJ",
+    "timestamp": 2008,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_HR",
+    "timestamp": 2007,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_HP",
+    "timestamp": 2006,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_JK",
+    "timestamp": 2005,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_JH",
+    "timestamp": 2004,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+
+  },
+  {
+    "iso2": "IN_KA",
+    "timestamp": 2003,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_KL",
+    "timestamp": 2002,
+    "tooltip": "Left Front",
+    "color": "red"
+  },
+  {
+    "iso2": "IN_MP",
+    "timestamp": 2001,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_MH",
+    "timestamp": 2000,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_MN",
+    "timestamp": 2014,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_ML",
+    "timestamp": 2013,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_MZ",
+    "timestamp": 2012,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_NL",
+    "timestamp": 2011,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_OR",
+    "timestamp": 2010,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_PB",
+    "timestamp": 2009,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_RJ",
+    "timestamp": 2008,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_SK",
+    "timestamp": 2007,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_TN",
+    "timestamp": 2006,
+    "tooltip": "United Progressive Alliance",
+    "color": "green"
+  },
+  {
+    "iso2": "IN_TR",
+    "timestamp": 2005,
+    "tooltip": "Left Front",
+    "color": "red"
+  },
+  {
+    "iso2": "IN_UT",
+    "timestamp": 2004,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_UP",
+    "timestamp": 2003,
+    "tooltip": "National Democratic Alliance",
+    "color": "orange"
+  },
+  {
+    "iso2": "IN_WB",
+    "timestamp": 2002,
+    "tooltip": "Left Front",
+    "color": "red"
+  },
+  {
+    "iso2": "IN_AN",
+    "timestamp": 2001,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_CH",
+    "timestamp": 2000,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_DD",
+    "timestamp": 2014,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_DL",
+    "timestamp": 2013,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_",
+    "timestamp": 2012,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_PY",
+    "timestamp": 2011,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_LD",
+    "timestamp": 2010,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_CT",
+    "timestamp": 2009,
+    "tooltip": "None",
+    "color": "gray"
+  },
+  {
+    "iso2": "IN_DN",
+    "timestamp": 2008,
+    "tooltip": "None",
+    "color": "gray"
+  }
+]
