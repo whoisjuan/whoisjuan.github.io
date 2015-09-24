@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Juan J. Ramirez (whoisjuan.me)">
+	
+	<title>Age-Insight for LinkedIn</title>
+
+	<link rel="shortcut icon" href="assets/images/icon48.png">
+	
+	<!-- Bootstrap itself -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- Icons -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/social.css">
+
+	<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ogplaoebiknbdnpjpbmpmkdienimhagf">
+
+
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center">
+				<h1>Age-Insight<sup><img src="assets/images/logo.png" class="logosup"></sup></h1>
+				<p>by &nbsp; <a href="http://www.whoisjuan.me"><img class="brand" src="assets/images/whoisjuan.png"></a></p>
+				&nbsp;
+				<p class="lead">
+					Age-Insight for LinkedIn is a Chrome Extension that uses <br> 
+					semantic technology to calculate the age of any <br> person who has a LinkedIn Profile.<br>
+                </p>
+                <p class="lead">    
+					It works in +85% of the profiles and it's constantly <br> updated with new semantic rules and data.
+				</p>
+				
+<!-- 				<p>SuperAwesome thing is currently in active development and will be released this summer.<br>
+					In the meantime, please register to our waiting list to get notified first once something is launched.</p>
+					<br> -->
+				
+				<!--<form class="form-inline" role="form">
+					<div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Your Name"></div>
+					<div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputPassword2" placeholder="Your Email"></div>-->
+					<button onclick="chrome.webstore.install()" id="install-button" type="submit" class="btn btn-md btn-default"><img class="icon" src="assets/images/chrome-icon.png">&nbsp; Download Chrome Extension</button>
+				<!--</form>-->
+				<p class="small text-muted" style="padding-top:2px;">No Sign-up Required. Just Install and Use.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="illustration">
+					<img src="assets/images/ap-screenshot.png" alt="" >
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- /Header -->
+	
+
+<!-- Content -->
+<main class="content">
+
+	<!-- Lead -->
+	<section class="container space-before space-after">
+		<div class="row">
+			<div class="col-sm-10 col-sm-push-1">
+				<h1 class="text-center">-How Does It Work-</h1>
+				<p class="lead text-center">
+					Is not rocket science. We transform a simple calculation you're probably already doing,<br>
+					into an auto-pilot and data informed insight that gets better overtime. <br> 
+					 
+				</p> 
+			</div>
+		</div>
+	</section>
+	<!-- /Lead -->
+
+
+
+	<!-- Features -->
+	<section class="container space-before">
+		
+		<div class="row featurelist space-after">
+			<div class="col-md-5 col-sm-6 col-md-push-1 ">
+				<img class="img-feature img-responsive" src="assets/images/screen1.png" alt="Sample image">
+			</div>
+			<div class="col-md-5 col-md-push-1 col-sm-6">
+				<h2 class="space-before">Semantic Analysis<br><span class="text-muted">of Profile Information</span></h2>
+				<p>Age-Insight for LinkedIn does a semantic analysis of the available profile information (education + experience)
+				   to make an educated guess on a person's age. It also analizes the accuracy of the information and only shows
+				   a guess if there's enough data to compose an accurate calculation.</p>
+			</div>
+		</div>
+
+		<div class="row featurelist space-after">
+			<div class="col-md-5 col-sm-6 col-sm-push-6">
+				<img class="img-feature img-responsive" src="assets/images/screen2.png" alt="Sample image">
+			</div>
+			<div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
+				<h2 class="space-before">Powered by Data, <br><span class="text-muted">that Increases Accuracy</span></h2>
+				<p>Age-Insight for LinkedIn, uses different datasets to cross-check and improve the accuracy of a guess. </p>
+				<p>The underlaying technology behind the extension fine-tunes the calculation by using every piece of available information (from current location to alma-mater, and even the <a href="http://fivethirtyeight.com/features/how-to-tell-someones-age-when-all-you-know-is-her-name/">person's name itself</a>) and compares it against the available and growing datasets.</p>
+			</div>
+		</div>
+	</section>
+
+
+
+    <section class="container space-before">
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center">
+				<h1 class="text-center">Are you a Recruiter, Salesperson or <br> Due diligence Professional?</h2>
+				<p class="lead text-center"> We know your job is hard. Age-Insight makes your job easier by giving you accurate age information
+				that you can use to improve your search <br> and take better decisions. Age-Insight can help you with:</p>
+				<br>
+				<p>
+				· Determining if a candidate has the right cultural fit for your open job opportunity.<br>
+				<br>
+				· Putting experience in context and evaluating maturity for senior-executive roles.<br>
+				<br>
+				· Gathering background information to understand prospects and clients.<br>
+				<br> 
+				· Validating information, benchmarking job market and more.</p>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		   <div class="col-lg-8 col-lg-push-2 text-center">
+		       <button type="submit" class="btn btn-lg btn-blue"><img class="icon" src="assets/images/chrome-icon.png">&nbsp; Download Chrome Extension</button>
+		       <p class="small text-muted">No Sign-up Required. Just Install and Use.</p>
+		    </div>
+		</div>       
+	</section>
+	<!-- /Features -->
+
+</main>
+
+
+<footer id="footer" class="jumbotron">
+	<section class="container">
+		<div class="row">
+				<div class="col-md-5 col-md-push-1">
+					<h2>Do you find this useful?</h2>
+					<p>Please helps us to spread the word so other people can <br>
+					   take advantage of using Age-Insight for LinkedIn. <br>
+					   <br>
+					   By sharing you help us to get more and better feedback<br> 
+					   to improve this product with new features:<br></p>
+					   <br>
+				<ul>
+				    <li><a class="share-linkedin popout" href="#">
+                    <i class="fa fa-linkedin"></i><span>Share</span>
+                    </a></li>
+                    <li><a class="share-twitter popout" href="#">
+                    <i class="fa fa-twitter"></i><span>Tweet</span>
+                    </a></li>
+                    <li><a class="share-facebook popout" href="#">
+                    <i class="fa fa-facebook"></i><span>Share</span>
+                    </a></li>
+                    <li><a class="share-email popout" href="#">
+                    <i class="fa fa-envelope"></i><span>Email</span>
+                    </a></li>
+                </ul>
+			    </div>
+				<div class="col-md-5 col-md-push-1">
+					<h2>About the Creator</h2>
+					<p>I'm Juan J. Ramirez. I'm a Product Manager and UX designer who is always researching 
+					and hacking new products, interaction techniques and technology concepts. If you're interested in
+					my work and would like to get in contact please visit my portfolio website: <a href="http://www.whoisjuan.me">whoisjuan.me</a> <br> or send me a message at: <br> (jjramirez.u {/a-t/} gmail . com)</p></p>
+					<p>If you'd like to report a bug or suggest an improvement, please send your message through this <a href="https://docs.google.com/forms/d/1Tzd2GINdoQkQLvyBa56fRHnlzK-dSGVcjkDC7hQSLyg/viewform">form.</a> </p>
+				</div>
+		</div>	
+	</section>
+</footer>
+
+<p class="small text-muted text-center">Copyright &copy; 2015, [whoisjuan]. Created by: <a href="http://www.whoisjuan.me/" rel="designer" title="Juan J. Ramirez">Juan J. Ramirez</a></p>
+<br>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="assets/js/template.js"></script>
+<script src="assets/js/social.js"></script>
+
+
+
+
+</body>
+</html>
