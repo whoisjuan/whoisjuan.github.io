@@ -7,43 +7,48 @@
 		<link rel="shortcut icon" href="assets/ico/favicon.png">
 		<title>
 			whoisjuan - Personal Website and Portfolio of Juan Jose Ramirez
-		</title><!-- Bootstrap core CSS -->
+		</title>
+
+        </style>
 		<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
 		<link href="assets/css/main.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="assets/css/icomoon.css" type="text/css">
-		<link href="assets/css/animate-custom.css" rel="stylesheet" type="text/css">
 		<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="assets/css/animate.min.css" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 		<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-		<script src="assets/js/jquerycustom.js" type="text/javascript"></script>
-		<script type="text/javascript" src="assets/js/modernizr.custom.js">
-</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--<script src="assets/js/jquerycustom.js" type="text/javascript"></script>-->
+		<script type="text/javascript" src="assets/js/modernizr.custom.js"></script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 	  <script src="assets/js/html5shiv.js"></script>
 	  <script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+	   <script type='text/javascript' src='assets/js/scrollReveal.min.js'></script>
+	   <script>
+			window.sr = new scrollReveal();	   
+	   </script>
 	</head>
- <body data-offset="0" data-target="#navbar-main">
-  
-  
+ 
+
+
+ <body offset="0" data-target="#navbar-main">
   	<div id="navbar-main">
       <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span> <img src="assets/img/brand-headerw1.png" height=20px width=96px</span>
+            <span> <img src="assets/img/brand-headerw1.png" height=20px width=96px></span>
           </button>
-          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span><img id="brandimage" src="assets/img/brand-headerw1.png" height=30px</span></a>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span><img id="brandimage" src="assets/img/brand-headerw1.png" height=30px></span></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#home" class="smoothScroll">Home</a></li>
 			<li> <a href="#about" class="smoothScroll"> About</a></li>
 			<li> <a href="#portfolio" class="smoothScroll"> Portfolio</a></li>
+			<li> <a href="#awards" class="smoothScroll"> Awards</a></li>
 			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
         </div><!--/.nav-collapse -->
       </div>
@@ -55,7 +60,7 @@
 		<!-- ==== HEADERWRAP ==== -->
 	    <div id="headerwrap" id="home" name="home">
 			<div class="headerbrand">
-	  		 		<div class="center-block"><img src="assets/img/brandred.png" class="center-block img-responsive" alt="whoisjuan" /></div>
+	  		 		<div class="center-block" data-sr><img src="assets/img/brandred.png" class="center-block img-responsive" alt="whoisjuan" data-sr></div>
 	  		 		<p><b>Juan J. Ramirez</b></p>
 	  		 		<p id="headerlead">Product Manager • UX Designer</p>
 	  		</div>	    
@@ -63,7 +68,7 @@
 
 		<!-- ==== GREYWRAP ==== -->
 		<div id="greywrap">
-			<div class="row">
+			<div id="about" class="row">
 <!-- 				<div class="col-lg-4 callout">
 					<i class="fa fa-suitcase"></i>
 					<h2 class="topicon">Technology Strategist</h2>
@@ -74,27 +79,30 @@
 				<div class="col-lg-4 callout">
 					<i class="fa fa-lightbulb-o"></i>
 					<h2 class="topicon">Product Manager</h2>
-					<p>Juan is a skillful Product Manager that is always prioritizing for light and minimalistic products. He is an advocate of the creation of lean products that can be iterated through time. He tailors custom go-to-market and product definition strategies for each product and feature he is helping to succeed.</p>
+					<p>Juan is a skillful Product Manager that is always prioritizing for light and minimalistic products. He is an advocate of the creation of lean products that can be iterated through time. He tailors custom go-to-market and innovative product definition strategies for the products he is helping to succeed.</p>
 				</div><!-- col-lg-4 -->	
 				
 				<div class="col-lg-4 callout">
 					<i class="fa fa-sitemap"></i>
 					<h2 class="topicon">User Experience Designer</h2>
-					<p>Juan is a innate designer. His most relevant technical skill is the ability to craft powerful and dynamic user flows while creating novel interaction techniques. His design process always starts from the most basic concepts of Human Computer Interaction to end in complex but yet minimalistic User Experiences.</p>
+					<p>Juan is a innate designer. His most relevant technical skill is the ability to craft powerful and dynamic user flows while prototyping novel interaction techniques. His design process always starts from the most basic concepts of Human Computer Interaction to end in complex but yet minimalistic User Experiences.</p>
 				</div><!-- col-lg-4 -->
 				<div class="col-lg-2">
                 </div>		
 			</div><!-- row -->
 		</div><!-- greywrap -->
 
-<!-- ==== PORTFOLIO ==== -->
+
+
+
+<!-- //////////////////////////////////////////////// PORTFOLIO SECTION ////////////////////////////////////////////////  -->
 		<div class="container" id="portfolio" name="portfolio">
 			<br>
 			<div class="row">
 				<br>
-				<h1 class="centered">
+				<h2 class="centered">
 					PORTFOLIO
-				</h1>
+				</h2>
 				<hr>
 				<br>
 				<br>
@@ -135,7 +143,7 @@
 									</p><b>Roles:</b> Product Leader, UX Designer, Operational Manager<br>
 									<b>Achievements:</b> Succesfully Designed and Launched a Social App<br>
 									Raised $200K seed round.
-									<p>
+									<p><br>
 										<b><a href="http://www.usuallee.com">Visit Site</a></b>
 									</p>
 								</div>
@@ -181,7 +189,7 @@
 									<b>Achievements:</b> Succesfully Designed and Launched the API product.<br>
 									Acquired the first 300 developers for the API Product.<br>
 									Designed the Amazon Fire Phone CallerID App.
-									<p>
+									<p><br>
 										<b><a href="http://developer.contactive.com">Visit Site</a></b>
 									</p>
 								</div>
@@ -222,13 +230,13 @@
 									<img class="img-responsive" src="assets/img/portfolio/sazhimi1.jpg" alt="">
 								</p>
 								<p>
-									Sazhimi is a personal project that I started on December of 2014. Sazhimi helps you to bulk export Shazam Tags into Spotify Playlists. This feature is just partially implemented in Shazam (single exports, playback only within app), likely beause of the license restrictions. While doing Sazhimi I explored and experimented with different methods for procedural flows, and created my own flow method called "restrictive progress" in which users are restricted from going back in the flow and repeat an action.<br>
+									Sazhimi is a personal project that I started on December of 2014. Sazhimi helps you to bulk export Shazam Tags into Spotify Playlists. This feature is just partially implemented in Shazam (single exports, playback only within the app), likely beause of the license restrictions. While doing Sazhimi I explored and experimented with different methods for procedural flows, and created my own flow method called "restrictive progress" in which users are restricted from going back in the flow and repeat an action.<br>
 								</p><b>Roles:</b> Product Designer, Full-Stack Developer<br>
 								<b>Technologies:</b> Python / Flask Framework, HTML, CSS, jQuery<br>
 								<b>Achievements:</b> Succesfully Designed and Launched the API product.<br>
 								Acquired the first 300 developers for the API Product.<br>
 								Designed the Amazon Fire Phone CallerID App.
-								<p>
+								<p><br>
 									<b><a href="http://www.sazhimi.com">Visit Site</a></b>
 								</p>
 							</div>
@@ -275,7 +283,7 @@
 									</p><b>Roles:</b> Product Designer, UX Designer<br>
 									<b>Achievements:</b> Succesfully designed the companion app and integration logic, including a persistent database that is asynchronously updated from the physical installations.<br>
 									Co-created the designs of an interactive touch-dome based on a computer vision setup that consisted of 4 tracking cameras and a wrapper to map the blob detection into reactive inputs.
-									<p>
+									<p><br>
 										<b><a href="http://www.etc.cmu.edu/projects/infinite">Visit Site</a></b>
 									</p>
 								</div>
@@ -319,7 +327,7 @@
 									</p><b>Roles:</b> Game Designer, Sound Designer<br>
 									<b>Achievements:</b> Succesfully Co-designed a unique Digital Playgroung Game with hundreds of the positive reviews form the independent game development community.<br>
 									Desgined an immersive sound experience that is crucial for the understanding and development of the game.
-									<p>
+									<p><br>
 										<b><a href="http://mjlst89.wix.com/thelastegg">Visit Site</a></b>
 									</p>
 								</div>
@@ -363,7 +371,7 @@
 									</p>Roles: Game Designer, Sound Designer<br>
 									Achievements: Succesfully Co-designed a challenging collaborative and physical tetris game.<br>
 									Created a sound-responsive environment that changes the dynamics of the game and mixed the music to create that environment
-									<p>
+									<p><br>
 										<b><a href="https://vimeo.com/76536164">Watch Video</a></b>
 									</p>
 								</div>
@@ -410,7 +418,7 @@
 									</p><b>Roles:</b> Game Designer, Sound Designer<br>
 									<b>Achievements:</b> Co-Designed the game mechanics and main levels.<br>
 									Created all the mixes and the general sound design for the game.
-									<p>
+									<p><br>
 										<b><a href="http://youtu.be/LStdvJYBV48">Watch Video</a></b>
 									</p>
 								</div>
@@ -457,7 +465,7 @@
 									<p>
 										<b><a href="https://vimeo.com/79898511">Watch Video</a></b>
 									</p>
-								</div>
+								</div><br>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
@@ -495,11 +503,11 @@
 									</p>
 									<p>
 										Remixer is a a Human Computer Interaction project in which we explored the different uses of prototying techniques + novel interaction methodologies to come up with a sample product that helps users to mix cocktails.<br>
-									</p>Roles: Product Designer, UX Designer, Prototyper<br>
-									Achievements: Co-created the designs of an App and companion shaker that helps user to mix cocktails.<br>
+									</p><b>Roles:</b> Product Designer, UX Designer, Prototyper<br>
+									<b>Achievements:</b> Co-created the designs of an App and companion shaker that helps user to mix cocktails.<br>
 									Prototyped the actual shaker using a 3D-Printer and a Laser-cutter.<br>
 									Created an actual app with different cocktail recipes.
-									<p>
+									<p><br>
 										<b><a href="https://vimeo.com/102769056">Watch Video</a></b>
 									</p>
 								</div>
@@ -547,7 +555,7 @@
 									</p><b>Roles:</b> Full Stack Developer, Product Designer<br>
 									<b>Achievements:</b> Designed the website frontend and main backend functionality using Telescope as boilerplate.<br>
 									Created all launch and product strategy that supported a growth from 0 to +200 users in less than 24 hours.
-									<p>
+									<p><br>
 										<b><a href="http://www.suricate.com">Visit Site</a></b>
 									</p>
 								</div>
@@ -594,7 +602,7 @@
 									mechanics.<br>
 									Designed all the UX Flow, Product Logic and Content Layout. Tested the product with
 									real users and gather all the dat to create relevant iterations.
-									<p>
+									<p><br>
 										<b><a href="http://www.etc.cmu.edu/projects/heart-rate-cafe/">Visit Site</a></b>
 									</p>
 								</div>
@@ -607,31 +615,42 @@
 
 <!-- PORTFOLIO IMAGE 12 -->
 					<div class="col-md-4">
-						<!--     -->
+						<div class="grid mask">
+							<figure>
+								<img class="img-responsive" src="assets/img/portfolio/ageinsight.png" alt="">
+								<figcaption>
+									<h5>
+										AGE-INSIGHT
+									</h5><a data-toggle="modal" href="#myModal12" class="btn btn-primary btn-lg">Take a Look</a>
+								</figcaption><!-- /figcaption -->
+							</figure><!-- /figure -->
+						</div><!-- /grid-mask -->
 					</div><!-- /col -->
 
 	<!-- MODAL IMAGE 12-->
-					<div class="modal fade" id="myModal92" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 									<h4 class="modal-title">
-										REMIXER
+										Age-Insight
 									</h4>
 								</div>
 								<div class="modal-body">
 									<p>
-										<img class="img-responsive" src="assets/img/portfolio/remixer1.jpg" alt="">
+										<img class="img-responsive" src="assets/img/portfolio/ageinsight.png" alt="">
 									</p>
 									<p>
-										Remixer is a a Human Computer Interaction project in which we explored the different uses of prototying techniques + novel interaction methodologies to come up with a sample product that helps users to mix cocktails.<br>
-									</p>Roles: Product Designer, UX Designer, Prototyper<br>
-									Achievements: Co-created the designs of an App and companion shaker that helps user to mix cocktails.<br>
-									Prototyped the actual shaker using a 3D-Printer and a Laser-cutter.<br>
-									Created an actual app with different cocktail recipes.
-									<p>
-										<b><a href="https://vimeo.com/102769056">Watch Video</a></b>
+										Age-Insight for LinkedIn is a Chrome Extension I developed as a side project in the Fall of 2015. 
+										The extension went viral and it got thousands of downloads. A very interesting debate around how appropiate
+										was this extension when it comes to recruiting and the possibility of the extension being a facilitator for
+										discrimination. As a result of the discussion and the feedback I shut down the extension.<br>
+									</p><b>Roles:</b> Developer, Product Designer, UX Designer<br>
+									<b>Achievements:</b> - Created a super viral Chrome Extension that was downloaded thousand of times.<br>
+									- Succesfully created a digital product from the initial idea to its launch in a personal record time.
+									<p><br>
+										<b><a href="http://whoisjuan.github.io/age-insight-linkedin/">Visit Website</a></b>
 									</p>
 								</div>
 								<div class="modal-footer">
@@ -645,10 +664,13 @@
 			</div><!-- /row -->
 			<br>
 			
-<!-- CASE STUDIES SECTION -->
-			<h1 class="centered">
+
+
+
+<!-- //////////////////////////////////////////////// CASE STUDIES SECTION ////////////////////////////////////////////////  -->
+			<h2 class="centered">
 				CASE STUDIES
-			</h1>
+			</h2>
 			<hr>
 			<br>
 			<div class="row">
@@ -786,12 +808,60 @@
 			</div><!-- /.modal -->
 		</div><!-- /container -->
    		<br>
+
+<!-- //////////////////////////////////////////////// AWARDS AND RECOGNITIONS SECTION ////////////////////////////////////////////////  -->
 		<div class="container" id="contact" name="contact">
 			<div class="row">
 			<br>
             <br>
 		    <br>				
-				<h1 class="centered">CONTACT ME</h1>
+				<h2 class="centered">AWARDS AND RECOGNITIONS</h2>
+				<hr>
+			    <br>
+				<div class="col-xs-6 col-sm-1">
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-2">
+					<img class="img-responsive" src="assets/img/awards/andi2.png" alt="">
+					<p class="special-line-height small-font">ANDI Entrepreneurship National Award</p>
+					<p class="special-line-height small-font">Winner<br>2011</p>
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-2">
+					<img class="img-responsive" src="assets/img/awards/cesa2.png" alt="">
+					<p class="special-line-height small-font">Saber-Pro National Test for Undergrad Education</p>
+					<p class="special-line-height small-font">Best Institution Score<br>2012</p>
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-2">
+					<img class="img-responsive" src="assets/img/awards/gg2.png" alt="">
+					<p class="special-line-height small-font">The Global Good Fund Fellowship</p>
+					<p class="special-line-height small-font">Evaluator<br>2015</p>
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-2">
+					<img class="img-responsive" src="assets/img/awards/ce2.png" alt="">
+					<p class="special-line-height small-font">Iberoamerican Awards of E-Commerce</p>
+					<p class="special-line-height small-font">Jury<br>2015</p>
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-2">
+					<img class="img-responsive" src="assets/img/awards/indie2.png" alt="">
+					<p class="special-line-height small-font">IndieCade Games <br>Festival</p>
+					<p class="special-line-height small-font">Finalist<br>2014</p>
+				</div><!-- col -->
+				<div class="col-xs-6 col-sm-1">
+				</div><!-- col -->
+			</div><!-- row -->
+		
+		</div><!-- container -->
+		<br>
+
+
+
+
+<!-- //////////////////////////////////////////////// CONTACT SECTION ////////////////////////////////////////////////  -->
+		<div class="container" id="awards" name="contact">
+			<div class="row">
+			<br>
+            <br>
+		    <br>				
+				<h2 class="centered">CONTACT ME</h2>
 				<hr>
 				<div class="col-lg-12">
 					<h3>Contact Information</h3>
@@ -817,7 +887,7 @@
 </script><script type="text/javascript" src="assets/js/retina.js">
 </script><script type="text/javascript" src="assets/js/jquery.easing.1.3.js">
 </script><script type="text/javascript" src="assets/js/smoothscroll.js">
-</script><script type="text/javascript" src="assets/js/jquery-func.js">
+</script><!--<script type="text/javascript" src="assets/js/jquery-func.js">-->
 </script>
 	</body>
 </html>

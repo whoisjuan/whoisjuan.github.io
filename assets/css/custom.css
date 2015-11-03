@@ -90,3 +90,11 @@ div.container.nav-custom {
 h3.centered.hi {
 padding-bottom: 200px;
 }
+
+.special-line-height {
+  line-height: 20px;
+}
+
+.small-font {
+  font-size: 13px;
+}
