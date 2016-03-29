@@ -118,6 +118,6 @@ a.toplinks {
     color: white !important;
 }
 
-a.toplinks:hover {
+#boldsharp a.toplinks:hover {
     color: #CF000F !important;
 }
