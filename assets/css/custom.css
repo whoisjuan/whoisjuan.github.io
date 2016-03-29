@@ -112,7 +112,12 @@ ul.nav.navbar-nav {
     float: right !important;
 }
 
-a.smoothScroll {
-    font-family: "Helvetica", Sans-Serif;
-    font-weight:: bold !important;
+a.toplinks {
+    font-family: "Helvetica", Sans-Serif !important;
+    font-weight:: 600 !important;
+    color: white !important;
+}
+
+a.toplinks:hover {
+    color: #CF000F !important;
 }
