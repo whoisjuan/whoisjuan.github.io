@@ -110,6 +110,9 @@ padding-bottom: 200px;
 
 ul.nav.navbar-nav {
     float: right !important;
+}
+
+a.smoothScroll {
     font-family: "Helvetica", Sans-Serif;
     font-weight:: bold !important;
 }
