@@ -112,12 +112,12 @@ ul.nav.navbar-nav {
     float: right !important;
 }
 
-a.toplinks {
+#boldsharp a {
     font-family: "Helvetica", Sans-Serif !important;
     font-weight:: 600 !important;
     color: white !important;
 }
 
-#boldsharp a.toplinks:hover {
+#boldsharp a:hover {
     color: #CF000F !important;
 }
