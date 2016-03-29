@@ -66,7 +66,7 @@ height: 400px;
   color: white;
 }
 
-p.contactlinks a { 
+p.contactlinks a {
   color:white;
 }
 
@@ -97,4 +97,17 @@ padding-bottom: 200px;
 
 .small-font {
   font-size: 13px;
+}
+
+.cont {
+  margin-right: 28px;
+}
+
+.size-icon-contact{
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+ul.nav.navbar-nav {
+    float: right !important;
 }
