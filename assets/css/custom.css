@@ -110,4 +110,6 @@ padding-bottom: 200px;
 
 ul.nav.navbar-nav {
     float: right !important;
+    font-family: Helvetica Sans-Serif;
+    font-weight:: 700;
 }
