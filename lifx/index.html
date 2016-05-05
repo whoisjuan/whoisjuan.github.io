@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LIFX Web Control: A Minimalist Chrome Extension to Control your LIFX Lights.</title>
+	<meta name="keywords" content="website template, css3, one page, bootstrap, app template, web app, start-up">
+	<meta name="author" content="Pixel Buddha and PSD2HTML for Codrops">
+	<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicons/favicon-194x194.png" sizes="194x194">
+	<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="favicons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="favicons/manifest.json">
+	<link rel="shortcut icon" href="favicons/favicon.png">
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png">
+	<meta name="msapplication-config" content="favicons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/all.css">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ohedkkoibkekbipjoeehpofmjbmmkhin">
+
+</head>
+<body>
+<div id="wrapper">
+		<header id="header">
+			<div class="container">
+				<div class="logo"><a href="#"><img class="logo-image" src="images/logo1.png" alt="lifxwhoisjuan"></a></div>
+				<nav id="nav">
+					<div class="opener-holder">
+						<a href="#" class="nav-opener"><span></span></a>
+					</div>
+					<a onclick="chrome.webstore.install()" id="install-button" class="btn btn-primary rounded">Download</a>
+					<div class="nav-drop">
+						<ul>
+							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>
+							<li><a href="#">Overview</a></li>
+							<li><a href="#1">About</a></li>
+							<li><a href="#2">Developer</a></li>
+							<li><a href="#footer">Contact</a></li>
+						</ul>
+						<div class="drop-holder visible-sm visible-xs">
+							<span>Follow Us</span>
+							<ul class="social-networks">
+								<li><a class="fa fa-github" href="#"></a></li>
+								<li><a class="fa fa-twitter" href="#"></a></li>
+								<li><a class="fa fa-facebook" href="#"></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+	<section class="visual">
+		<div class="container">
+			<div class="text-block">
+				<div class="heading-holder">
+					<h1>LIFX Web Control</h1>
+				</div>
+				<p class="tagline">A Minimalist Chrome Extension to Control your LIFX Lights.</p>
+			</div>
+		</div>
+		<img src="images/img-decor-01.jpg" alt="" class="bg-stretch">
+	</section>
+	<section class="main">
+		<div class="container">
+			<div id="cta">
+				<a onclick="chrome.webstore.install()" class="btn btn-primary rounded">Download For Free Now</a>
+				<p>No Hidden Prices. Forever Free!</p>
+			</div>
+		</div>
+	</section>
+<!-- 	<section class="area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<h2 class="visible-xs visible-sm text-primary">&lt;Here is what you get&gt;</h2>
+					<ul class="visual-list">
+						<li>
+							<div class="img-holder">
+								<img src="images/graph-04.svg" width="110" alt="">
+							</div>
+							<div class="text-holder">
+								<h3>Created to Make A Better Web</h3>
+								<p>Aenean cursus imperdiet nisl id fermentum. Aliquam pharetra dui laoreet vulputate dignissim. Sed id metus id quam auctor molestie eget ut augue. </p>
+							</div>
+						</li>
+						<li>
+							<div class="img-holder">
+								<img class="pull-left" src="images/graph-03.svg" width="90" alt="">
+							</div>
+							<div class="text-holder">
+								<h3>Infinite Customization</h3>
+								<p>Maecenas eu dictum felis, a dignissim nibh. Mauris rhoncus felis odio, ut volutpat massa placerat ac. Curabitur dapibus iaculis mi gravida luctus. Aliquam erat volutpat. </p>
+							</div>
+						</li>
+						<li>
+							<div class="img-holder">
+								<img src="images/graph-02.svg" height="84" alt="">
+							</div>
+							<div class="text-holder">
+								<h3>Experimental Features</h3>
+								<p>Maecenas eu dictum felis, a dignissim nibh. Mauris rhoncus felis odio, ut volutpat massa placerat ac. Curabitur dapibus iaculis mi gravida luctus. Aliquam erat volutpat. </p>
+							</div>
+						</li>
+						<li>
+							<div class="img-holder">
+								<img src="images/graph-01.svg" height="71" alt="">
+							</div>
+							<div class="text-holder">
+								<h3>Time-Saving Power Tools</h3>
+								<p>Maecenas eu dictum felis, a dignissim nibh. Mauris rhoncus felis odio, ut volutpat massa placerat ac. Curabitur dapibus iaculis mi gravida luctus. Aliquam erat volutpat. </p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-7">
+					<div class="slide-holder">
+						<h2 class="hidden-xs hidden-sm text-primary">&lt;Here is what you get&gt;</h2>
+						<div class="img-slide scroll-trigger"><img src="images/img-01.png" height="624" width="1184" alt=""></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+	<section id="1" class="main">
+		<div class="container desc">
+			<h3>LIFX Web Control is a Minimalist Light Control<br>that lives in your Chrome Browser.</h3>
+			<p class="bullets">  • Individual Light Selection
+			<br> • 8 Curated Color Options
+			<br> • 4 Brightness Options</p>
+			<br>
+		  <hr>
+			<br><p id="2">This Chrome Extension is developed independently by </p><span><a href="http://www.whoisjuan.me"><img id="logojuan" src="images/logojuan.png" alt=""></a></span>
+		</div>
+	</section>
+	<!-- <section class="visual-container">
+		<div class="visual-area">
+			<div class="container">
+				<h2>People Are Talking About Fork</h2>
+				<ul class="testimonials">
+					<li>
+						<div class="img-holder"><a href="#"><img src="images/logo-smashing.png" height="43" width="165" alt="smashing magazine"></a></div>
+						<p><em>Sed vestibulum scelerisque urna, eu finibus leo facilisis sit amet. Proin id dignissim magna. Sed varius urna et pulvinar venenatis. </em></p>
+					</li>
+					<li>
+						<div class="img-holder"><a href="#"><img src="images/logo-codrops.png" height="50" width="148" alt="codrops"></a></div>
+						<p><em>Donec euismod dolor ut ultricies consequat. Vivamus urna ipsum, rhoncus molestie neque ac, mollis eleifend nibh.</em></p>
+					</li>
+					<li>
+						<div class="img-holder"><a href="#"><img src="images/logo-w.png" height="64" width="64" alt="w"></a></div>
+						<p><em>In efficitur in velit et tempus. Duis nec odio dapibus, suscipit erat fringilla, imperdiet nibh. Morbi tempus auctor felis ac vehicula. </em></p>
+					</li>
+					<li>
+						<div class="img-holder"><a href="#"><img src="images/logo-pixel.png" height="24" width="225" alt="Pixel Buddha"></a></div>
+						<p><em>Sed vestibulum scelerisque urna, eu finibus leo facilisis sit amet. Proin id dignissim magna. Sed varius urna et pulvinar venenatis. </em></p>
+					</li>
+					<li>
+						<div class="img-holder"><a href=""><img src="images/logo-cb.png" height="34" width="166" alt="creative bloq"></a></div>
+						<p><em>Praesent ut eros tristique, malesuada lectus vel, lobortis massa. Nulla faucibus lorem id arcu consequat faucibus. </em></p>
+					</li>
+					<li>
+						<div class="img-holder"><a href="#"><img src="images/logo-tnw.png" height="34" width="108" alt="tnw"></a></div>
+						<p><em>Fusce pharetra erat id odio blandit, nec pharetra eros venenatis. Pellentesque porttitor cursus massa et vestibulum.</em></p>
+					</li>
+				</ul>
+			</div>
+			<img src="images/img-decor-02.jpg" height="764" width="1380" alt="" class="bg-stretch">
+		</div>
+		<div class="visual-area">
+			<div class="container">
+				<h2>Fork Subscription Pricing</h2>
+				<div class="pricing-tables">
+					<div class="plan">
+		                <div class="head">
+		                    <h3>Students</h3>
+		                </div>
+		                <div class="price">
+		                    <span class="price-main"><span class="symbol">$</span>8</span>
+		                    <span class="price-additional">per month</span>
+		                </div>
+		                <ul class="item-list">
+		                    <li>Personal License</li>
+		                </ul>
+		                <button type="button" class="btn btn-default rounded">purchase</button>
+		            </div>
+		            <div class="plan">
+		                <div class="head">
+		                    <h3>professional</h3> </div>
+		                <div class="price">
+		                    <span class="price-main"><span class="symbol">$</span>19</span>
+		                    <span class="price-additional">per month</span>
+		                </div>
+		                    <ul class="item-list">
+		                       <li>Professional License</li>
+		                       <li>Email Support</li>
+		                    </ul>
+		                <button type="button" class="btn btn-default rounded">purchase</button>
+		            </div>
+		            <div class="plan recommended">
+		                <div class="head">
+		                    <h3>agency</h3> </div>
+		                <div class="price">
+		                    <span class="price-main"><span class="symbol">$</span>49</span>
+		                    <span class="price-additional">per month</span>
+		                </div>
+		                    <ul class="item-list">
+		                        <li>1-12 Team Members</li>
+		                        <li>Phone Support</li>
+		                    </ul>
+		                <button type="button" class="btn btn-default rounded">purchase</button>
+		            </div>
+		            <div class="plan">
+		                <div class="head">
+		                    <h3>enterprise</h3> </div>
+		                <div class="price">
+		                    <span class="price-main"><span class="symbol">$</span>79</span>
+		                    <span class="price-additional">per month</span>
+		                </div>
+		                <ul class="item-list">
+		                    <li>Unlimited Team Members</li>
+		                    <li>24/ 7 Phone Support</li>
+		                </ul>
+		                <button type="button" class="btn btn-default rounded">purchase</button>
+		            </div>
+				</div>
+				<p class="silent">Duis lobortis arcu sed arcu tincidunt feugiat. Nulla nisi mauris, facilisis vitae aliquet id, imperdiet quis nibh. Donec eget elit eu libero tincidunt consequat nec elementum orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+			</div>
+			<img src="images/img-decor-03.jpg" height="1175" width="1380" alt="" class="bg-stretch">
+		</div>
+	</section> -->
+<!-- 	<section class="area">
+		<div class="container">
+			<div class="subscribe">
+				<h3>Subscribe to Our Newsletter</h3>
+				<form class="form-inline">
+					<button type="submit" class="btn btn-primary rounded">Subscribe</button>
+					<div class="form-group">
+						<input type="email" class="form-control rounded" id="exampleInputEmail2" placeholder="Email...">
+					</div>
+				</form>
+			</div>
+		</div>
+	</section> -->
+	<section class="main">
+		<div class="container">
+		<!-- 	<div class="content">
+				<div class="row">
+					<div class="col-md-4">
+						<h3>New in Release 2.8</h3>
+						<h4>Fully Available: Live Preview Support for Multiple Browsers</h4>
+						<p>Morbi faucibus ante ipsum, a tincidunt libero posuere et. Etiam tempor tortor at odio condimentum, sit amet fringilla ligula maximus. Mauris venenatis nisl nisi, et dictum dui aliquet nec. Sed erat, nec aliquam vel, aliquam ac felis. </p>
+						<h4>Improved Support for Typing </h4>
+						<p>Nulla purus quam, pulvinar sed ante et, feugiat maximus velit. Donec eu elit mauris. </p>
+						<h4>Improved Stability</h4>
+						<p>Proin id ligula eget massa tincidunt molestie. Morbi urna lectus, molestie vel quam vel, iaculis fermentum nunc. Morbi imperdiet, leo in interdum pretium.</p>
+						<div class="btn-holder">
+							<a href="#" class="btn btn-link">Go to Release Log</a>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<h3>Popular Extensions</h3>
+						<h4><a href="#">Custom Themes 1.1</a></h4>
+						<p>Etiam viverra vulputate diam, pulvinar cursus augue egestas ullamcorper. </p>
+						<h4><a href="#">Filter Forge</a></h4>
+						<p>Nulla purus quam, pulvinar sed et, feugiat maximus velit.</p>
+						<h4><a href="#">WebZap</a></h4>
+						<p>Morbi imperdiet, leo in interdum pretium, elit eros dapibus velit, eu posuere quam diam vitae orci. Suspendisse interdum accumsan magna vitae commodo.</p>
+						<h4><a href="#">Renamy</a></h4>
+						<p>Vivamus consectetur suscipit elit, ut lacinia diam elementum et.</p>
+						<div class="btn-holder">
+							<a href="#" class="btn btn-link">Go to Marketplace</a>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<h3>New From the Blog</h3>
+						<h4><a href="#">Morbi imperdiet, leo in interdum pretium.</a></h4>
+						<time class="date" datetime="2015-02-18">February 18, 2015</time>
+						<h4><a href="#">Donec orci ante, porta vel nulla quis, aliquet hendrerit leo.</a></h4>
+						<time class="date" datetime="2015-02-12">February 12, 2015</time>
+						<h4><a href="#">Suspendisse egestas vulputate luctus.</a></h4>
+						<time class="date" datetime="2015-02-06">February 6, 2015</time>
+						<h4><a href="#">Quisque varius ante lorem, eget pretium purus hendrerit a egestas. </a></h4>
+						<time class="date" datetime="2015-02-02">February 2, 2015</time>
+						<h4><a href="#">Phasellus in augue risus. </a></h4>
+						<time class="date" datetime="2015-01-23">January 23, 2015</time>
+						<div class="btn-holder">
+							<a href="#" class="btn btn-link">Go to Blog</a>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</section>
+	<footer id="footer">
+		<div class="container">
+			<div class="footer-holder">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="logo"><a href="#"><img class="logo-image" src="images/logo1.png" alt="FORKIO"></a></div>
+						<p>A Minimalist Chrome Extension to </br>Control your LIFX Lights.</p>
+					</div>
+					<div class="col-md-2">
+						<h4>Navigation</h4>
+						<ul>
+							<li><a href="#">Overview</a></li>
+							<br>
+							<li><a href="#1">About</a></li>
+							<br>
+							<li><a href="http://www.whoisjuan.me">Developer Website</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<div class="text-frame">
+							<h4>About the Creator</h4>
+							<p>I'm Juan J. Ramirez. I'm an Award-Winner UX Designer and Product Professional. Always hacking new products, interaction techniques and technology concepts.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="text-holder">
+							<h4>Contact</h4>
+							<p>Interested in my work or want to leave feedback regarding LIFX Web Control? Please visit my website: <a href="http://www.whoisjuan.me">whoisjuan.me</a> or send me a message at:</p><p style="color: purple;">(jjramirez.u {/a-t/} gmail . com)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.main.js"></script>
+</body>
+</html>
