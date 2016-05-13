@@ -9,24 +9,25 @@
     .row { width: 100%; display: table; table-layout: fixed; }
     .col { display: table-cell; }
   }
-
-  .center {
-    text-align: center;
-  }
-
-  .vertical-center {
-    margin-top: 25%;
-  }
+  .margin {margin-top: 75vh;}
+  .text {font-family: Helvetica, Sans-Serif; font-size:65px; text-decoration: none; color:black;}
+  .text-smaller {font-family: Helvetica, Sans-Serif; font-size:35px; text-decoration: none; color:black;}
+  .center {text-align: center;}
   </style>
   <script>
   var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
-  alert(is_uiwebview);
   </script>
 </head>
 <body>
-<div class="row vertical-center">
+<div class="row">
   <div class="col center">
-    <a href="instagram://">Open Instagram</a>
+    <a class="text" href="instagram://">Open Instagram</a>
+  </div>
+</div>
+<div class="row margin">
+  <div class="col center">
+    <p class="text-smaller">Tap Here and choose "Add to Home Screen</p>
+    <p class="center text-smaller">↓</p>
   </div>
 </div>
 </body>
