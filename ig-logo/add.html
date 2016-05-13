@@ -24,7 +24,7 @@
   var uiWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
   if (uiWebView == true) {
     window.location.replace("instagram://");
-    $( "top-message" ).text();
+    $( "top-message" ).text("Click Here to Open Instagram");
     $( "top-message" ).hide();
   };
   </script>
@@ -32,7 +32,7 @@
 <body>
 <div class="row top-message">
   <div class="col center">
-    <a class="text" href="instagram://">Click Here to Open Instagram</a>
+    <a class="text" href="instagram://">Change Instagram Logo Here (kind of)</a>
   </div>
 </div>
 <div class="row bottom">
