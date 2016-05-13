@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Instagram</title>
+  <script  src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="  crossorigin="anonymous"></script>
   <style type="text/css">
   @media (min-width: 30em) {
     .row { width: 100%; display: table; table-layout: fixed; }
@@ -16,13 +17,18 @@
   .center {text-align: center;}
   </style>
   <script>
-  var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
+  var uiWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
+  if (uiWebView == true) {
+    window.location.replace("instagram://");
+    $( "top-message" ).text();
+    $( "top-message" ).hide();
+  };
   </script>
 </head>
 <body>
-<div class="row">
+<div class="row top-message">
   <div class="col center">
-    <a class="text" href="instagram://">Click to Open Instagram</a>
+    <a class="text" href="instagram://">Click Here to Open Instagram</a>
   </div>
 </div>
 <div class="row bottom">
