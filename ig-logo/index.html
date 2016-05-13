@@ -17,29 +17,48 @@
   .bottom {position: fixed; bottom: 0;}
   .text {font-family: Helvetica, Sans-Serif; font-size:65px; text-decoration: none; color:black;}
   .text-smaller {font-family: Helvetica, Sans-Serif; font-size:40px; text-decoration: none; color:black;}
+  .text-smallest {font-family: Helvetica, Sans-Serif; font-size:35px; text-decoration: none; color:black;}
+  .tiny {font-family: Helvetica, Sans-Serif; font-size:28px; text-decoration: none; color:black;}
   .arrow {font-size: 65px}
   .center {text-align: center;}
   </style>
   <script>
-  var uiWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
-  if (uiWebView == true) {
-    window.location.replace("instagram://");
-    $( "top-message" ).text();
-    $( "top-message" ).hide();
-  };
   </script>
 </head>
 <body>
 <div class="row top-message">
   <div class="col center">
-    <a class="text" href="instagram://">Click Here to Open Instagram</a>
+    <img src="apple-touch-icon.png" style="height:20%; margin-top: 20px;">
+    <p class="text-smaller">Insta-Back <br> (Get Instagram's classic logo back in your home screen)</p>
+    <p class="tiny" href="instagram://">iOS only...because I'm lazy.</p>
   </div>
 </div>
-<div class="row bottom">
+<br>
+<br>
+<div class="row top-message">
   <div class="col center">
-    <p class="text-smaller">Tap Here and choose "Add to Home Screen</p>
-    <p class="center arrow">↓</p>
+    <p class="text-smallest">1) Move the New Instagram to your "Crap" Folder.</p>
+    <iframe src="https://giphy.com/embed/epCSzVMssZ2xy" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <br>
+    <p class="text-smallest">2) Open the link below and then add that page to your homescreen.</p>
+    <iframe src="https://giphy.com/embed/l41YcCKa4QtXyaJHO" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <br>
+    <p class="text-smallest">3) Boom! Classic Instagram Logo is back! <sup>*</sup> </p>
+    <p class="tiny">* You will keep seeing the new logo in your push notifications and stuff.<br>...lame, but nothing can be done...</p>
+    <br>
+    <a class="text-smallest" href="add.html" style="color:red;">Click Here </a>
+    <p class="tiny">(open from iOS Safari Only!)</p>
   </div>
+</div>
+<br>
+<br>
+<hr>
+<div class="row top-message">
+  <div class="col center">
+    <p class="tiny">Hacked and published in about 40 min by</p>
+    <a href="http://www.whoisjuan.me"><img src="whoisjuan.png" style="width:300px;"></a>
+  </div>
+</div>
 </div>
 </body>
 </html>
