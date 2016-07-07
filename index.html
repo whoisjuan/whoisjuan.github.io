@@ -114,7 +114,7 @@
 			<div class="container">
 
 <div class="row">
-			<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+			<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 					<div class="grid mask">
 						<figure>
 							<img class="img-responsive" src="assets/img/portfolio/procore1.png" alt="">
@@ -127,7 +127,7 @@
 					</div><!-- /grid-mask -->
 				</div><!-- /col -->
 
-			<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+			<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 					<div class="grid mask">
 						<figure>
 							<img class="img-responsive" src="assets/img/portfolio/lifx1.png" alt="">
@@ -140,7 +140,7 @@
 					</div><!-- /grid-mask -->
 				</div><!-- /col -->
 
-			<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+			<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 					<div class="grid mask">
 						<figure>
 							<img class="img-responsive" src="assets/img/portfolio/ig1.png" alt="">
@@ -155,10 +155,10 @@
 
 </div>
 
-<div class="row">
+<div class="row row1">
 
 <!-- PORTFOLIO IMAGE 0 -->
-					<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+					<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 						<div class="grid mask">
 							<figure>
 								<img class="img-responsive" src="assets/img/portfolio/usuallee1.jpg" alt="">
@@ -172,7 +172,7 @@
 					</div><!-- /col -->
 
 <!-- PORTFOLIO IMAGE 1 -->
-					<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+					<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 						<div class="grid mask">
 							<figure>
 								<img class="img-responsive" src="assets/img/portfolio/contactive1.jpg" alt="">
@@ -187,7 +187,7 @@
 
 
 <!-- PORTFOLIO IMAGE 2 -->
-					<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
+					<div class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
 						<div class="grid mask">
 							<figure>
 								<img class="img-responsive" src="assets/img/portfolio/sazhimi1.jpg" alt="">
@@ -299,10 +299,10 @@
 					<div class="col-md-4" data-sr="wait 0.1s, ease-in-out 50px">
 						<div class="grid mask">
 							<figure>
-								<img class="img-responsive" src="assets/img/portfolio/suricate.jpg" alt="">
+								<img class="img-responsive" src="assets/img/portfolio/coverpocket1.png" alt="">
 								<figcaption>
 									<h5>
-										SURICATE
+										COVERPOCKET
 									</h5><a data-toggle="modal" href="#myModal10" class="btn btn-primary btn-lg">Take a Look</a>
 								</figcaption><!-- /figcaption -->
 							</figure><!-- /figure -->
@@ -749,12 +749,11 @@
                     <img class="img-responsive" src="assets/img/portfolio/suricate.jpg" alt="">
                   </p>
                   <p>
-                    Suricate is a Meerkat Livestream curated aggregator that I created to take advantage of Meerkat's initial growth. The curation comes from an internat system that ranks the livestreams based on time, votes and categories.<br>
-                  </p><b>Roles:</b> Full Stack Developer, Product Designer<br>
-                  <b>Achievements:</b> Designed the website frontend and main backend functionality using Telescope as boilerplate.<br>
-                  Created all launch and product strategy that supported a growth from 0 to +200 users in less than 24 hours.
+                    Coverpocket is a digital insurance manager that provides a seamless experience to organize and renew insurance policies. Coverpocket is a sub-product of Coverwallet ($2M USD in Total Equity Funding)<br>
+                  </p><b>Roles:</b> Product Management and UX Consultant<br>
+                  As a consultant for Coverpocket I gave the company advice on different areas of their porduct including their user-flow and onboarding process. I also designed all the business logic and technical foundation for their cash referral program, and provided strategic advice on the execution of their referral strategies.
                   <p><br>
-                    <b><a href="http://www.suricate.com">Visit Site</a></b>
+                    <b><a href="https://www.coverpocket.com/">Visit Site</a></b>
                   </p>
                 </div>
                 <div class="modal-footer">
@@ -1025,5 +1024,16 @@
 <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
 <!--<script type="text/javascript" src="assets/js/jquery-func.js"></script>-->
 <script> window.sr = new scrollReveal(); </script>
+<script> $(document).ready(function() {
+//get list of divs
+var div = $(".box").toArray();
+
+//randomly print them back out.
+while(div.length > 0) {
+    var idx = Math.floor((Math.random() * (div.length-1)));
+    var element = div.splice(idx, 1);
+    $('.row1').append(element[0]);
+}
+});</script>
 	</body>
 </html>
