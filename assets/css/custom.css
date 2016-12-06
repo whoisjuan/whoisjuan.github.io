@@ -85,7 +85,7 @@ h2 {
 }
 
 #contact p {
-    color: #323232;
+    color: #46356e;
 }
 
 .contact-align {
@@ -116,7 +116,12 @@ h3.centered.hi {
 
 .small-font {
     font-size: 13px;
+    color: #323232;
 }
+
+.italics {
+    font-style: italic;
+    }
 
 .cont {
     margin-right: 28px;
@@ -310,7 +315,7 @@ h3.topicon.sechead {
     color: #FFFFFF;
     font-size: 18px;
     font-weight: 600;
-    background-color: #f7960b !important;
+    background-color: #46356e !important;
     border-radius: 2px !important;
     border-color: transparent !important;
     width: calc(100% - 180px);
@@ -329,7 +334,7 @@ h3.topicon.sechead {
 
 .btn-yellow:hover {
     color: #FFFFFF!important;
-    background-color: #D6830D !important;
+    background-color: #34284F !important;
     border-color: transparent !important;
 }
 
@@ -565,7 +570,7 @@ textarea {
 [type="submit"] {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     width: 100%;
-    background: #f7960b;
+    background: #46356e;
     border-radius: 2px;
     border: 0;
     cursor: pointer;
@@ -579,7 +584,7 @@ textarea {
 }
 
 [type="submit"]:hover {
-    background: #D6830D;
+    background: #34284F;
 }
 
 .or {
