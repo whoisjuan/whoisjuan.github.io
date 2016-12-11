@@ -658,6 +658,8 @@ textarea {
     margin-bottom: 80px;
 }
 
+
+
 @media screen and (min-device-width: 1701px) {
     img.center-block.img-responsive {
         width: 370px;
@@ -710,6 +712,29 @@ textarea {
     }
     .brand-div {
         width: 250px !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    img.center-block.img-responsive {
+        width: 250px;
+    }
+    .dividerLine {
+        width: 300px;
+    }
+    p.headerlead {
+        padding-top: 8px;
+        font-size: 15px;
+        line-height: 25px;
+        width: 310px;
+    }
+    p.headerName {
+        padding-top: 0px;
+        font-size: 27px;
+    }
+    div.headerbrand {
+        padding-right: 0%;
+        padding-top: 17vh;
     }
 }
 
