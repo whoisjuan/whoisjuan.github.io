@@ -11,7 +11,7 @@
     <title>
         whoisjuan - Personal Website and Portfolio of Juan Jose Ramirez
     </title>
-    </style>
+
     <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet" type="text/css">
@@ -57,21 +57,26 @@
                         <li> <a href="#awards" class="smoothScroll toplinks" style="font-weight: 500;">Awards</a></li>
                         <li> <a href="#about" class="smoothScroll toplinks" style="font-weight: 500;">About</a></li>
                         <li> <a href="#contact" class="smoothScroll toplinks" style="font-weight: 500;">Contact</a></li>
+					</ul>
                 </div>
                 <!--/.nav-collapse -->
             </div>
         </div>
     </div>
     <!-- ==== HEADERWRAP ====  -->
-    <div class="headerwrap" name="home" id="home">
+    <div class="container-fluid">
+    	<div class="row">
+
+
+    <div class="headerwrap " name="home" id="home">
         <!-- data-sr='wait 0.5s ease-in over 1s' -->
         <div class="col-lg-offset-1 col-lg-5 juan" data-sr='wait 1s, enter left over 2.5s'><img src="assets/img/JUAN1.gif"></div>
         <div class="col-lg-5 col-lg-offset-0 headerbrand" data-sr='wait 1s enter right over 2.5s'>
             <div><img src="assets/img/brandpurple.png" class="center-block img-responsive brand-div" alt="whoisjuan"></div>
-            <p class="headerName"><b>Juan J. Ramirez</b></p>
-            <p class="headerlead center-block"><span>UX Designer</span><span>&nbsp; • &nbsp;</span><span>Product Hacker</span></p>
-            <div class="center-block dividerLine"></div>
-            <p class="headerlead center-block">I'm a passionate UX Designer, Product Hacker and Technology Obsessive who loves to create ingenious software and daring interaction concepts.</p>
+              <p class="headerName"><b>Juan J. Ramirez</b></p>
+               <p class="headerlead center-block"><span>UX Designer</span><span>&nbsp; • &nbsp;</span><span>Product Hacker</span></p>
+                <div class="center-block dividerLine"></div>
+                <p class="headerlead center-block">I'm a passionate UX Designer, Product Hacker and Technology Obsessive who loves to create ingenious software and daring interaction concepts.</p>
         </div>
         <div class="col-sm-offset-5 col-sm-2 scroller">
             <div class="row centered pulse-icon">
@@ -81,9 +86,11 @@
         <div id="particles-js">
         </div>
     </div>
+    </div>
+    </div>
     <!-- /headerwrap -->
     <!-- ==== GREYWRAP ==== -->
-    <div id="greywrap" class="container" data-sr='wait 0.2s ease-in over 1.3s' style="visibilty:hidden;">
+  <div id="greywrap" class="container" data-sr='wait 0.2s ease-in over 1.3s' style="visibilty:hidden;">
         <div class="row">
             <!--                <div class="col-lg-4 callout">
                     <i class="fa fa-suitcase"></i>
@@ -104,12 +111,13 @@
         </div>
         <!-- row -->
     </div>
+
     <!-- greywrap -->
     <!-- //////////////////////////////////////////////// PORTFOLIO SECTION ////////////////////////////////////////////////  -->
     <h2 class="centered sechead firstsec" id="portfolio">PORTFOLIO</h2>
     <h3 class="centered sechead subsec">Featured Work</h3>
     <br>
-    <div class="container" id="portfolio" name="portfolio">
+  <div class="container" id="portfolio" name="portfolio">
         <div class="row">
             <div data-toggle="modal" href="#lifx" class="col-md-4 box" data-sr="wait 0.1s, ease-in-out 50px">
                 <div class="grid mask">
@@ -126,7 +134,9 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>LIFX CHROME (2016)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-code caption-role"></i><h5>
+                    <h5 class="pop1">LIFX CHROME (2016)
+                    	<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER"></i>
+                        <i class="fa fa-code caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="F/E DEVELOPER"></i></h5>
                     </div>
 <!--                    <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Developer &nbsp;</span>
@@ -148,7 +158,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>COVERPOCKET (2016)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-lightbulb-o caption-role"></i></h5>
+                    <h5 class="pop1">COVERPOCKET (2016)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-lightbulb-o caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="PROD. MANAGER"></i></h5>
                 </div>
                 <!--                        <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; PM & UX Consultant &nbsp;</span>
@@ -171,7 +181,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>SAVING HEARTS (2015)<i class="fa fa-sitemap caption-role"></i></h5>
+                    <h5 class="pop1">SAVING HEARTS (2015)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span>
@@ -197,7 +207,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>EDUCATIONAL DOME (2014)<i class="fa fa-sitemap caption-role"></i></h5>
+                    <h5 class="pop1">EDUCATIONAL DOME (2014)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i></h5>
                 </div>
                 <!-- <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span>
@@ -219,7 +229,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>SAZHIMI (2014)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-code caption-role"></i></h5>
+                    <h5 class="pop1">SAZHIMI (2014)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-code caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="F/E DEVELOPER"></i></h5>
                 </div>
                 <!--            <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Developer &nbsp;</span>
@@ -234,7 +244,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>PROCORE (2016)<i class="fa fa-sitemap caption-role"></i></h5>
+                    <h5 class="pop1">PROCORE (2016)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i></h5>
                 </div>
                 <!--                    <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span>
@@ -261,7 +271,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>INSTA-BACK (2016)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-code caption-role"></i></h5>
+                    <h5 class="pop2">INSTA-BACK (2016)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-code caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="F/E DEVELOPER"></i></h5>
                 </div>
                 <!--                    <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Developer &nbsp;</span>
@@ -282,7 +292,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>AGE-INSIGHT (2015)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-code caption-role"></i></h5>
+                    <h5 class="pop2">AGE-INSIGHT (2015)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-code caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="F/E DEVELOPER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Developer &nbsp;</span>
@@ -306,7 +316,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>TETRONIC (2013)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-headphones caption-role"></i></h5>
+                    <h5 class="pop2">TETRONIC (2013)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-headphones caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="SND. DESIGNER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; Game/UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Sound Designer &nbsp;</span>
@@ -328,7 +338,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>OH CRAB! (2013)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-headphones caption-role"></i></h5>
+                    <h5 class="pop2">OH CRAB! (2013)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-headphones caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="SND. DESIGNER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; Game/UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Sound Designer &nbsp;</span>
@@ -354,7 +364,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>THE LAST EGG (2013)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-headphones caption-role"></i></h5>
+                    <h5 class="pop2">THE LAST EGG (2013)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-headphones caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="SND. DESIGNER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; Game/UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Sound Designer &nbsp;</span>
@@ -376,7 +386,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>AAO VR GAME (2013)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-headphones caption-role"></i></h5>
+                    <h5 class="pop2">AAO VR GAME (2013)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-headphones caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="SND. DESIGNER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; Game/UX Designer &nbsp;</span><span class="badgeUX">&nbsp; Sound Designer &nbsp;</span>
@@ -399,7 +409,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>REMIXER (2014)<i class="fa fa-sitemap caption-role"></i></h5>
+                    <h5 class="pop2">REMIXER (2014)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span>
@@ -420,7 +430,7 @@
                 </div>
                 <!-- /grid-mask -->
                 <div class="caption-photo">
-                    <h5>USUALLEE (2012)<i class="fa fa-sitemap caption-role"></i><i class="fa fa-lightbulb-o caption-role"></i></h5>
+                    <h5 class="pop2">USUALLEE (2012)<i class="fa fa-sitemap caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="UX DESIGNER">  </i><i class="fa fa-lightbulb-o caption-role" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="PROD. MANAGER"></i></h5>
                 </div>
                 <!--                <div class="project-labels">
                         <span class="bold">Roles: </span><span class="badgeUX">&nbsp; Product Lead &nbsp;</span><span class="badgeUX">&nbsp; UX Designer &nbsp;</span>
@@ -431,6 +441,7 @@
         <!-- /row -->
         <br>
     </div>
+
     <!-- /row -->
     <br>
     <!-- //////////////////////////////////////////////// CASE STUDIES SECTION ////////////////////////////////////////////////  -->
@@ -507,13 +518,16 @@
         </div>
         <!-- /row -->
     </div>
+
     <!-- /container -->
     <br>
     <!-- //////////////////////////////////////////////// AWARDS AND RECOGNITIONS SECTION ////////////////////////////////////////////////  -->
     <div class="container" id="awards">
+        <div class="col-sm-12">   <h2 class="centered sechead firstsec">AWARDS AND RECOGNITIONS</h2></div>
         <div class="row row2">
-            <h2 class="centered sechead firstsec">AWARDS AND RECOGNITIONS</h2>
-            <br>
+
+
+
             <div class="col-xs-6 col-sm-2" data-sr="wait 0.2s, enter left, vFactor 0.8">
                 <img class="img-responsive inverted" src="assets/img/awards/andi2.png" alt="">
                 <p class="special-line-height small-font">ANDI Entrepreneurship National Award
@@ -571,7 +585,7 @@
         </div>
         <!-- row -->
     </div>
-    <!-- container -->
+        <!-- container -->
     <br>
     <!-- ==== GREYWRAP ==== -->
     <br>
@@ -1258,6 +1272,7 @@
                     'overflow': 'visible'
                 });
             })
+		 $('[data-toggle="popover"]').popover();
             //]]>
         </script>
         <script type="text/javascript">

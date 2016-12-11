@@ -45,7 +45,7 @@ img.center-block.img-responsive.special-width {
 }
 
 p.headerlead {
-    width: 340px;
+    max-width: 340px;
     font-size: 16px;
     margin-top: -6px;
     color: #acaeaf;
@@ -121,7 +121,7 @@ h3.centered.hi {
 
 .italics {
     font-style: italic;
-    }
+}
 
 .cont {
     margin-right: 28px;
@@ -148,7 +148,7 @@ ul.nav.navbar-nav {
     color: #f7960b !important;
 }
 
-.footertext p{
+.footertext p {
     font-weight: 500;
     font-size: 16px;
     color: #46356e;
@@ -478,7 +478,7 @@ div#particles-js {
 }
 
 .dividerLine {
-    width: 334px;
+    max-width: 334px;
     height: 1px;
     border-top: 1px #acaeaf solid;
 }
@@ -489,7 +489,6 @@ div#particles-js {
     border-top: 1px #46356e solid;
     opacity: 0.3;
     margin-bottom: 20px;
-
 }
 
 .scroller {
@@ -499,6 +498,19 @@ div#particles-js {
     left: 0;
     right: 0;
     padding-top: 85vh;
+}
+
+@media screen and (min-width: 1200px) {
+    .scroller {
+        padding-top: 85vh;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .scroller {
+        padding-top: 0;
+        margin-top: -370px;
+    }
 }
 
 .scroller a {
@@ -593,7 +605,6 @@ textarea {
 }
 
 
-
 /*Preloader*/
 
 
@@ -627,7 +638,6 @@ textarea {
     /* is width and height divided by two */
 }
 
-
 .juan img {
     width: 100%;
     margin-left: 30px;
@@ -657,7 +667,6 @@ textarea {
     }
     p.headerlead {
         font-size: 18px;
-        width: 380px;
     }
     p.headerName {
         font-size: 35px;
@@ -667,42 +676,45 @@ textarea {
     }
 }
 
-
 @media screen and (min-device-width: 2000px) {
     .juan img {
         margin-left: 220px;
         width: 880px;
     }
-
     div.headerbrand {
         padding-top: 36vh;
         padding-right: 5%;
     }
-
     .juan {
         padding-top: 100px;
     }
 }
 
+
 /*iPad, Phones, etc.*/
-@media screen and (max-device-width: 800px) {
+
+@media screen and (max-width: 800px) {
+    h2.centered.sechead {
+        font-weight: bold;
+        letter-spacing: -1px;
+        font-size: 19px;
+        letter-spacing: 1px;
+    }
     .juan img {
         margin-left: 0px;
         width: 90%;
     }
-
     div.headerbrand {
-    padding-top: 0%;
-    padding-right: 2%;
+        padding-top: 0%;
+        padding-right: 2%;
     }
-
     .brand-div {
         width: 250px !important;
     }
- }
+}
 
 
- /*Modals*/
+/*Modals*/
 
 .modal-body {
     text-align: justify;
@@ -728,71 +740,121 @@ textarea {
 /*Animations*/
 
 
-
-
 /*******************************
 * MODAL AS LEFT/RIGHT SIDEBAR
 * Add "left" or "right" in modal parent div, after class="modal".
-* Get free snippets on bootpen.com
 *******************************/
-    .modal.left .modal-dialog,
-    .modal.right .modal-dialog {
-        position: fixed;
-        margin: auto;
-        width: 50%;
-        height: 100%;
-        -webkit-transform: translate3d(0%, 0, 0);
-            -ms-transform: translate3d(0%, 0, 0);
-             -o-transform: translate3d(0%, 0, 0);
-                transform: translate3d(0%, 0, 0);
-    }
 
-    .modal.left .modal-content,
-    .modal.right .modal-content {
-        height: 100%;
-        overflow-y: auto;
-    }
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
 
-    .modal.left .modal-body,
-    .modal.right .modal-body {
-        padding: 15px 15px 80px;
-    }
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
 
 /*Left*/
-    .modal.left.fade .modal-dialog{
-        left: -320px;
-        -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-           -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-             -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-                transition: opacity 0.3s linear, left 0.3s ease-out;
-    }
 
-    .modal.left.fade.in .modal-dialog{
-        left: 0;
-    }
+.modal.left.fade .modal-dialog {
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+    left: 0;
+}
+
 
 /*Right*/
-    .modal.right.fade .modal-dialog {
-        right: -320px;
-        -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-           -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-             -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-                transition: opacity 0.3s linear, right 0.3s ease-out;
-    }
 
-    .modal.right.fade.in .modal-dialog {
-        right: 0;
-    }
+.modal.right.fade .modal-dialog {
+    right: -320px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+
 
 /* ----- MODAL STYLE ----- */
-    .modal-content {
-        border-radius: 0;
-        border: none;
-    }
 
-    .modal-header {
-        border-bottom-color: #EEEEEE;
-        background-color: #FAFAFA;
-    }
+.modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-header {
+    border-bottom-color: #EEEEEE;
+    background-color: #FAFAFA;
+}
+
+
+
+/* ----- TOOL TIP ----- */
+
+.pop1 .popover {
+    background-color: #F7960B;
+    color: #ffffff;
+    min-width: 165px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.popover.bottom .arrow:after {
+    border-bottom-color: #F7960B;
+}
+
+.pop2 .popover {
+    background-color: #F7960B;
+    color: #ffffff;
+    min-width: 155px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.pop1 .arrow {
+    left: 50% !important;
+}
+
+.pop2 .arrow {
+    left: 52% !important;
+}
+
+.popover.top>.arrow:after {
+    border-top-color: #f06262;
+}
+
+.fa {
+    cursor: auto;
+}
+
+/*.fa:hover {
+    color: darkgrey;*/
+}
 
 
