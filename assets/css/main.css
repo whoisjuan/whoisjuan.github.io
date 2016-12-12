@@ -296,7 +296,7 @@ a:after {
     background-position: center center;
     /*min-height: 580px;*/
     min-height: 100vh;
-    
+
     /*    -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -727,31 +727,7 @@ a:after {
    MEDIA QUERIES
    ========================================================================== */
 
-@media screen and (max-width:1050px),
-screen and (max-device-width:1050px) {
-    body .header {
-        background-attachment: scroll;
-    }
-}
 
-
-/*ipad portrait*/
-
-@media only screen and (min-device-width:768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    .header {
-        background-attachment: scroll;
-    }
-}
-
-@media screen and (max-width:769px) {
-    #headerwrap h1 {
-        font-size: 80px;
-    }
-    #headerwrap p {
-        font-size: 30px;
-        line-height: 38px;
-    }
-}
 
 /* ==========================================================================
    OVERWRITES

@@ -509,7 +509,7 @@ div#particles-js {
 @media screen and (max-width: 1199px) {
     .scroller {
         padding-top: 0;
-        margin-top: -370px;
+        padding-top: 85vh;
     }
 }
 
@@ -659,6 +659,13 @@ textarea {
 }
 
 
+@media screen and (max-width:1050px),
+screen and (max-device-width:1050px) {
+    body .header {
+        background-attachment: scroll;
+    }
+}
+
 
 @media screen and (min-device-width: 1701px) {
     img.center-block.img-responsive {
@@ -716,6 +723,10 @@ textarea {
 }
 
 @media screen and (max-width: 1024px) {
+    .juan img {
+        padding-top: 10vh;
+    }
+
     img.center-block.img-responsive {
         width: 250px;
     }
@@ -734,10 +745,27 @@ textarea {
     }
     div.headerbrand {
         padding-right: 0%;
-        padding-top: 17vh;
+        padding-top: 26vh;
     }
 }
 
+/*ipad portrait*/
+
+@media only screen and (min-device-width:768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .header {
+        background-attachment: scroll;
+    }
+}
+
+@media screen and (max-width:769px) {
+    #headerwrap h1 {
+        font-size: 80px;
+    }
+    #headerwrap p {
+        font-size: 30px;
+        line-height: 38px;
+    }
+}
 
 /*Modals*/
 
