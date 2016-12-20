@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>Sortable Procore Tools</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.css"/>        
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">      
+  
+<!-- Latest JS Libraries Pre-Loaded -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://rubaxa.github.io/Sortable/Sortable.js"></script>
+    
+<style>
+    
+    #header {
+        width: 100%;
+        
+    }
+     
+    
+    /* chosenClass */
+    .chosen {
+      color: #fff;
+      background-color: #ebebeb;
+      opacity: 0.5;    
+    }
+    
+    .ghost {
+       opacity: 0.4;
+       background-color: gray;    
+    }
+    
+    .tools {
+        font-size: 45px;
+        color: #2D2F31;
+    }
+    
+    .icon-size {
+        height: 90px;
+    }
+    
+    .icon-margins{
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        margin-top:20px;
+    }
+    
+    .handle {
+        font-size: 52px;
+        cursor: move;
+        cursor: -webkit-grabbing;
+        color: #d3d3d3;
+        margin-right: 30px;
+        margin-top: 35px;
+        visibility: hidden;
+    }
+    
+    .edit {
+        color: gray;
+        background-color: lightgray;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        /* Positioning */
+        margin-top: 200px;
+    }
+    
+    .edit-label {
+        padding-top: 5px;
+        font-size: 30px;
+    }
+    
+    .align-right {
+        float: right;
+    }
+    
+    .align-center {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+    
+    .noselect {
+      cursor:default;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Chrome/Safari/Opera */
+      -khtml-user-select: none;    /* Konqueror */
+      -moz-user-select: none;      /* Firefox */
+      -ms-user-select: none;       /* IE/Edge */
+      user-select: none;           /* non-prefixed version, currently
+                                      not supported by any browser */
+}
+
+</style>
+
+    
+    
+</head>
+<body>    
+
+<div><img id="header" src="Header3.png"></div>      
+<!-- Simple List -->
+<div id="simpleList" class="list-group">
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="schedule.png"> Schedule<span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="commitments.png"> Commitments <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="rfis.png"> RFIs <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="punch.png"> Punch List <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="inspections.png"> Inspections <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="submittals.png"> Submittals <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="photos.png"> Photos <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+    <div class="list-group-item tools noselect"><img class="icon-size icon-margins" src="drawings.png"> Drawings <span class="handle align-right"><i class="fa fa-bars"></i></span></div>
+</div>
+<div class="align-center edit"><p class="edit-label">Edit</p></div>
+    
+    
+</body>
+
+<script>
+var list = document.getElementById("simpleList");    
+Sortable.create(list, {
+  handle: ".handle",
+  animation: 150,
+  ghostClass: "ghost",    
+  chosenClass: 'chosen',
+  forceFallback: false
+});
+</script>
+    
+<!--<script>
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+function removeClass(ele,cls) {
+        if (hasClass(ele,cls)) {
+            var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+            ele.className=ele.className.replace(reg,' ');
+        }
+    }    
+    
+function toggleHandler() {
+    var handles = document.getElementsByClassName("handle");
+    for(var i = 0; i < handles.length; i++) {
+        handles[i].classList.remove("animated");
+        handles[i].classList.remove("bounceOutRight");
+        handles[i].classList.remove("bounceInRight");
+        if (handles[i].style.visibility == "hidden") {
+            handles[i].className += " animated bounceInRight";
+            handles[i].style.visibility = "visible";
+        } else {
+            handles[i].className += " animated bounceOutRight";
+            
+        }
+    }
+    
+}    
+</script> -->
+    
+<script>
+
+(function($) {
+    $.fn.invisible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "hidden");
+        });
+    };
+    $.fn.visible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "visible");
+        });
+    };
+}(jQuery));
+
+    
+var toggled = false; 
+$(".edit").click(function() {
+  var handle =  $(".handle");
+  var edit = $(".edit");
+  var editLabel = $(".edit-label");    
+  handle.removeClass('animated bounceInRight bounceOutRight')    
+  if (toggled == false) {
+      editLabel.text("Done");      
+      handle.addClass('animated bounceInRight');
+      handle.visible();
+      toggled = true;
+  } else {
+      editLabel.text("Edit");  
+      handle.addClass('animated bounceOutRight');
+      toggled = false;
+  }
+});    
+    
+</script>    
+    
+</html>
+   
