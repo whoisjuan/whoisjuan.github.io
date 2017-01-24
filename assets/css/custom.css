@@ -907,7 +907,26 @@ screen and (max-device-width:1050px) {
 }
 
 /*.fa:hover {
-    color: darkgrey;*/
+    color: darkgrey;
+}*/
+
+.article-link {
+    text-align: left !important;
 }
 
+.article-link a {
+    color: #ACAEB0 !important;
+    /*text-decoration: underline;*/
+}
+
+.article-link a:hover {
+    color: #f7960b !important;
+    /*text-decoration: underline;*/
+}
+
+
+.article-link i {
+    color: #463572 !important;
+    font-size: 15px;
+}
 
