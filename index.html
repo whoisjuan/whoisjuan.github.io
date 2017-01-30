@@ -35,6 +35,7 @@
 </head>
 
 <body offset="0" data-target="#navbar-main">
+    <!-- Start Page -->
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
@@ -434,7 +435,7 @@
             <!-- col -->
             <div class="col-xs-6 col-sm-2" data-sr="wait 0.2s, enter left, vFactor 0.8">
                 <img class="img-responsive inverted" src="assets/img/awards/cesa2.png" alt="">
-                <p class="special-line-height small-font">Saber-Pro National Test for Undergrad Education
+                <p class="special-line-height small-font">Saber-Pro National Test Undergrad Education
                     <br><strong> · </strong>
                     <br> Best Institution Score
                     <br> 2012</p>
@@ -500,10 +501,11 @@
                     <a target="_blank" href="https://medium.com/@juanjramirez/context-design-why-deciding-between-the-words-soccer-and-football-it-s-a-design-problem-697344628d50#.wxnchorst"> • Context Design: Why deciding between the words “soccer” and “football” is a design problem. Medium. <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     <br>
                     <br>
-                    <a target="_blank" href="https://artplusmarketing.com/designed-inconveniences-ux-patterns-that-cant-be-taught-998eae9c4546#.ig8o2a90z"> • Designed Inconveniences: UX Patterns That Can’t Be Taught. Medium <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                    <a target="_blank" href="https://artplusmarketing.com/designed-inconveniences-ux-patterns-that-cant-be-taught-998eae9c4546#.ig8o2a90z"> • Designed Inconveniences: UX Patterns That Can’t Be Taught. Medium. <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     <br>
                     <br>
                 </div>
+                <div class="centered open"><a data-toggle="modal" href="#articles-more">View All...</a></div>
             </div>
             <div class="col-sm-5 col-sm-offset-2">
                 <h3 class="centered sechead subsec">Press Mentions</h3>
@@ -518,6 +520,7 @@
                     <br>
                     <br>
                 </div>
+                <div class="centered"><a target="_blank" href="https://docs.google.com/document/d/1UTr88tqL2Kv75ErWFJtixTs4KWIeibOaL-nDOue3qBw/edit?usp=sharing">View All...</a></div>
             </div>
         </div>
         <!-- row -->
@@ -602,30 +605,37 @@
     </div> -->
         <!-- Bootstrap core JavaScript
 
+
         <!-- MODAL IMAGE 0-->
-        <div class="modal fade" id="usuallee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <!-- MODAL IMAGE 0-->
+        <div class="modal fade" id="articles-more" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">
-                    USUALLEE
+                    ARTICLES
                   </h4>
                     </div>
                     <div class="modal-body">
                         <p>
-                            <img class="img-responsive" src="assets/img/portfolio/usuallee1.jpg" alt="">
+                            <a href="http://www.mindtheproduct.com/2015/04/stop-thinking-about-user-interface-a-product-approach-for-designing-products-of-the-future/" target="_blank">• Stop Thinking About User Interface: A Product Approach for Designing Products of the Future. Mind the Product</a>
+                            <br>
+                            <br>
+                            <a href="http://www.mindtheproduct.com/2016/04/7-lessons-building-product-outsourced-developers/" target="_blank">• 7 Lessons on Building Product with Outsourced Developers. Mind the Product. </a>
+                            <br>
+                            <br>
+                            <a href="• Context Design: Why deciding between the words “soccer” and “football” is a design problem. Medium." target="_blank">• Context Design: Why deciding between the words “soccer” and “football” is a design problem. Medium. </a>
+                            <br>
+                            <br>
+                            <a href="https://artplusmarketing.com/designed-inconveniences-ux-patterns-that-cant-be-taught-998eae9c4546#.20zy1th2i" target="_blank">• Designed Inconveniences: UX Patterns That Can’t Be Taught. Medium.</a>
+                            <br>
+                            <br>
+                            <a href="https://medium.com/@juanjramirez/if-you-re-building-a-conversational-bot-don-t-63e73393c91b#.p1pjlp8bk" target="_blank">• If you’re building a conversational bot…Don’t. Medium.</a>
+                             <br>
+                            <br>
+                            <a href="https://artplusmarketing.com/the-future-of-self-driving-cars-ux-augmented-reality-office-cars-and-more-50a134f152e7#.8cdld971j" target="_blank">• The Future of Self-Driving Cars UX: Augmented Reality, Office Cars and More…. Medium.</a>
                         </p>
-                        <p>
-                            Usuallee is a startup I co-founded in 2010. As VP of Product of Usuallee I lead al the products effort and initiatives. I also supported the operational and financial tasks that helped us to raise $300K in seed capital to develop the main app concept, User experience, logic and initial traction.
-                            <br>
-                        </p>
-                        <p><b>Roles:</b> Product Leader, UX Designer, Operational Manager
-                            <br>
-                            <b>Technologies:</b> HTML/CSS/JS, Photoshop, InVision.
-                            <br>
-                            <p class="center-links">
-                                <b><a href="http://www.usuallee.com" target="_blank">• View Promo Video</a></b>
-                            </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-yellow-sm" data-dismiss="modal">Close</button>
@@ -1211,26 +1221,22 @@
         $('[data-toggle="popover"]').popover();
         //]]>
         </script>
-        <script type="text/javascript">
-        var clipboard = new Clipboard('.btn-email');
-        clipboard.on('success', function(e) {});
-        clipboard.on('error', function(e) {
-            console.log("Oops. Something went wrong!")
-        });
-        $('.btn-email').click(function() {
-            $(this).html("Email Address Copied!")
-        })
-        </script>
         <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-90764052-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+        ga('create', 'UA-90764052-1', 'auto');
+        ga('send', 'pageview');
+        </script>
 </body>
 
 </html>

@@ -116,7 +116,8 @@ h3.centered.hi {
 
 .small-font {
     font-size: 13px;
-    color: #323232;
+    font-weight: 500;
+    color: #ACAEB0;
 }
 
 .italics {
@@ -605,8 +606,6 @@ textarea {
 }
 
 
-/*Preloader*/
-
 
 /* Preloader */
 
@@ -618,7 +617,7 @@ textarea {
     bottom: 0;
     background-color: #fff;
     /* change if the mask should have another color then white */
-    z-index: 99;
+    z-index: 2000;
     /* makes sure it stays on top */
 }
 
@@ -911,7 +910,7 @@ screen and (max-device-width:1050px) {
 }*/
 
 .article-link {
-    text-align: left !important;
+    text-align: left;
 }
 
 .article-link a {
@@ -929,4 +928,8 @@ screen and (max-device-width:1050px) {
     color: #463572 !important;
     font-size: 15px;
 }
+
+
+
+/* -- Full Modal Styles -- */
 
