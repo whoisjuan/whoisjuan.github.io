@@ -66,7 +66,7 @@ p.headerName {
 
 .juan {
     padding-top: 10px;
-    z-index: -10;
+    z-index: 1000;
     max-width: 900px
 }
 
@@ -426,8 +426,8 @@ mark {
 }
 
 .inverted {
-    -webkit-filter: invert(70%);
-    filter: invert(70%);
+    -webkit-filter: invert(30%);
+    filter: invert(30%);
 }
 
 .borderImage {
@@ -727,20 +727,20 @@ screen and (max-device-width:1050px) {
     }
 
     img.center-block.img-responsive {
-        width: 250px;
+        width: 200px;
     }
     .dividerLine {
-        width: 300px;
+        width: 285px;
     }
     p.headerlead {
         padding-top: 8px;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 25px;
         width: 310px;
     }
     p.headerName {
         padding-top: 0px;
-        font-size: 27px;
+        font-size: 26px;
     }
     div.headerbrand {
         padding-right: 0%;
