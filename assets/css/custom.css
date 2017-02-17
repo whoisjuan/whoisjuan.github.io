@@ -331,6 +331,7 @@ h3.topicon.sechead {
     background-color: #f7960b !important;
     border-radius: 2px !important;
     border-color: transparent !important;
+    float: right;
 }
 
 .btn-yellow:hover {
@@ -415,7 +416,7 @@ mark {
 }
 
 .caption-role {
-    font-size: 20px;
+    font-size: 20px !important;
     float: right;
     margin-left: 6px;
     color: #bababa;
@@ -606,7 +607,6 @@ textarea {
 }
 
 
-
 /* Preloader */
 
 #preloader {
@@ -657,14 +657,12 @@ textarea {
     margin-bottom: 80px;
 }
 
-
 @media screen and (max-width:1050px),
 screen and (max-device-width:1050px) {
     body .header {
         background-attachment: scroll;
     }
 }
-
 
 @media screen and (min-device-width: 1701px) {
     img.center-block.img-responsive {
@@ -725,7 +723,6 @@ screen and (max-device-width:1050px) {
     .juan img {
         padding-top: 10vh;
     }
-
     img.center-block.img-responsive {
         width: 200px;
     }
@@ -748,6 +745,7 @@ screen and (max-device-width:1050px) {
     }
 }
 
+
 /*ipad portrait*/
 
 @media only screen and (min-device-width:768px) and (max-device-width: 1024px) and (orientation: portrait) {
@@ -765,6 +763,7 @@ screen and (max-device-width:1050px) {
         line-height: 38px;
     }
 }
+
 
 /*Modals*/
 
@@ -864,7 +863,6 @@ screen and (max-device-width:1050px) {
 }
 
 
-
 /* ----- TOOL TIP ----- */
 
 .pop1 .popover {
@@ -905,6 +903,7 @@ screen and (max-device-width:1050px) {
     cursor: auto;
 }
 
+
 /*.fa:hover {
     color: darkgrey;
 }*/
@@ -923,13 +922,95 @@ screen and (max-device-width:1050px) {
     /*text-decoration: underline;*/
 }
 
-
 .article-link i {
     color: #463572 !important;
     font-size: 15px;
 }
 
 
+/* -- Full Modal Overrides -- */
 
-/* -- Full Modal Styles -- */
+.modal-dialog {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 1;
+}
+
+.modal-content {
+    height: auto !important;
+    min-height: 100% !important;
+    border-radius: 0 !important;
+    background: rgba(10, 10, 10, .7) !important;
+}
+
+.modal-content-style {
+    margin-top: 30%
+}
+
+.modal-content-style i {
+    font-size: 37px;
+    color: white;
+}
+
+.modal-content-style p {
+    margin-top: 15px;
+    text-align: center;
+    line-height: 21px;
+}
+
+.modal-content-style a {
+    color: #FFFFFF;
+}
+
+.modal-content-style a:hover {
+    color: #f7960b;
+}
+
+.modal-body-text {
+    margin-top: 30vh;
+}
+
+.modal-text {
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.modal-text a {
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.modal-text a:hover {
+    text-align: justify;
+    color: #f7960b;
+}
+
+.modal-links a {
+    color: #FFFFFF !important;
+    line-height: 120px !important;
+    font-size: 50px !important;
+    opacity: 0.8;
+}
+
+.modal-closer {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.modal-closer i {
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/*No Scroll Classes*/
+
+.noscroll {
+    position: fixed;
+    overflow-y: scroll
+}
 
