@@ -945,10 +945,6 @@ screen and (max-device-width:1050px) {
     background: rgba(10, 10, 10, .7) !important;
 }
 
-.modal-content-style {
-    margin-top: 30%
-}
-
 .modal-content-style i {
     font-size: 37px;
     color: white;
@@ -969,7 +965,8 @@ screen and (max-device-width:1050px) {
 }
 
 .modal-body-text {
-    margin-top: 30vh;
+    margin-top: 27vh;
+    margin-bottom: 30px;
 }
 
 .modal-text {
