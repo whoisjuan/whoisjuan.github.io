@@ -942,7 +942,7 @@ screen and (max-device-width:1050px) {
     height: auto !important;
     min-height: 100% !important;
     border-radius: 0 !important;
-    background: rgba(10, 10, 10, .7) !important;
+    background: rgba(93, 71, 150, .9) !important;
 }
 
 .modal-content-style i {
