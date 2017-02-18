@@ -248,7 +248,7 @@ h3.topicon.sechead {
 
 .whitebg {
     transition: opacity 800 ease-in-out;
-    background-color: #FFFFFF;
+    background: rgba(255,255,255,.95);
     -webkit-box-shadow: 0 5px 6px -5px #bababa;
     -moz-box-shadow: 0 5px 6px -5px #bababa;
     box-shadow: 0 5px 6px -5px #bababa;
@@ -518,10 +518,10 @@ div#particles-js {
 .scroller a {
     font-size: 30pt;
     color: #f7960b;
-    -webkit-animation-duration: 3.5s;
-    animation-duration: 3.5s;
-    -webkit-animation-delay: 5s;
-    animation-delay: 5s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
 }
 
 .scroller a:hover {
