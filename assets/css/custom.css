@@ -518,6 +518,10 @@ div#particles-js {
 .scroller a {
     font-size: 30pt;
     color: #f7960b;
+    -webkit-animation-duration: 3.5s;
+    animation-duration: 3.5s;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .scroller a:hover {
@@ -1009,5 +1013,28 @@ screen and (max-device-width:1050px) {
 .noscroll {
     position: fixed;
     overflow-y: scroll
+}
+
+
+.modal.fade .modal-dialog {
+-webkit-transform: scale(0.2);
+-moz-transform: scale(0.2);
+-ms-transform: scale(0.2);
+transform: scale(0.2);
+top: 300px;
+opacity: 0;
+-webkit-transition: all 0.2s;
+-moz-transition: all 0.2s;
+transition: all 0.2s;
+}
+
+.modal.fade.in .modal-dialog {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform: translate3d(0, -300px, 0);
+    transform: translate3d(0, -300px, 0);
+    opacity: 1;
 }
 
