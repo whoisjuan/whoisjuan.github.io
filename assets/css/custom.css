@@ -1038,3 +1038,32 @@ transition: all 0.2s;
     opacity: 1;
 }
 
+/*Design Process Section Styles*/
+
+.process-p {
+    width: 85%;
+    text-align: justify;
+    text-align-last: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.soon {
+    color: #46356e;
+    font-size: 13px;
+}
+
+.processImg {
+    width: 80%;
+}
+
+.blogsImg {
+    width: 40%;
+}
+
+.cycle-icon {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+
