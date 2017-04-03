@@ -586,9 +586,9 @@ textarea {
 }
 
 [type="submit"] {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    background: #46356e;
+    background: #5D4796;
     border-radius: 2px;
     border: 0;
     cursor: pointer;
