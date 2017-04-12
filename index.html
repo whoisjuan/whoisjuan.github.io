@@ -1158,6 +1158,16 @@
         $('[data-toggle="popover"]').popover();
         //]]>
         </script>
+        <script type="text/javascript">
+        var clipboard = new Clipboard('.btn-email');
+        clipboard.on('success', function(e) {});
+        clipboard.on('error', function(e) {
+            console.log("Oops. Something went wrong!")
+        });
+        $('.btn-email').click(function() {
+            $(this).html("Email Address Copied!")
+        })
+        </script>
         <script type="javascript">
             //Scroll Locking Listeners. $(document).on("click", ".box" function(){ console.log("something"); // $("html").css("overflow", "hidden"); });
         </script>

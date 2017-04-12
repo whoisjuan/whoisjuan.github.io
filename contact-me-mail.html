@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="assets/js/clipboard.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <style>
+    body {
+        background-color: #42CFC3;
+    }
+
+    .container-mail {
+        margin-top: 45vh;
+        transform: translateY(-50%);
+    }
+
+    .lead-message {
+        text-align: center;
+        margin-bottom: 55px;
+        color: #46356e;
+    }
+
+    .btn-purple {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #5D4796 !important;
+    border-radius: 2px !important;
+    border-color: transparent !important;
+    width: 480px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="row container-mail">
+    <div class="col-lg-12 lead-message">
+        <h2>Hi! If you want to contact me, please send a <br>
+        message to jjramirez.u@gmail.com :)</h2>
+        <br>
+        <h4>(Pro Tip: Click the buttow below to effortless<br>get my email address in your clipboard.)</h4>
+    </div>
+    <div class="col-lg-12">
+        <div class="btn-ct">
+            <button data-clipboard-text="jjramirez.u@gmail.com" type="button" class="btn-lg btn-purple center-block btn-email"> Click to Copy Email Address</button>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+        var clipboard = new Clipboard('.btn-email');
+        clipboard.on('success', function(e) {});
+        clipboard.on('error', function(e) {
+            console.log("Oops. Something went wrong!")
+        });
+        $('.btn-email').click(function() {
+            $(this).html("Email Address Copied!")
+        })
+        </script>
+</html>
