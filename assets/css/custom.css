@@ -295,6 +295,10 @@ h3.topicon.sechead {
     text-align-last: center;
 }
 
+.link-to-pdf {
+    font-size: 12px;
+    text-decoration: underline;
+}
 .btn-mod {
     color: #FFFFFF;
     !important;
