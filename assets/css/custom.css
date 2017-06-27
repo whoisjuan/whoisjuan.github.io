@@ -149,6 +149,10 @@ ul.nav.navbar-nav {
     color: #f7960b !important;
 }
 
+div#boldsharp li {
+    background-color: white;
+}
+
 .footertext p {
     font-weight: 500;
     font-size: 16px;
@@ -160,6 +164,8 @@ ul.nav.navbar-nav {
     font-size: 16px;
     color: #46356e;
 }
+
+
 
 h2.centered.sechead {
     font-weight: bold;
@@ -717,14 +723,21 @@ screen and (max-device-width:1050px) {
     .juan img {
         margin-left: 0px;
         width: 90%;
+        padding-top: 3vh !important;
     }
     div.headerbrand {
-        padding-top: 0%;
+        padding-top: 2% !important;
         padding-right: 2%;
     }
     .brand-div {
         width: 250px !important;
     }
+
+    .scroller {
+        display: none;
+    }
+
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -769,6 +782,10 @@ screen and (max-device-width:1050px) {
     #headerwrap p {
         font-size: 30px;
         line-height: 38px;
+    }
+
+    .footer-last {
+        margin-bottom: 20px;
     }
 }
 
@@ -1071,4 +1088,13 @@ transition: all 0.2s;
 }
 
 
+/*Other Overrides*/
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #e8e8e8 !important;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: transparent;
+}
 
