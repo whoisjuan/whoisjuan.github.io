@@ -150,7 +150,7 @@ ul.nav.navbar-nav {
 }
 
 div#boldsharp li {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .footertext p {
@@ -660,12 +660,17 @@ textarea {
     padding-bottom: 25px;
 }
 
-.btn-email {
+.btn-contact {
     width: 100%;
-    background: #f7960b;
 }
 
-.btn-ct {
+
+.btn-ct-top {
+    max-width: 520px;
+    margin: 20px auto;
+}
+
+.btn-ct-bottom {
     max-width: 520px;
     margin: 20px auto;
     margin-bottom: 80px;
