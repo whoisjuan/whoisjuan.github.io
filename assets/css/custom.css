@@ -301,10 +301,11 @@ h3.topicon.sechead {
     text-align-last: center;
 }
 
-.link-to-pdf {
-    font-size: 12px;
-    text-decoration: underline;
+
+button {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.2);
 }
+
 .btn-mod {
     color: #FFFFFF;
     !important;
@@ -453,6 +454,18 @@ mark {
     background: #46356e;
 }
 
+figure {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.2);
+}
+
+/*figure.tintGreen {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.15);
+}
+
+figure.tintPurple {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.15);
+}*/
+
 .tint_image {
     opacity: 0.4;
     -webkit-filter: grayscale(100%);
@@ -510,6 +523,13 @@ div#particles-js {
     left: 0;
     right: 0;
     padding-top: 85vh;
+}
+
+.row.centered.circle {
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.2);
+    width: 40px;
+    background-color: #FFFFFF;
 }
 
 @media screen and (min-width: 1200px) {
