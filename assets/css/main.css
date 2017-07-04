@@ -93,10 +93,10 @@ body {
     padding-bottom: 20px;
 }
 
-.row {
+/*.row {
     margin-right: 0px;
     margin-left: -15px;
-}
+}*/
 
 .modal-header {
     background: -moz-linear-gradient(90deg, #5D4796 0%, #463570 100%);

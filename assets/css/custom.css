@@ -1116,10 +1116,14 @@ transition: all 0.2s;
 /*Other Overrides*/
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: #e8e8e8 !important;
+    background-color: transparent !important;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
     border-color: transparent;
+}
+
+button.navbar-toggle {
+    box-shadow: none;
 }
 
