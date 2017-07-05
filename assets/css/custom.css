@@ -35,9 +35,6 @@ ul.nav.navbar-nav {
     color: #f7960b;
 }
 
-img.center-block.img-responsive {
-    width: 330px;
-}
 
 img.center-block.img-responsive.special-width {
     width: 1100px;
@@ -53,7 +50,7 @@ p.headerlead {
 
 div.headerbrand {
     padding-top: 25vh;
-    padding-right: 5%;
+    padding-left: 5%
 }
 
 .headerName {
@@ -704,9 +701,6 @@ screen and (max-device-width:1050px) {
 }
 
 @media screen and (min-device-width: 1701px) {
-    img.center-block.img-responsive {
-        width: 370px;
-    }
     .dividerLine {
         width: 380px;
     }
@@ -717,7 +711,7 @@ screen and (max-device-width:1050px) {
         font-size: 35px;
     }
     div.headerbrand {
-        padding-right: 10%;
+       /* padding-right: 5%;*/
     }
 }
 
@@ -728,7 +722,6 @@ screen and (max-device-width:1050px) {
     }
     div.headerbrand {
         padding-top: 36vh;
-        padding-right: 5%;
     }
     .juan {
         padding-top: 100px;
