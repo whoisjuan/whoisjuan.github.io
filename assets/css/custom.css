@@ -779,7 +779,7 @@ screen and (max-device-width:1050px) {
         font-size: 26px;
     }
     div.headerbrand {
-        padding-right: 4%;
+        margin-left: 10%;
         padding-top: 26vh;
     }
 }
