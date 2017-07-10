@@ -780,6 +780,7 @@ screen and (max-device-width:1050px) {
     }
     div.headerbrand {
         margin-left: 10%;
+        padding-left: 0%;
         padding-top: 26vh;
     }
 }
