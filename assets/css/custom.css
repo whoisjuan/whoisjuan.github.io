@@ -451,6 +451,10 @@ mark {
     background: #46356e;
 }
 
+.tintDark {
+    background: #323232;
+}
+
 figure {
     box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.2);
 }
@@ -464,11 +468,11 @@ figure.tintPurple {
 }*/
 
 .tint_image {
-    opacity: 0.4;
+    opacity: 0.5;
+    filter: alpha(opacity=20);
     -webkit-filter: grayscale(100%);
     /*Chrome, Safari, Opera*/
     filter: grayscale(100%);
-    filter: alpha(opacity=20);
 }
 
 .tint_image:hover {
@@ -482,6 +486,10 @@ figure.tintPurple {
     -webkit-filter: grayscale(0%);
     /*Chrome, Safari, Opera*/
     filter: grayscale(0%);
+}
+
+.dark-link {
+    color: #463572;
 }
 
 .heroJuan {
