@@ -21,6 +21,8 @@
   .center {text-align: center;}
   </style>
   <script>
+  var x = "User-agent header sent: " + navigator.userAgent;
+  alert(x);
   var uiWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
   if (uiWebView == true) {
     window.location.replace("instagram://");
