@@ -23,7 +23,7 @@
   <script>
   var x = "User-agent header sent: " + navigator.userAgent;
   var uiWebView = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Version)/i.test(navigator.userAgent);
-  alert(uiWebView);
+  alert(x);
   if (uiWebView == true) {
     window.location.replace("instagram://");
     $( "top-message" ).text("Click Here to Open Instagram");
