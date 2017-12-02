@@ -516,12 +516,12 @@ div#particles-js {
 }
 
 .scroller {
-    position: absolute;
+/*    position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    padding-top: 85vh;
+    padding-top: 85vh;*/
 }
 
 .row.centered.circle {
@@ -532,9 +532,9 @@ div#particles-js {
 }
 
 @media screen and (min-width: 1200px) {
-    .scroller {
+/*    .scroller {
         padding-top: 85vh;
-    }
+    }*/
 }
 
 @media screen and (max-width: 1199px) {
@@ -724,9 +724,9 @@ screen and (max-device-width:1050px) {
     div.headerbrand {
         padding-top: 36vh;
     }
-    .juan {
+/*    .juan {
         padding-top: 100px;
-    }
+    }*/
 }
 
 
@@ -787,7 +787,7 @@ screen and (max-device-width:1050px) {
 
 /*ipad portrait*/
 
-@media only screen and (min-device-width:768px) and (max-device-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-device-width:768px) and (max-device-width: 1201px) and (orientation: portrait) {
     .header {
         background-attachment: scroll;
     }
@@ -1125,23 +1125,34 @@ button.navbar-toggle {
 
 .flex {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .flex-item-image {
-    flex: 1;
+/*    flex: 1;*/
+margin-left: -5%;
 }
 
 .flex-item-txtblock {
-     flex: 1 0 0;
-     padding-top: 100px;
+/*     flex: 1 0 0;*/
+    padding: 50px;
+    padding-top: 100px;
+}
+
+.flex-item-scroller{
+    align-self: center;
+
 }
 
 .hero-responsive {
-    max-width: 40%;
+    max-width: 80%;
     height: auto;
+}
+
+.hero-img {
+    max-width: 600px;
 }
 
 .juan {
