@@ -61,11 +61,6 @@ p.headerName {
     font-size: 30px;
 }
 
-.juan {
-    padding-top: 10px;
-    max-width: 900px
-}
-
 a.btn-primary {
     border-color: #2f2f2f;
     background-color: black;
@@ -675,10 +670,9 @@ textarea {
     /* is width and height divided by two */
 }
 
-.juan img {
+/*.juan img {
     width: 100%;
-    margin-left: 30px;
-}
+}*/
 
 .brand-div {
     padding-bottom: 25px;
@@ -723,10 +717,10 @@ screen and (max-device-width:1050px) {
 }
 
 @media screen and (min-device-width: 2000px) {
-    .juan img {
+/*    .juan img {
         margin-left: 220px;
         width: 880px;
-    }
+    }*/
     div.headerbrand {
         padding-top: 36vh;
     }
@@ -745,11 +739,11 @@ screen and (max-device-width:1050px) {
         font-size: 19px;
         letter-spacing: 1px;
     }
-    .juan img {
+/*    .juan img {
         margin-left: 0px;
         width: 90%;
         padding-top: 3vh !important;
-    }
+    }*/
     div.headerbrand {
         padding-top: 2% !important;
         padding-right: 2%;
@@ -766,9 +760,9 @@ screen and (max-device-width:1050px) {
 }
 
 @media screen and (max-width: 1024px) {
-    .juan img {
+/*    .juan img {
         padding-top: 10vh;
-    }
+    }*/
     img.center-block.img-responsive {
         width: 200px;
     }
@@ -1126,3 +1120,30 @@ button.navbar-toggle {
     box-shadow: none;
 }
 
+
+/*Flex Fix for Header*/
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flex-item-image {
+    flex: 1;
+}
+
+.flex-item-txtblock {
+     flex: 1 0 0;
+     padding-top: 100px;
+}
+
+.hero-responsive {
+    max-width: 40%;
+    height: auto;
+}
+
+.juan {
+/*    max-width: 45%;*/
+}

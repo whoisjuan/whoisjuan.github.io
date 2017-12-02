@@ -295,7 +295,7 @@ a:after {
     background-attachment: relative;
     background-position: center center;
     /*min-height: 580px;*/
-    min-height: 100vh;
+/*    min-height: 100vh;*/
 
     /*    -webkit-background-size: 100%;
     -moz-background-size: 100%;
