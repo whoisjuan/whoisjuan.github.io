@@ -61,11 +61,6 @@ p.headerName {
     font-size: 30px;
 }
 
-.juan {
-    padding-top: 10px;
-    max-width: 900px
-}
-
 a.btn-primary {
     border-color: #2f2f2f;
     background-color: black;
@@ -521,12 +516,12 @@ div#particles-js {
 }
 
 .scroller {
-    position: absolute;
+/*    position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    padding-top: 85vh;
+    padding-top: 85vh;*/
 }
 
 .row.centered.circle {
@@ -537,9 +532,9 @@ div#particles-js {
 }
 
 @media screen and (min-width: 1200px) {
-    .scroller {
+/*    .scroller {
         padding-top: 85vh;
-    }
+    }*/
 }
 
 @media screen and (max-width: 1199px) {
@@ -675,10 +670,9 @@ textarea {
     /* is width and height divided by two */
 }
 
-.juan img {
+/*.juan img {
     width: 100%;
-    margin-left: 30px;
-}
+}*/
 
 .brand-div {
     padding-bottom: 25px;
@@ -723,16 +717,16 @@ screen and (max-device-width:1050px) {
 }
 
 @media screen and (min-device-width: 2000px) {
-    .juan img {
+/*    .juan img {
         margin-left: 220px;
         width: 880px;
-    }
+    }*/
     div.headerbrand {
         padding-top: 36vh;
     }
-    .juan {
+/*    .juan {
         padding-top: 100px;
-    }
+    }*/
 }
 
 
@@ -745,11 +739,11 @@ screen and (max-device-width:1050px) {
         font-size: 19px;
         letter-spacing: 1px;
     }
-    .juan img {
+/*    .juan img {
         margin-left: 0px;
         width: 90%;
         padding-top: 3vh !important;
-    }
+    }*/
     div.headerbrand {
         padding-top: 2% !important;
         padding-right: 2%;
@@ -766,9 +760,9 @@ screen and (max-device-width:1050px) {
 }
 
 @media screen and (max-width: 1024px) {
-    .juan img {
+/*    .juan img {
         padding-top: 10vh;
-    }
+    }*/
     img.center-block.img-responsive {
         width: 200px;
     }
@@ -793,7 +787,7 @@ screen and (max-device-width:1050px) {
 
 /*ipad portrait*/
 
-@media only screen and (min-device-width:768px) and (max-device-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-device-width:768px) and (max-device-width: 1201px) and (orientation: portrait) {
     .header {
         background-attachment: scroll;
     }
@@ -1126,3 +1120,41 @@ button.navbar-toggle {
     box-shadow: none;
 }
 
+
+/*Flex Fix for Header*/
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flex-item-image {
+/*    flex: 1;*/
+margin-left: -5%;
+}
+
+.flex-item-txtblock {
+/*     flex: 1 0 0;*/
+    padding: 50px;
+    padding-top: 100px;
+}
+
+.flex-item-scroller{
+    align-self: center;
+
+}
+
+.hero-responsive {
+    max-width: 80%;
+    height: auto;
+}
+
+.hero-img {
+    max-width: 600px;
+}
+
+.juan {
+/*    max-width: 45%;*/
+}
