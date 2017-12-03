@@ -758,9 +758,7 @@ screen and (max-device-width:1050px) {
 
     .hero-img {
     max-width: 400px;
-}
-
-
+    }
 }
 
 @media screen and (max-width: 1024px) {
