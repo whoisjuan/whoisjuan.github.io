@@ -757,7 +757,7 @@ screen and (max-device-width:1050px) {
     }
 
     .hero-img {
-    max-width: 400px !important;
+        max-width: 400px !important;
     }
 }
 
