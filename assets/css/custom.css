@@ -1014,8 +1014,18 @@ screen and (max-device-width:1050px) {
     margin-bottom: 30px;
 }
 
+.modal-body-text-slide {
+    margin-top: 20vh;
+    margin-bottom: 30px;
+}
+
 .modal-text {
     text-align: justify;
+    color: #FFFFFF;
+}
+
+.modal-text-center {
+    text-align: center;
     color: #FFFFFF;
 }
 
