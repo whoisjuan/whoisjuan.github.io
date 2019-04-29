@@ -812,6 +812,10 @@ screen and (max-device-width:1050px) {
 
 /*Modals*/
 
+.modal {
+    background: rgba(93, 71, 150, .95) !important;
+}
+
 .modal-body {
     text-align: justify;
 }
@@ -1010,8 +1014,8 @@ screen and (max-device-width:1050px) {
 }
 
 .modal-body-text {
-    margin-top: 27vh;
-    margin-bottom: 30px;
+    margin-top: 15vh;
+    margin-bottom: 100px;
 }
 
 .modal-body-text-slide {
