@@ -1,0 +1,2487 @@
+
+<html ng-app="InVision" ng-controller="AppController" inv-key-combos lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title ng-bind="windowTitle">
+		InVision
+	</title>
+
+	<!-- Custom webfonts -->
+	<style>
+	@font-face {
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 300;
+		src: local('Open Sans Light'), local('OpenSans-Light'), url(assets/fonts/open_sans/OpenSans-light.woff) format('woff');
+	}
+	@font-face {
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Open Sans'), local('OpenSans'), url(assets/fonts/open_sans/OpenSans.woff) format('woff');
+	}
+	@font-face {
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 600;
+		src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(assets/fonts/open_sans/OpenSans-semibold.woff) format('woff');
+	}
+	@font-face {
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Open Sans Bold'), local('OpenSans-Bold'), url(assets/fonts/open_sans/OpenSans-bold.woff) format('woff');
+	}
+	</style>
+	<!-- Interface styles -->
+	<link type="text/css" rel="stylesheet" href="assets/jquery-ui-1.9.2.custom/css/no-theme/jquery-ui-1.9.2.custom.min.css">
+	<link type="text/css" rel="stylesheet" href="assets/apps/share/css-static/uniform.default.css">
+	<link type="text/css" rel="stylesheet" href="assets/apps/share/css-static/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="assets/apps/share/css-static/intlTelInput.css">
+	<link type="text/css" rel="stylesheet" href="assets/apps/share/css/share-offline.css">
+</head>
+<body
+	class="branding-invision"
+	ng-class="bodyClass"
+	ng-style="bodyStyle">
+
+
+	<!--
+		This is the initial loading sequence. We need to be able to display this BEFORE the AngularJS
+		framework loads in order to give the user some sence of activity. But, when the framework kicks
+		in, it will be able to use the bound ng-controller.
+	-->
+	<!-- BEGIN: Loading Sequence. -->
+	<div ng-if="isLoadingOpen" ng-controller="loading.LoadingController" inv-loading-sequence class="m-loading">
+
+		<!-- BEGIN: Loading Indicator. -->
+		
+
+			<div class="loading-backdrop">
+
+				<div class="loading-container">
+
+					<div class="status-container">
+
+						<div class="status"></div>
+						<div class="logo"></div>
+
+					</div> <!-- status-container -->
+
+					<h2>Loading Experience</h2>
+
+					<p>
+						Powered by <a href="http://www.InVisionApp.com/" target="_blank">InVision</a>
+
+						
+							, the best way to share and collaborate on design.
+						
+
+					</p>
+
+				</div> <!-- loading-container -->
+
+				<div class="loading-footer">
+
+					<div class="logo"></div>
+
+					<h3><a href="http://www.InVisionApp.com/" target="_blank">Powered by InVision</a></h3>
+
+					
+						<p><em>Prototyping, Collaboration &amp; Workflow for Designers</em></p>
+					
+
+				</div> <!-- loading-footer -->
+
+			</div> <!-- loading-backdrop -->
+
+		
+		<!-- END: Loading Indicator. -->
+
+	</div>
+	<!-- END: Loading Sequence. -->
+
+	<div ng-include=" '/assets/apps/share/views/partials/preload.htm' "></div>
+	<div ng-include=" '/assets/apps/share/views/layouts/modal.htm' "></div>
+	<div ng-include=" '/assets/apps/share/views/toolbar/toolbar.htm' "></div>
+	<div ng-include=" '/assets/apps/share/views/powered-by/powered-by.htm' "></div>
+
+	<div
+		ng-if="isBrowseOpen"
+		ng-include=" '/assets/apps/share/views/browse/browse.htm' "></div>
+
+	<!-- In order to be able to disable horizontal scrolling for some screens, we need to wrap the view in order to be able to maintain screen alignment -->
+
+	<div class="desktop-wrapper">
+
+		<!-- Tour Points -->
+		<div
+			ng-if=" subview == 'preview' "
+			ng-include=" '/assets/apps/share/views/preview/preview-tour-comments.htm' "></div>
+
+		<div
+			ng-if="subview == 'comments'"
+			ng-include=" '/assets/apps/share/views/comments/comments.htm' "></div>
+
+		<div
+			ng-if="subview == 'preview'"
+			is-share-loaded="{{!isLoadingOpen}}"
+			inv-preview-auto-redirect-listener
+			ng-include=" '/assets/apps/share/views/preview/preview.htm' "></div>
+
+		<!-- Screens for comment mode -->
+		<div
+			ng-show="subview == 'comments'"
+			ng-include=" '/assets/apps/share/views/screens/screens.htm' "c></div>
+
+	</div>
+
+	<div
+		ng-if="browserCompatibility.isNotCompatible"
+		class="m-browser-compatibility ng-cloak"></div>
+
+	
+	
+		<script type="text/javascript" src="assets/scripts.js"></script>
+	
+
+	
+	
+
+		<script type="text/javascript">
+
+			(function( ng, app ){
+
+				"use strict";
+
+				app.value(
+					"config",
+					{
+						user: { // RAIN-1419 - anonymize the exported user data
+							id: 0,
+							name: "export",
+							email: "export@generic-user.com",
+							avatarID: "00000000-0000-0000-0000000000000001",
+							isAccountAuthenticated: true, // flagged as authenticated to avoid prompts to login and other nonsense
+							isAnonymous: false,
+							hasSeenCommentToolTip: true
+						},
+						shouldShowPoweredBy: false,
+						share: {"isLoadAllScreens":true,"showToolbarIntroduction":false,"hasClosedShareIntro":true,"screenID":0,"isNavigateAllowed":true},
+						project: {"defaultbackgroundautostretch":"0","defaultZoomScrollBehavior":1,"isArchived":false,"homeScreenID":274326808,"createdAt":1516316818000,"mobileStatusbarFontColor":"white","isProcessed":true,"sortTypeID":1,"name":"Vertical Density (CodePipeline)","platform":"any","defaultbackgroundimageposition":"","isMobile":false,"defaultBackgroundImageID":"","isSample":false,"deviceType":"desktop","userID":177898049,"mobileDeviceID":0,"mobileStatusbarBackgroundColor":"#000000","isOverQuota":false,"defaultBackgroundColor":"","isInGracePeriod":false,"defaultAlignment":"center","updatedAt":1516320201000,"companyID":0,"id":13118308,"isSnap":false,"lastAccessedAt":1516316818000,"mobileStatusbarIsOpaque":false,"defaultbackgroundframe":"0","mobileDeviceWidth":0,"isAdvanced":false,"orientation":"any","mobileStatusbarIsVisible":true},
+						screens: [{"thumbnailUrl":"assets/thumb_View Pipeline.png","extended":{},"isArchived":false,"screenTypeID":1,"backgroundImageWidth":"","createdAt":1516316991000,"zoomScrollBehavior":1,"updatedByUserName":"JUAN J RAMIREZ","backgroundImageUrl":"","backgroundImageHeight":"","clientFilename":"View Pipeline.png","backgroundFrame":false,"backgroundImagePosition":"tile-horizontally","isProcessed":true,"screenGroupId":0,"width":1441,"unreadCommentCount":0,"name":"View Pipeline","screenUploadState":3,"backgroundColor":"ffffff","fixedHeaderHeight":0,"imageUrl":"assets/View Pipeline.png","height":999,"backgroundAutostretch":false,"userID":177898049,"backgroundimageserverfilename":"","serverFileName":"274326808.png","sort":1,"fixedFooterHeight":0,"alignment":"center","commentCount":0,"updatedAt":1516316991000,"id":274326808,"backgroundimageversion":"1","isPlaceholder":false,"projectID":13118308,"backgroundImageID":0,"imageVersion":1,"backgroundImageClientFilename":""},{"thumbnailUrl":"assets/thumb_View Pipeline Expanded 2nd.png","extended":{},"isArchived":false,"screenTypeID":1,"backgroundImageWidth":"","createdAt":1516320195000,"zoomScrollBehavior":1,"updatedByUserName":"JUAN J RAMIREZ","backgroundImageUrl":"","backgroundImageHeight":"","clientFilename":"View Pipeline Expanded 2nd.png","backgroundFrame":false,"backgroundImagePosition":"tile-horizontally","isProcessed":true,"screenGroupId":0,"width":1441,"unreadCommentCount":0,"name":"View Pipeline Expanded 2nd","screenUploadState":3,"backgroundColor":"ffffff","fixedHeaderHeight":0,"imageUrl":"assets/View Pipeline Expanded 2nd.png","height":1663,"backgroundAutostretch":false,"userID":177898049,"backgroundimageserverfilename":"","serverFileName":"274333671.png","sort":2,"fixedFooterHeight":0,"alignment":"center","commentCount":0,"updatedAt":1516320195000,"id":274333671,"backgroundimageversion":"1","isPlaceholder":false,"projectID":13118308,"backgroundImageID":0,"imageVersion":1,"backgroundImageClientFilename":""},{"thumbnailUrl":"assets/thumb_View Pipeline Expanded ALL.png","extended":{},"isArchived":false,"screenTypeID":1,"backgroundImageWidth":"","createdAt":1516316991000,"zoomScrollBehavior":1,"updatedByUserName":"JUAN J RAMIREZ","backgroundImageUrl":"","backgroundImageHeight":"","clientFilename":"View Pipeline Expanded ALL.png","backgroundFrame":false,"backgroundImagePosition":"tile-horizontally","isProcessed":true,"screenGroupId":0,"width":1441,"unreadCommentCount":0,"name":"View Pipeline Expanded ALL","screenUploadState":3,"backgroundColor":"ffffff","fixedHeaderHeight":0,"imageUrl":"assets/View Pipeline Expanded ALL.png","height":2680,"backgroundAutostretch":false,"userID":177898049,"backgroundimageserverfilename":"","serverFileName":"274326809.png","sort":3,"fixedFooterHeight":0,"alignment":"center","commentCount":0,"updatedAt":1516316991000,"id":274326809,"backgroundimageversion":"1","isPlaceholder":false,"projectID":13118308,"backgroundImageID":0,"imageVersion":1,"backgroundImageClientFilename":""},{"thumbnailUrl":"assets/thumb_View Pipeline Expanded 1st.png","extended":{},"isArchived":false,"screenTypeID":1,"backgroundImageWidth":"","createdAt":1516320195000,"zoomScrollBehavior":1,"updatedByUserName":"JUAN J RAMIREZ","backgroundImageUrl":"","backgroundImageHeight":"","clientFilename":"View Pipeline Expanded 1st.png","backgroundFrame":false,"backgroundImagePosition":"tile-horizontally","isProcessed":true,"screenGroupId":0,"width":1441,"unreadCommentCount":0,"name":"View Pipeline Expanded 1st","screenUploadState":3,"backgroundColor":"ffffff","fixedHeaderHeight":0,"imageUrl":"assets/View Pipeline Expanded 1st.png","height":1325,"backgroundAutostretch":false,"userID":177898049,"backgroundimageserverfilename":"","serverFileName":"274333672.png","sort":4,"fixedFooterHeight":0,"alignment":"center","commentCount":0,"updatedAt":1516320195000,"id":274333672,"backgroundimageversion":"1","isPlaceholder":false,"projectID":13118308,"backgroundImageID":0,"imageVersion":1,"backgroundImageClientFilename":""}],
+						dividers: [{"position":0,"sort":0,"type":"divider","projectID":13118308,"label":"","dividerID":0,"expanded":true}],
+						metaScreens: {"icon":{"imageUrl":"","sameOriginImageUrl":"","relation":"apple-touch-icon-precomposed"},"splash":{"imageUrl":"","sameOriginImageUrl":"","relation":"apple-touch-startup-image","backgroundColor":""}},
+						hotspots: [{"metaData":{},"height":41,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274333671,"y":875,"screenID":274333672,"transitionTypeID":1,"targetTypeID":1,"width":37,"x":61,"id":793273271,"isScrollTo":true},{"metaData":{},"height":40,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274326808,"y":430,"screenID":274333672,"transitionTypeID":1,"targetTypeID":1,"width":38,"x":63,"id":793274019,"isScrollTo":true},{"metaData":{},"height":24,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274326809,"y":389,"screenID":274333672,"transitionTypeID":1,"targetTypeID":1,"width":44,"x":1331,"id":793275436,"isScrollTo":true},{"metaData":{},"height":40,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274333672,"y":877,"screenID":274333671,"transitionTypeID":1,"targetTypeID":1,"width":40,"x":63,"id":793273469,"isScrollTo":true},{"metaData":{},"height":26,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274326809,"y":387,"screenID":274333671,"transitionTypeID":1,"targetTypeID":1,"width":38,"x":1335,"id":793275399,"isScrollTo":true},{"metaData":{},"height":27,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274326808,"y":386,"screenID":274326809,"transitionTypeID":1,"targetTypeID":1,"width":48,"x":1330,"id":793251995,"isScrollTo":true},{"metaData":{},"height":28,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274326809,"y":386,"screenID":274326808,"transitionTypeID":1,"targetTypeID":1,"width":44,"x":1332,"id":793251484,"isScrollTo":true},{"metaData":{},"height":44,"isBottomAligned":false,"templateID":"","eventTypeID":1,"targetScreenID":274333672,"y":431,"screenID":274326808,"transitionTypeID":1,"targetTypeID":1,"width":38,"x":63,"id":793273224,"isScrollTo":true}],
+						branding: {
+							stub: "invision",
+							url: "http://www.InVisionApp.com/"
+						},
+						mobileDevices: [{"iconResolution":"","deviceWidth":0,"mobileSkinFilename":"","mobileDeviceID":0,"deviceHeight":0,"loadScreenResolution":"","mobileSkin":"any","viewportHeight":"0","isDefaultDeviceType":true,"platform":"any","mobileSkinColor":"","className":"desktop","viewportWidth":"0","orientation":"any","description":"desktop","deviceType":"desktop"},{"iconResolution":"120 x 120","deviceWidth":374,"mobileSkinFilename":"iphone-portrait.png","mobileDeviceID":1,"deviceHeight":778,"loadScreenResolution":"640 x 1096","mobileSkin":"iPhone","viewportHeight":"568","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone-portrait","viewportWidth":"320","orientation":"portrait","description":"iPhone 5 (Black)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":778,"mobileSkinFilename":"iphone-landscape.png","mobileDeviceID":2,"deviceHeight":374,"loadScreenResolution":"640 x 1096","mobileSkin":"iPhone","viewportHeight":"320","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone-landscape","viewportWidth":"568","orientation":"landscape","description":"iPhone 5 (Black)","deviceType":"phone"},{"iconResolution":"152 x 152","deviceWidth":640,"mobileSkinFilename":"ipad-portrait.png","mobileDeviceID":3,"deviceHeight":950,"loadScreenResolution":"1536 x 2048","mobileSkin":"iPad","viewportHeight":"768","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"ipad-portrait","viewportWidth":"576","orientation":"portrait","description":"iPad - Black","deviceType":"tablet"},{"iconResolution":"152 x 152","deviceWidth":950,"mobileSkinFilename":"ipad-landscape.png","mobileDeviceID":4,"deviceHeight":640,"loadScreenResolution":"2048 x 1496","mobileSkin":"iPad","viewportHeight":"576","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"ipad-landscape","viewportWidth":"768","orientation":"landscape","description":"iPad - Black","deviceType":"tablet"},{"iconResolution":"120 x 120","deviceWidth":374,"mobileSkinFilename":"iphone4-portrait.png","mobileDeviceID":5,"deviceHeight":690,"loadScreenResolution":"640 x 920","mobileSkin":"iPhone","viewportHeight":"480","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone4-portrait","viewportWidth":"320","orientation":"portrait","description":"iPhone 4 (Black)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":690,"mobileSkinFilename":"iphone4-landscape.png","mobileDeviceID":6,"deviceHeight":374,"loadScreenResolution":"640 x 920","mobileSkin":"iPhone","viewportHeight":"320","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone4-landscape","viewportWidth":"480","orientation":"landscape","description":"iPhone 4 (Black)","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":402,"mobileSkinFilename":"htcOne-portrait.png","mobileDeviceID":7,"deviceHeight":836,"loadScreenResolution":"1080 x 1920","mobileSkin":"HTC One","viewportHeight":"640","isDefaultDeviceType":true,"platform":"Android","mobileSkinColor":"black","className":"htcOne-portrait","viewportWidth":"360","orientation":"portrait","description":"HTC One - Black","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":836,"mobileSkinFilename":"htcOne-landscape.png","mobileDeviceID":8,"deviceHeight":402,"loadScreenResolution":"1920 x 1080","mobileSkin":"HTC One","viewportHeight":"360","isDefaultDeviceType":true,"platform":"Android","mobileSkinColor":"black","className":"htcOne-landscape","viewportWidth":"640","orientation":"landscape","description":"HTC One - Black","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":406,"mobileSkinFilename":"samsungS4-portrait.png","mobileDeviceID":9,"deviceHeight":786,"loadScreenResolution":"1080 x 1920","mobileSkin":"Samsung Galaxy S4","viewportHeight":"640","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"black","className":"samsungS4-portrait","viewportWidth":"360","orientation":"portrait","description":"Samsung Galaxy S4 - Black","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":786,"mobileSkinFilename":"samsungS4-landscape.png","mobileDeviceID":10,"deviceHeight":406,"loadScreenResolution":"1920 x 1080","mobileSkin":"Samsung Galaxy S4","viewportHeight":"360","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"black","className":"samsungS4-landscape","viewportWidth":"640","orientation":"landscape","description":"Samsung Galaxy S4 - Black","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":374,"mobileSkinFilename":"iphone-portrait-white.png","mobileDeviceID":11,"deviceHeight":778,"loadScreenResolution":"640 x 1096","mobileSkin":"iPhone","viewportHeight":"568","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone-portrait","viewportWidth":"320","orientation":"portrait","description":"iPhone 5 (White)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":778,"mobileSkinFilename":"iphone-landscape-white.png","mobileDeviceID":12,"deviceHeight":374,"loadScreenResolution":"640 x 1096","mobileSkin":"iPhone","viewportHeight":"320","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone-landscape","viewportWidth":"568","orientation":"landscape","description":"iPhone 5 (White)","deviceType":"phone"},{"iconResolution":"152 x 152","deviceWidth":640,"mobileSkinFilename":"ipad-portrait-white.png","mobileDeviceID":13,"deviceHeight":950,"loadScreenResolution":"1536 x 2048","mobileSkin":"iPad","viewportHeight":"768","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"ipad-portrait","viewportWidth":"576","orientation":"portrait","description":"iPad - White","deviceType":"tablet"},{"iconResolution":"152 x 152","deviceWidth":950,"mobileSkinFilename":"ipad-landscape-white.png","mobileDeviceID":14,"deviceHeight":640,"loadScreenResolution":"2048 x 1496","mobileSkin":"iPad","viewportHeight":"576","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"ipad-landscape","viewportWidth":"768","orientation":"landscape","description":"iPad - White","deviceType":"tablet"},{"iconResolution":"120 x 120","deviceWidth":374,"mobileSkinFilename":"iphone4-portrait-white.png","mobileDeviceID":15,"deviceHeight":690,"loadScreenResolution":"640 x 920","mobileSkin":"iPhone","viewportHeight":"480","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone4-portrait","viewportWidth":"320","orientation":"portrait","description":"iPhone 4 (White)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":690,"mobileSkinFilename":"iphone4-landscape-white.png","mobileDeviceID":16,"deviceHeight":374,"loadScreenResolution":"640 x 920","mobileSkin":"iPhone","viewportHeight":"320","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone4-landscape","viewportWidth":"480","orientation":"landscape","description":"iPhone 4 (White)","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":402,"mobileSkinFilename":"htcOne-portrait-white.png","mobileDeviceID":17,"deviceHeight":836,"loadScreenResolution":"1080 x 1920","mobileSkin":"HTC One","viewportHeight":"640","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"white","className":"htcOne-portrait","viewportWidth":"360","orientation":"portrait","description":"HTC One - White","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":836,"mobileSkinFilename":"htcOne-landscape-white.png","mobileDeviceID":18,"deviceHeight":402,"loadScreenResolution":"1920 x 1080","mobileSkin":"HTC One","viewportHeight":"360","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"white","className":"htcOne-landscape","viewportWidth":"640","orientation":"landscape","description":"HTC One - White","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":406,"mobileSkinFilename":"samsungS4-portrait-white.png","mobileDeviceID":19,"deviceHeight":786,"loadScreenResolution":"1080 x 1920","mobileSkin":"Samsung Galaxy S4","viewportHeight":"640","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"white","className":"samsungS4-portrait","viewportWidth":"360","orientation":"portrait","description":"Samsung Galaxy S4 - White","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":786,"mobileSkinFilename":"samsungS4-landscape-white.png","mobileDeviceID":20,"deviceHeight":406,"loadScreenResolution":"1920 x 1080","mobileSkin":"Samsung Galaxy S4","viewportHeight":"360","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"white","className":"samsungS4-landscape","viewportWidth":"640","orientation":"landscape","description":"Samsung Galaxy S4 - White","deviceType":"phone"},{"iconResolution":"192 x 192","deviceWidth":532,"mobileSkinFilename":"nexus7-portrait.png","mobileDeviceID":21,"deviceHeight":870,"loadScreenResolution":"1080 x 1920","mobileSkin":"Nexus 7","viewportHeight":"685","isDefaultDeviceType":true,"platform":"Android","mobileSkinColor":"black","className":"nexus7-portrait","viewportWidth":"450","orientation":"portrait","description":"Nexus 7","deviceType":"tablet"},{"iconResolution":"192 x 192","deviceWidth":870,"mobileSkinFilename":"nexus7-landscape.png","mobileDeviceID":22,"deviceHeight":532,"loadScreenResolution":"1920 x 1080","mobileSkin":"Nexus 7","viewportHeight":"415","isDefaultDeviceType":true,"platform":"Android","mobileSkinColor":"black","className":"nexus7-landscape","viewportWidth":"720","orientation":"landscape","description":"Nexus 7","deviceType":"tablet"},{"iconResolution":"192 x 192","deviceWidth":776,"mobileSkinFilename":"nexus10-portrait.png","mobileDeviceID":23,"deviceHeight":1112,"loadScreenResolution":"1080 x 1920","mobileSkin":"Nexus 10","viewportHeight":"925","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"black","className":"nexus10-portrait","viewportWidth":"600","orientation":"portrait","description":"Nexus 10","deviceType":"tablet"},{"iconResolution":"192 x 192","deviceWidth":1112,"mobileSkinFilename":"nexus10-landscape.png","mobileDeviceID":24,"deviceHeight":776,"loadScreenResolution":"1920 x 1080","mobileSkin":"Nexus 10","viewportHeight":"565","isDefaultDeviceType":false,"platform":"Android","mobileSkinColor":"black","className":"nexus10-landscape","viewportWidth":"960","orientation":"landscape","description":"Nexus 10","deviceType":"tablet"},{"iconResolution":"120 x 120","deviceWidth":416,"mobileSkinFilename":"iphone6-portrait.png","mobileDeviceID":25,"deviceHeight":850,"loadScreenResolution":"750 x 1294","mobileSkin":"iPhone","viewportHeight":"667","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"iphone6-portrait","viewportWidth":"375","orientation":"portrait","description":"iPhone 6-8 (Black)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":850,"mobileSkinFilename":"iphone6-landscape.png","mobileDeviceID":26,"deviceHeight":416,"loadScreenResolution":"750 x 1294","mobileSkin":"iPhone","viewportHeight":"375","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"iphone6-landscape","viewportWidth":"667","orientation":"landscape","description":"iPhone 6-8 (Black)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":416,"mobileSkinFilename":"iphone6-portrait-white.png","mobileDeviceID":27,"deviceHeight":850,"loadScreenResolution":"750 x 1294","mobileSkin":"iPhone","viewportHeight":"667","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone6-portrait","viewportWidth":"375","orientation":"portrait","description":"iPhone 6-8 (White)","deviceType":"phone"},{"iconResolution":"120 x 120","deviceWidth":850,"mobileSkinFilename":"iphone6-landscape-white.png","mobileDeviceID":28,"deviceHeight":416,"loadScreenResolution":"750 x 1294","mobileSkin":"iPhone","viewportHeight":"375","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone6-landscape","viewportWidth":"667","orientation":"landscape","description":"iPhone 6-8 (White)","deviceType":"phone"},{"iconResolution":"180 x 180","deviceWidth":454,"mobileSkinFilename":"iphone6plus-portrait.png","mobileDeviceID":29,"deviceHeight":920,"loadScreenResolution":"1242 x 2148","mobileSkin":"iPhone","viewportHeight":"734","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone6plus-portrait","viewportWidth":"412","orientation":"portrait","description":"iPhone 6-8 Plus (Black)","deviceType":"phone"},{"iconResolution":"180 x 180","deviceWidth":920,"mobileSkinFilename":"iphone6plus-landscape.png","mobileDeviceID":30,"deviceHeight":454,"loadScreenResolution":"1242 x 2148","mobileSkin":"iPhone","viewportHeight":"412","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"black","className":"iphone6plus-landscape","viewportWidth":"734","orientation":"landscape","description":"iPhone 6-8 Plus (Black)","deviceType":"phone"},{"iconResolution":"180 x 180","deviceWidth":454,"mobileSkinFilename":"iphone6plus-portrait-white.png","mobileDeviceID":31,"deviceHeight":920,"loadScreenResolution":"1242 x 2148","mobileSkin":"iPhone","viewportHeight":"734","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone6plus-portrait","viewportWidth":"412","orientation":"portrait","description":"iPhone 6-8 Plus (White)","deviceType":"phone"},{"iconResolution":"180 x 180","deviceWidth":920,"mobileSkinFilename":"iphone6plus-portrait-white.png","mobileDeviceID":32,"deviceHeight":454,"loadScreenResolution":"1242 x 2148","mobileSkin":"iPhone","viewportHeight":"412","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"white","className":"iphone6plus-landscape","viewportWidth":"734","orientation":"landscape","description":"iPhone 6-8 Plus (White)","deviceType":"phone"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-roseGold.png","mobileDeviceID":33,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"roseGold","className":"apple-watch-38mm-roseGold","viewportWidth":"136","orientation":"portrait","description":"38mm - Rose Gold","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-silverAluminum.png","mobileDeviceID":34,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"silverAluminum","className":"apple-watch-38mm-silverAluminum","viewportWidth":"136","orientation":"portrait","description":"38mm - Silver Aluminum","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-spaceBlackStainlessSteel.png","mobileDeviceID":35,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"spaceBlackStainlessSteel","className":"apple-watch-38mm-spaceBlackStainlessSteel","viewportWidth":"136","orientation":"portrait","description":"38mm - Space Black Stainless Steel","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-spaceGrayAluminum.png","mobileDeviceID":36,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"spaceGrayAluminum","className":"apple-watch-38mm-spaceGrayAluminum","viewportWidth":"136","orientation":"portrait","description":"38mm - Space Gray Aluminum","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-stainlessSteel.png","mobileDeviceID":37,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"stainlessSteel","className":"apple-watch-38mm-stainlessSteel","viewportWidth":"136","orientation":"portrait","description":"38mm - Stainless Steel","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":209,"mobileSkinFilename":"apple-watch-38mm-yellowGold.png","mobileDeviceID":38,"deviceHeight":378,"loadScreenResolution":"272px x 340px","mobileSkin":"apple-watch","viewportHeight":"170","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"yellowGold","className":"apple-watch-38mm-yellowGold","viewportWidth":"136","orientation":"portrait","description":"38mm - Yellow Gold","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-roseGold.png","mobileDeviceID":39,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"roseGold","className":"apple-watch-42mm-roseGold","viewportWidth":"156","orientation":"portrait","description":"42mm - Rose Gold","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-silverAluminum.png","mobileDeviceID":40,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"silverAluminum","className":"apple-watch-42mm-silverAluminum","viewportWidth":"156","orientation":"portrait","description":"42mm - Silver Aluminum","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-spaceBlackStainlessSteel.png","mobileDeviceID":41,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"spaceBlackStainlessSteel","className":"apple-watch-42mm-spaceBlackStainlessSteel","viewportWidth":"156","orientation":"portrait","description":"42mm - Space Black Stainless Steel","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-spaceGrayAluminum.png","mobileDeviceID":42,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"spaceGrayAluminum","className":"apple-watch-42mm-spaceGrayAluminum","viewportWidth":"156","orientation":"portrait","description":"42mm - Space Gray Aluminum","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-stainlessSteel.png","mobileDeviceID":43,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"stainlessSteel","className":"apple-watch-42mm-stainlessSteel","viewportWidth":"156","orientation":"portrait","description":"42mm - Stainless Steel","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":240,"mobileSkinFilename":"apple-watch-42mm-yellowGold.png","mobileDeviceID":44,"deviceHeight":438,"loadScreenResolution":"312px x 390px","mobileSkin":"apple-watch","viewportHeight":"195","isDefaultDeviceType":false,"platform":"iOS","mobileSkinColor":"yellowGold","className":"apple-watch-42mm-yellowGold","viewportWidth":"156","orientation":"portrait","description":"42mm - Yellow Gold","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":185,"mobileSkinFilename":"android-round-dark.png","mobileDeviceID":45,"deviceHeight":310,"loadScreenResolution":"320px x 320px","mobileSkin":"android-watch","viewportHeight":"160","isDefaultDeviceType":false,"platform":"android","mobileSkinColor":"round-dark","className":"android-round-dark","viewportWidth":"160","orientation":"portrait","description":"Round - Dark","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":185,"mobileSkinFilename":"android-round-light.png","mobileDeviceID":46,"deviceHeight":310,"loadScreenResolution":"320px x 320px","mobileSkin":"android-watch","viewportHeight":"160","isDefaultDeviceType":false,"platform":"android","mobileSkinColor":"round-light","className":"android-round-light","viewportWidth":"160","orientation":"portrait","description":"Round - Light","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":223,"mobileSkinFilename":"android-square-dark.png","mobileDeviceID":47,"deviceHeight":377,"loadScreenResolution":"320px x 320px","mobileSkin":"android-watch","viewportHeight":"160","isDefaultDeviceType":true,"platform":"android","mobileSkinColor":"square-dark","className":"android-square-dark","viewportWidth":"160","orientation":"portrait","description":"Square - Dark","deviceType":"watch"},{"iconResolution":"144 x 144","deviceWidth":223,"mobileSkinFilename":"android-square-light.png","mobileDeviceID":48,"deviceHeight":377,"loadScreenResolution":"320px x 320px","mobileSkin":"android-watch","viewportHeight":"160","isDefaultDeviceType":false,"platform":"android","mobileSkinColor":"square-light","className":"android-square-light","viewportWidth":"160","orientation":"portrait","description":"Square - Light","deviceType":"watch"},{"iconResolution":"180 x 180","deviceWidth":420,"mobileSkinFilename":"iphoneX-portrait.png","mobileDeviceID":49,"deviceHeight":855,"loadScreenResolution":"1242 x 2148","mobileSkin":"iPhoneX","viewportHeight":"812","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"iphoneX-portrait","viewportWidth":"375","orientation":"portrait","description":"iPhone X","deviceType":"phone"},{"iconResolution":"180 x 180","deviceWidth":856,"mobileSkinFilename":"iphoneX-landscape.png","mobileDeviceID":50,"deviceHeight":421,"loadScreenResolution":"2148 x 1242","mobileSkin":"iPhoneX","viewportHeight":"375","isDefaultDeviceType":true,"platform":"iOS","mobileSkinColor":"black","className":"iphoneX-landscape","viewportWidth":"812","orientation":"landscape","description":"iPhone X","deviceType":"phone"}]
+					}
+				);
+
+			})( angular, InVision );
+
+		</script>
+
+	
+
+
+	
+	
+		<script type="text/ng-template" id="/assets/apps/share/views/comments/catchup-toolbar.htm"><div ng-controller="comments.CatchupToolbarController" inv-comments-catchup-toolbar-helper class="comments-catchup-toolbar" ng-hide="$parent.isV2">
+<div class="markers-container" class="{ unread-comments: unreadConversations.length, no-unread-comments: !unreadConversations.length }">
+<p ng-show="unreadConversations.length">
+{{ unreadConversations.length }} unread
+<span ng-pluralize count="unreadConversations.length" when="{ one: 'conversation', other: 'conversations' }"></span>:
+</p>
+<p ng-hide="unreadConversations.length">No unread comments on this page...</p>
+<!-- unread markers -->
+<div class="markers" ng-show="unreadConversations.length">
+<a
+ng-repeat="conversation in visibleUnreadConversations"
+href="#/screens/{{ screenID }}/comments/{{ conversation.id }}"
+class="marker"
+ng-click="markCommentsAsRead( conversation )"
+ng-class="{
+complete: conversation.isComplete,
+comment: ! conversation.isForDevelopment && ! conversation.isTourPoint && ! conversation.isPrivate,
+'dev-note': conversation.isForDevelopment,
+'tour-point': conversation.isTourPoint,
+'private-comment': conversation.isPrivate && ! conversation.isForDevelopment,
+read: ! conversation.isUnread
+}">
+<span ng-if="conversation.label != '' && conversation.label > 0">{{ conversation.label }}</span>
+</a>
+</div>
+<div ng-show="hiddenUnreadConversations.length" class="overflow-count">
++ {{ hiddenUnreadConversations.length }} more
+</div>
+</div> <!-- markers-container -->
+<!-- BEGIN: Filters. -->
+<div class="filters">
+<p>View:</p>
+<div class="type-filter">
+<div class="dropdown">
+<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+<span class="text">{{ filters.type.label }} ({{ filters.type.count }})</span>
+<span class="drop"></span>
+</a>
+<ul class="dropdown-menu">
+<li ng-repeat="option in typeFilterOptions" ng-hide="option.isPrivate && !user.canViewPrivateComments">
+<a ng-click="changeTypeFilter( option )">{{ option.label }} ({{ option.count }})</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="status-filter">
+<label for="filterShowCompleted">
+<input type="checkbox" id="filterShowCompleted" ng-model="filters.showCompleted.value" ng-change="changeShowCompletedFilter()" inv-uniform />
+Show Resolved ({{ filters.showCompleted.count }})
+</label>
+</div>
+</div>
+<!-- END: Filters. -->
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/comments/context.htm"><div class="clickToCommentCTA"
+ng-show="clickToCommentCTAActive"
+ng-click="dismissClickToCommentCTA($event)"
+ng-class=" clickToCommentCTAActive ? 'animateInclickToCommentCTA':'' ">
+<div class="clickToCommentCTAOverlay">
+<div class="clickToCommentCTAClose"></div>
+<div class="clickToCommentCTAButton unselectable" ng-class="clickToCommentCTAVariant" ng-style="{ 'margin-top': ( clickToCommentCTAMargin + 'px' )}">
+Click anywhere to leave a comment on this screen
+</div>
+</div>
+</div>
+<!-- BEGIN: Context. -->
+<div class="context">
+<a ng-class="{ active: $parent.commentControl.isBorderExpanded }" ng-click="closeCommentMode($event)">
+<span ng-hide="$parent.isV2">Comment Mode</span>
+<span ng-show="$parent.isV2">x</span>
+</a>
+<!-- Borders. -->
+<div ng-class="{ active: $parent.commentControl.isBorderExpanded }" class="border n"></div>
+<div ng-class="{ active: $parent.commentControl.isBorderExpanded }" class="border e"></div>
+<div ng-class="{ active: $parent.commentControl.isBorderExpanded }" class="border s"></div>
+<div ng-class="{ active: $parent.commentControl.isBorderExpanded }" class="border w"></div>
+</div>
+<!-- END: Context. --></script><script type="text/ng-template" id="/assets/apps/share/views/comments/comments.htm"><div
+ng-controller="comments.CommentsController" 
+inv-comments-key-combos 
+class="m-comments" 
+ng-class="{ mobile: project.isMobile }">
+<!-- Context. -->
+<div ng-include=" '/assets/apps/share/views/comments/context.htm' "></div>
+<!-- Catchup Toolbar. -->
+<div ng-include=" '/assets/apps/share/views/comments/catchup-toolbar.htm' "></div>
+<!-- Markers. -->
+<div ng-include=" '/assets/apps/share/views/comments/markers.htm' "></div>
+<!--  View controlled by switch to overlay everything -->
+<div inv-share-sketch-builder
+ng-if=" isShowingSketchBuilder " >
+</div>
+<!-- Sketch viewer modal-->
+<div inv-share-sketch-viewer
+ng-if=" isShowingSketchViewer ">
+</div>
+<div id="cursor-tooltip"
+inv-comments-cursor-tooltip
+ng-show="isHoveringViewport && !( isHoveringHotspot || isShowingConversationMenu)"
+>
+Click to leave a comment
+</div>
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/comments/form.htm"><form
+ng-controller="comments.FormController"
+inv-comments-form
+class="conversation comment-thread-container mentions emoji-root"
+ng-class="{ teaser: ( isShowingTeaser && !tempSketches.length ) }"
+ng-style="{
+left: ( conversation.x * screen.displayScale + 'px' ),
+top: ( ( conversation.y * screen.displayScale ) + 9 + 'px' )
+}"
+ng-keydown="$event.which === 13 && handleKeyDown($event)"
+>
+<div class="emoji-placeholder"></div>
+<div
+ng-class="{
+'comment-thread': true,
+'comment': ! conversation.isForDevelopment && ! conversation.isTourPoint && ! conversation.isPrivate,
+'dev-note': conversation.isForDevelopment,
+'tour-point': conversation.isTourPoint,
+'private-comment': conversation.isPrivate,
+'signup-required': (isIdentifying || isAuthenticating) && signupRequiredForComment,
+'authenticating': isAuthenticating,
+'is-identifying': (isIdentifying || isAuthenticating) && !signupRequiredForComment,
+'is-logging-in': isLoggingIn,
+'lazy-signup': lazyPasswordToSignUpFlow && isSignup,
+'lazy-signup-thanks': thanksForLazyPassword
+}"
+>
+<header>
+<span ng-hide=" conversation.id == 0 ">
+<input
+id="conversationIsComplete"
+type="checkbox"
+ng-model="conversation.isComplete"
+ng-change="updateConversationStatus( conversation )"
+ng-disabled="( conversation.id == 0 )"
+inv-uniform
+/>
+<label
+ng-show="! marker.isComplete"
+for="commentIsComplete"
+class="mark-label"
+ng-class="{ disabled: marker.isSaved == false }"
+>
+Mark as resolved
+</label>
+<label
+ng-show="marker.isComplete"
+for="commentIsComplete"
+class="complete mark-label"
+ng-class="{ disabled: marker.isSaved == false }"
+>
+Marked resolved
+</label>
+</span>
+<!-- conversationIsComplete -->
+<div
+class="dropdown type-dropdown"
+ng-class="{ saved: !! conversation.id }"
+ng-show="showInternalOptions">
+<a data-toggle="dropdown" class="dropdown-toggle" ng-hide="!! conversation.id">
+<span class="text comment" ng-show="!conversation.isForDevelopment && !conversation.isPrivate && !conversation.isTourPoint">
+<span class="dot"></span>
+<span>Leave a Comment</span>
+</span>
+<span class="text private-comment" ng-show="!conversation.isForDevelopment && conversation.isPrivate">
+<span class="dot"></span>
+<span>Private Comment</span>
+</span>
+<span class="text dev-note" ng-show="conversation.isForDevelopment">
+<span class="dot"></span>
+<span>Note</span>
+</span>
+<span class="text tour-point" ng-show="conversation.isTourPoint">
+<span class="dot"></span>
+<span>Tour Point</span>
+</span>
+<span class="drop" ng-hide=" !! conversation.id "></span>
+</a>
+<a data-toggle="dropdown" class="dropdown-toggle dots" ng-hide="! conversation.id">
+<span class="small-dot"></span>
+<span class="small-dot"></span>
+<span class="small-dot"></span>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a ng-click="setTypeAsComment()" class="comment">
+<span class="dot"></span> Comment
+</a>
+</li>
+<li ng-hide="!user.canViewPrivateComments">
+<a ng-click="setTypeAsPrivateComment()" class="private-comment">
+<span class="dot"></span> Private Comment
+</a>
+</li>
+<li ng-hide="!user.canViewPrivateComments">
+<a ng-click="setTypeAsDevNote()" class="dev-note">
+<span class="dot"></span> Note
+</a>
+</li>
+<li>
+<a ng-click="setTypeAsTourPoint()" class="tour-point">
+<span class="dot"></span> Tour Point
+</a>
+</li>
+</ul>
+</div>
+<span
+class="non-collaborator-label"
+ng-show=" !showInternalOptions"
+ng-class="{ saved: !! conversation.id }"
+>
+<span class="dot"></span> Leave a Comment
+</span>
+<button
+class="close"
+type="button"
+ng-click="closeConversation()"
+ng-hide="!! conversation.id ">
+&times;
+</button>
+</header>
+<section class="comment-content">
+<!-- BEGIN: Comments. -->
+<div
+ng-repeat="comment in comments"
+ng-init=" showDeleteCommentConfirmation = false ; "
+class="comment-item comment"
+ng-class="{
+first: $first,
+unread: comment.isUnread,
+collapsed: comment.isCollapsed,
+'first-collapsed': comment.isFirstCollapsed,
+last: $last
+}"
+inv-fade-show="!comment.isCollapsed || ( comment.isCollapsed && comment.isFirstCollapsed )">
+<!-- Special section for collapsed area -->
+<div ng-if=" comment.isCollapsed " class="collapsed-comments">
+<span ng-click="expandComments( )">View Previous Replies</span>
+</div>
+<!-- show new comment indicator -->
+<div
+ng-if=" $first && conversation.isTourPoint && comments.length > 1 "
+class="new-hrule">
+<span
+ng-pluralize
+count=" comments.length - 1 "
+when="{
+'0': '0 Replies',
+'one': '1 Reply',
+'other': '{} Replies'
+}">
+</span>
+</div>
+<div class="m-avatar" ng-class="{ 'system-avatar': comment.userHasSystemAvatar }">
+<span class="rendering">{{ comment.userInitials }}</span>
+<img ng-src="/avatars/{{ comment.userAvatarID }}" class="rendering" />
+</div>
+<div class="post-content post-emojis">
+<h2 ng-hide="$first && conversation.isTourPoint">
+<span class="name">{{ comment.userName }}</span>
+<span class="created-at">{{ comment.dateLabel }}</span>
+</h2>
+<h2 ng-show="$first && conversation.isTourPoint && comment.isEditing">
+<!-- we need to keep the spacing consistent for editing mode -->
+</h2>
+<div class="comment-item-options"
+ng-show=" !comment.isEditing "
+ng-if=" !comment.isPlaceholder "
+ng-class="{'is-collapsed': comment.isCollapsed}">
+<ul class="comment-item-options__tools">
+<li class="view-history hidden">
+<a
+inv-history-overlay
+overlay-image="{{comment.imageUrl}}"
+overlay-marker-pos="{{getMarkerPos(conversation, screen.displayScale)}}"
+overlay-screen-data="{{getScreenDisplayData(screen)}}"
+ng-if="( ! comment.isEditing && ( comment.screenImageVersion != screen.imageVersion ) && comment.imageUrl )">
+View History
+</a>
+</li>
+<li
+class="edit-comment hidden"
+ng-show="canEdit && ( comment.isOwnedByUser || project.isOwnedByUser )"
+>
+<a ng-click="editComment( comment )">
+Edit
+</a>
+</li>
+<li
+class="delete-comment hidden"
+ng-show="canEdit && ( comment.isOwnedByUser || project.isOwnedByUser )"
+>
+<a ng-click="showDeleteConfirmation( comment, $first )">
+Delete
+</a>
+</li>
+</ul>
+<a class="comment-item-options__thumbs-up"
+ng-if=" !comment.isPlaceholder "
+ng-show=" canLike "
+ng-hide=" $first && conversation.isTourPoint "
+ng-class="{ 'liked': comment.numberOfLikes, 'by-user': comment.hasUserLiked  }"
+ng-click="toggleLike( comment )"
+inv-tooltip="{{ comment.likedByList }}">
+<i class="icon thumbs up"></i>
+{{comment.numberOfLikes}}
+</a>
+</div> <!-- post-options -->
+<div class="post-comment"
+ng-show="! comment.isEditing"
+ng-class="{'is-owner': comment.isOwnedByUser || project.isOwnedByUser}"
+ng-bind-html="comment.html"
+>
+</div>
+<div ng-if="comment.isEditing" class="editing-mode">
+<div
+inv-comment
+inv-cmd-enter="saveComment(comment)"
+comment="comment.comment"
+name="post-comment"
+screen-id="screen.id"
+class-string="{{ getClassesString('existing') }}"
+tab-index="101"
+has-emojis="true"
+has-mentions="hasInitialMentions"
+has-mention-shortcut="true"
+has-who-is-notified="false"
+></div>
+</div>
+<div
+class="sketchList"
+ng-show="comment.sketches.length > 0 && ( ! $first || ! conversation.isTourPoint )">
+<div
+ng-repeat="sketch in comment.sketches"
+class="sketch">
+<a
+class="text"
+ng-click=" startSketchViewer( sketch , false, conversation ) "
+ng-class="{
+editing: comment.isEditing
+}">
+<strong>{{ comment.userFirstName }}&rsquo;s attached a sketch.</strong> View?
+<span inv-tooltip="delete" class="delete" ng-show="comment.isEditing" ng-click=" deleteSketch( sketch.id )">x</span>
+</a>
+</div> <!-- sketch -->
+</div> <!-- sketchList -->
+<div class="post-buttons" ng-show="( comment.isEditing )">
+<button
+type="button"
+class="save"
+ng-show="comment.isEditing"
+tabindex="102"
+ng-click="saveComment(comment)">
+Save
+</button>
+<button
+type="button"
+class="cancel"
+ng-show="comment.isEditing"
+tabindex="103"
+ng-click="stopEditingComments( comment )">
+Cancel
+</button>
+</div>
+</div> <!-- post-content -->
+<!-- Delete confirmation for single comment. -->
+<div inv-fade-show="comment.isDeleting" class="delete-confirmation">
+<p>Delete this comment?</p>
+<div class="action">
+<a ng-click="deleteComment( comment )" class="confirm">Yes, Delete</a>
+<a ng-click="hideDeleteConfirmation( comment )" class="cancel">Cancel</a>
+</div>
+</div>
+</div>
+<!-- END: Comments. -->
+</section>
+<div class="comment-item post-new-comment">
+<div
+inv-comment-teaser
+ng-show="isShowingTeaser"
+is-shown="isShowingTeaser"
+has-initial-mentions="hasInitialMentions"
+ng-click="showNewCommentForm()"
+screen-id="screen.id"
+conversation="comments"
+>
+</div>
+<div
+ng-if="! isShowingTeaser"
+class="post post-emojis"
+>
+<div
+class="post-comment"
+ng-class="{
+'has-sketch': tempSketches.length > 0 && !sketchesDisabled
+}"
+>
+<div
+inv-comment
+inv-cmd-enter="submitForm({ comment: newComment, sketches: tempSketches })"
+ng-hide="hideCommentInput"
+comment="newComment"
+name="post-comment"
+screen-id="screen.id"
+class-string="{{ getClassesString('existing') }}"
+placeholder="Leave a comment..."
+tab-index="201"
+on-focus-callback="showCommentInput()"
+has-emojis="true"
+has-who-is-notified="true"
+has-mentions="hasInitialMentions"
+has-mention-shortcut="true"
+></div>
+<div class="error-message" ng-show="hasUnauthorizedEmail">
+<p>The administrator of the {{ enterpriseConfig.name }} InVision account has disabled sharing to users outside of the account.</p>
+</div>
+<span
+class="footer actions"
+ng-class="{
+'new-tour-point': !conversation.id && conversation.isTourPoint,
+'no-teaser': !hasInitialMentions
+}"
+>
+<button
+class="button submitComment"
+type="button"
+tabindex="202"
+delay="1400"
+ng-if="signupRequiredForComment"
+ng-click="submitForm({ comment: newComment, sketches: tempSketches })"
+inv-success-button
+after-success="closeCommentFormOnSave(conversation.id)"
+>
+Post
+</button>
+<button
+class="button submitComment"
+type="button"
+tabindex="202"
+delay="1400"
+ng-if="!signupRequiredForComment"
+ng-click="submitForm({ comment: newComment, sketches: tempSketches })"
+inv-success-button
+after-success="closeCommentFormOnSave(conversation.id)"
+>
+Send
+</button>
+</span> <!-- footer -->
+<div
+class="sketchList"
+ng-if="!sketchesDisabled"
+ng-show="tempSketches.length > 0">
+<div ng-repeat="sketch in tempSketches" class="sketch new-sketch">
+<a ng-click=" startSketchViewer( sketch , true, conversation ) ">
+<strong>Your sketch is attached.</strong> View?
+<span class="delete" inv-tooltip="delete" ng-click=" deleteTempSketch(sketch.tempID) ">
+&times;
+</span>
+</a>
+</div> <!-- sketch -->
+</div> <!-- sketchList -->
+<div
+ng-hide="hideCommentInput"
+ng-if="!sketchesDisabled"
+class="add-sketch"
+ng-show="tempSketches.length == 0 && ( ! conversation.isTourPoint || ! comments.length == 0 )">
+<a ng-click=" startSketchBuilder() "></a>
+</div>
+</div> <!-- post-comment -->
+</div> <!-- post -->
+</div>
+<!-- Delete confirmation for entire conversation. -->
+<div inv-fade-show="isDeleting" class="delete-confirmation delete-conversation">
+<p>Delete this <strong>entire</strong> conversation?</p>
+<div class="action">
+<a ng-click="deleteConversation( conversation )" class="btn btn-small flat dkgray">Yes, Delete</a>
+<a ng-click="hideDeleteConfirmation()" class="cancel">Cancel</a>
+</div>
+</div>
+<!-- Identification Form -->
+<div
+inv-fade-show="isIdentifying"
+class="overlay identification"
+ng-class="{ 'signup-required': signupRequiredForComment }"
+>
+<div class="form">
+<div ng-if="!signupRequiredForComment">
+<h2>Let us know who you are</h2>
+<h3>In order to leave a comment, we need to know who you are.</h3>
+</div>
+<div ng-if="signupRequiredForComment">
+<h2>Sign Up and Post Your Comment</h2>
+<h3>To send your comment, create a free InVision account.</h3>
+</div>
+<div class="field" ng-class="{ 'defined': identity.name.length }">
+<input
+type="text"
+id="identity.name"
+ng-disabled="isSigningUp"
+ng-model="identity.name"
+inv-autofocus
+tabindex="301"
+/>
+<label for="identity.name">
+Your name
+</label>
+</div>
+<div class="field" ng-class="{ 'defined': identity.email.length }">
+<input
+type="text"
+id="identity.email"
+ng-disabled="isSigningUp"
+ng-model="identity.email"
+tabindex="302"
+/>
+<label for="identity.email">Email address</label>
+</div>
+<div
+ng-if="signupRequiredForComment"
+class="field"
+ng-class="{ 'defined': identity.password.length }"
+>
+<input
+type="password"
+id="identity.password"
+ng-disabled="isSigningUp"
+ng-model="identity.password"
+tabindex="303"
+/>
+<label for="identity.password">Password</label>
+</div>
+<div ng-show="errorMessage" class="alert alert-error">
+{{ errorMessage }}
+</div>
+<div class="actions">
+<button
+class="close"
+type="button"
+ng-click="closeIdentifyForm()"
+>
+Cancel
+</button>
+<!-- only one of the two buttons below will be shown; they have the same tab index -->
+<button
+class="button"
+type="button"
+ng-if="!signupRequiredForComment"
+ng-click="submitForm({ comment: newComment, sketches: tempSketches })"
+tabindex="304"
+>
+Submit
+</button>
+<button
+class="button"
+type="button"
+ng-disabled="isSigningUp"
+ng-if="signupRequiredForComment"
+ng-click="submitFormSignup({ comment: newComment, sketches: tempSketches })"
+tabindex="304"
+>
+{{ isSigningUp ? "Signing Up" : "Sign Up" }}
+</button>
+</div>
+</div> <!-- form -->
+<div class="terms" ng-if="signupRequiredForComment">
+By creating an account I agree to InVision's<br>
+<a href="http://www.invisionapp.com/terms_of_service" target="_blank">Terms of Service</a> and
+<a href="https://www.invisionapp.com/privacy" target="_blank">Privacy Policy</a>.
+</div>
+<div ng-if="signupRequiredForComment" class="login-prompt">
+Already have an account? <a ng-click="openLoginForm()">Sign in</a>
+</div>
+</div> <!-- identification -->
+<!-- Signup Form -->
+<div inv-fade-show="isSignup && ! thanksForLazyPassword" class="overlay signup cta">
+<div class="form">
+<h2>Get a free InVision account</h2>
+<h4>Collaborate, extract assets, and create clickable prototypes and boards - all in one place</h4>
+<div
+ng-if="lazyPasswordToSignUpFlow"
+class="field"
+ng-class="{ 'defined': identity.password.length }"
+>
+<input
+type="password"
+id="identity.password"
+ng-disabled="isSigningUp"
+ng-model="identity.password"
+tabindex="303"
+/>
+<label for="identity.password">Password</label>
+</div>
+<div ng-show="errorMessage" class="alert alert-error">
+{{ errorMessage }}
+</div>
+<div class="actions">
+<button
+class="button"
+type="button"
+ng-disabled="isSigningUp"
+ng-click="submitLazyPasswordToSignup()"
+tabindex="304"
+>
+{{ isSigningUp ? "Signing Up" : "Sign Up For Free" }}
+</button>
+<button class="cancel"
+ng-disabled="isSigningUp"
+ng-click="!isSigningUp && closeLazyPasswordToSignup()">
+No thanks, continue as guest
+</button>
+</div>
+</div>
+<div class="signup-terms" ng-if="lazyPasswordToSignUpFlow">
+By clicking 'Sign up free' I agree to InVision's <a href="http://www.invisionapp.com/terms_of_service" target="_blank">Terms of Service</a>.
+</div>
+</div>
+<div inv-fade-show="thanksForLazyPassword" class="overlay signup cta cta-thanks">
+<div class="form">
+<h2>Thanks for signing up! </h2>
+<h4>A confirmation email will be sent shortly</h4>
+</div>
+</div>
+<div inv-fade-show="isLoggingIn" class="overlay login">
+<div class="form">
+<h2 class="login-header">Sign in and post your comment</h2>
+<h3>To send your comment, sign in to InVision</h3>
+<div class="field" ng-class="{ 'defined': identity.email.length }">
+<input
+type="text"
+inv-autofocus
+id="identity.login-email"
+ng-model="identity.email"
+tabindex="302"
+/>
+<label for="identity.login-email">Email address</label>
+</div>
+<div
+class="field"
+ng-class="{ 'defined': identity.password.length }"
+>
+<input
+type="password"
+id="identity.login-password"
+ng-model="identity.password"
+tabindex="303"
+/>
+<label for="identity.login-password">Password</label>
+<a href="/d/password/requestReset" class="forgot-password">Forgot password?</a>
+</div>
+<div
+ng-show="errorMessage"
+class="alert alert-error"
+ng-bind-html="errorMessage"
+>
+</div>
+<button
+class="button big-login"
+type="button"
+ng-click="submitLoginForm()"
+>
+Sign In
+</button>
+</div>
+<div class="login-prompt">
+Don't have an account? <a ng-click="closeLoginForm()">Sign up</a>
+</div>
+</div>
+<div inv-fade-show="isAuthenticating" class="overlay authentication">
+<div class="form">
+<div class="m-avatar" ng-class="{ 'system-avatar': user.hasSystemAvatar }">
+<span class="rendering">{{ user.tempInitials }}</span>
+<img class="rendering" ng-src="/avatars/{{ user.tempAvatar }}" />
+</div>
+<h2>We've recognized that account, what's the password?</h2>
+<h3>Enter your password to leave a comment</h3>
+<div class="field" ng-class="{ 'defined': identity.name.length }">
+<input
+type="password"
+id="identity.password"
+ng-model="identity.password"
+inv-autofocus
+tabindex="301"
+/>
+<label for="identity.name">
+Password
+</label>
+</div>
+<div
+ng-show="errorMessage"
+class="alert alert-error"
+ng-bind-html="errorMessage"
+>
+</div>
+<div class="actions">
+<button
+class="close"
+type="button"
+ng-click="closeIdentifyForm()"
+>
+Cancel
+</button>
+<button
+class="button"
+type="button"
+ng-click="submitFormPassword()"
+tabindex="302"
+>
+Post Comment
+</button>
+</div>
+</div> <!-- form -->
+</div> <!-- authentication -->
+<div class="comment-thread__footer">
+<!-- placeholder to avoid that the bottom toolbar overlaps the comment-content -->
+</div>
+</div> <!-- comment-thread -->
+</form>
+</script><script type="text/ng-template" id="/assets/apps/share/views/comments/markers.htm"><div
+ng-controller="comments.MarkersController"
+inv-comments-markers
+class="markers" >
+<div
+ng-class="{ mobile: project.isMobile }"
+class="viewport {{ viewport.alignment }}"
+ng-style="{
+width: ( viewport.width + 'px' ),
+height: ( viewport.height + 'px' )
+}"
+ng-mouseenter=" setIsHoveringViewport(true) "
+ng-mouseleave=" setIsHoveringViewport(false) ">
+<!-- Output the conversation markers. -->
+<a
+ng-repeat="conversation in conversations track by conversation.id"
+ng-href="#/screens/{{ screenID }}/comments/{{ conversation.id }}"
+class="marker"
+ng-class="{
+complete: conversation.isComplete,
+active: ( conversation == selectedConversation ),
+comment: ! conversation.isForDevelopment && ! conversation.isTourPoint && ! conversation.isPrivate,
+'dev-note': conversation.isForDevelopment,
+'tour-point': conversation.isTourPoint,
+'private-comment': conversation.isPrivate && ! conversation.isForDevelopment,
+read: ! conversation.isUnread && userAuthenticated,
+'move-disabled': !isUserACollaborator,
+'no-label': conversation.label == ''
+}"
+ng-style="{
+left: ( conversation.x * screen.displayScale + 'px' ),
+top: ( conversation.y * screen.displayScale + 'px' )
+}"
+unselectable="on"
+ng-mouseenter=" setIsHoveringHotspot(true) "
+ng-mouseleave=" setIsHoveringHotspot(false) "
+ng-show=" conversation.isShown || (conversation.id == selectedConversation.id )">
+{{ conversation.label }}
+<span ng-if=" conversation.isComplete " class="complete-icon"></span>
+</a>
+<!-- Show the new conversation marker, if necessary. -->
+<a
+ng-show="newConversation"
+ng-href="#/screens/{{ screenID }}/comments"
+class="marker new-marker active"
+ng-class="{
+comment: ! newConversation.isForDevelopment && ! newConversation.isTourPoint && ! newConversation.isPrivate,
+'dev-note': newConversation.isForDevelopment,
+'tour-point': newConversation.isTourPoint,
+'private-comment': newConversation.isPrivate && ! newConversation.isForDevelopment,
+'no-label': newConversation.label == ''
+}"
+ng-style="{
+left: ( newConversation.x * screen.displayScale + 'px' ),
+top: ( newConversation.y * screen.displayScale + 'px' )
+}"
+unselectable="on"
+ng-mouseenter=" setIsHoveringHotspot(true) "
+ng-mouseleave=" setIsHoveringHotspot(false) ">
+{{ newConversation.label }}
+</a>
+<!-- Only include the form if a conversation has been selected. -->
+<div
+class="comments-mentions"
+ng-if="selectedConversation || newConversation || isSignup"
+ng-include=" '/assets/apps/share/views/comments/form.htm' "></div>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/toolbar/toolbar.htm">
+<div
+ng-controller="toolbar.ToolbarController"
+ng-show="( includeBrowseTool || includeCommentsTool )"
+ng-mouseenter="updateIsUserOverToolbar( true )"
+ng-mouseleave="updateIsUserOverToolbar( false )"
+ng-hide="share.isEmbed"
+ng-class="{ 'tour-is-running': isShareTourRunning }"
+class="m-toolbar">
+<div 
+class="requestAccessOverlay"
+ng-if="(isShowingSmsForm || $parent.isInspectOpen) && $parent.isV2"
+ng-click="toggleRequestAccessOverlay()"
+>
+</div>
+<!-- iPhone projects -->
+<div
+id="shareSMS"
+inv-fade-show="isShowingSmsForm"
+ng-if=" deviceTemplate.deviceType == 'phone' && !! shareUrl "
+ng-class="{
+'no-comments': ! includeCommentsTool,
+'no-browse': ! includeBrowseTool
+}">
+<div class="smsForm" inv-fade-show="isShowingSmsForm" duration="slow" >
+<a ng-click="toggleSmsShareForm()" class="closeButton" ng-show="!$parent.isV2"><img src="assets/apps/share/img/close6.png" alt="Close" /></a>
+<a ng-click="toggleSmsShareForm()" class="closeButton" ng-show="$parent.isV2"><img src="assets/apps/share/img/close5-V2.png" alt="Close" /></a>
+<h2 ng-hide="$parent.isV2">Install "{{ project.name }}" on your phone</h2>
+<h2 ng-show="$parent.isV2">View on your mobile phone</h2>
+<p ng-hide="$parent.isV2">Visit <a ng-href="{{ shareUrl }}">{{shareUrl}}</a> on your phone or SMS the link to your number:</p>
+<p ng-show="$parent.isV2">Enter your mobile phone number and we'll text you a link.</p>
+<input 	inv-i8n-telephone
+type="text"
+class="phoneNumber"
+country-code="share.countryCode"
+ng-class="{ messageSent: sms.messageSent }"
+ui-keypress="{13:'sendShareSms()'}"
+name="phoneNumber"
+placeholder="Enter mobile number"
+ng-model="sms.phoneNumber">
+<button ng-click="sendShareSms()">
+Send
+</button>
+<div class="message">
+{{sms.message}}
+</div>
+</div>
+</div>
+<!-- Request Access Form -->
+<div
+id="requestAccessForm"
+inv-fade-show="$parent.isInspectOpen"
+ng-if="$parent.isV2"
+ng-class="{
+'use-inspect': isUseInspect,
+'role-join': isRoleJoin,
+'request-access-prototype': isRequestAccessPrototype,
+'ent-request-access-prototype': isEntRequestAccessPrototype,
+'ent-request-access-team': isEntRequestAccessTeam,
+'unauthenticated': !isAuthenticated,
+'no-inspect': noInspect
+}"
+>
+<div class="step-container">
+<div class="request-access-step-1" ng-hide="$parent.step === 4" ng-class="{ 
+on: $parent.step === 1,
+left: $parent.step != 1
+}">
+<img
+src="assets/apps/share/img/request-access-hero.svg"
+class="request-access-hero"
+/>
+<h2>Get pixel-perfect code in a click</h2>
+<p ng-if="isUseInspect && isAuthenticated">To use Inspect to download assets for your developers, you need to have access to this prototype.</p>
+<p ng-if="isRoleJoin && isAuthenticated">To use Inspect, join this prototype as a collaborator.</p><!-- Use case for role based join -->
+<p ng-if="isRequestAccessPrototype && isAuthenticated">To use Inspect, you'll need to request access to this prototype as a collaborator.</p>
+<p ng-if="isEntRequestAccessPrototype && isAuthenticated">To use Inspect, you'll need the team owner to add you to this prototype as a collaborator.</p>
+<p ng-if="isEntRequestAccessTeam && isAuthenticated">To use Inspect to download assets for your developers, you'll need to request access to this team and prototype.</p>
+<p ng-if="(isEntRequestAccessPrototype || isEntRequestAccessTeam) && !isAuthenticated">To use Inspect to download assets for your developers, you need to be a member of this team</p>
+<p ng-if="!isEntRequestAccessPrototype && !isEntRequestAccessTeam && !isAuthenticated">To use Inspect to download assets for your developers, you need to have access to this prototype</p>
+<button
+class="form__button"
+ng-disabled="isRequestingAccess"
+ng-click="clickRequestCTA()"
+>
+{{ isUseInspect ? "Use Inspect" : isRoleJoin ? "Join prototype" : "Request access" }}
+</button>
+<p ng-if="!isAuthenticated" class="signin">
+Already a member? <a ng-click="trackRequestAccessSignIn()" href="/d/main/ria/{{ $parent.project.id }}/{{ $parent.screen.id }}/{{ $parent.sig }}">Sign in</a>
+</p>
+</div>
+<div class="request-access-step-2" ng-class="{ 
+on: $parent.step === 2,
+left: $parent.step > 2,
+right: $parent.step < 2
+}">
+<form
+ng-controller="toolbar.FormController"
+ng-keydown="$event.which === 13 && handleKeyDownAuth($event)">
+<a ng-click="requestAccessBack()" class="nav-back">BACK</a>
+<h2>Ask for an invite</h2>
+<p>We'll ask the team owner to give you access to the team, prototype, and Inspect.</p>
+<label class="form__label" for="identity.request-email">Your email</label>
+<input
+type="text"
+id="identity.request-email"
+ng-model="identity.email"
+tabindex="302"
+class="form__input"
+placeholder="julie@widgetco.com"
+/>
+<label class="form__label" for="identity.request-name">Your name</label>
+<input
+type="text"
+id="identity.request-name"
+ng-model="identity.name"
+tabindex="303"
+class="form__input"
+placeholder="Julie Appleseed"
+/>
+<div>
+<button
+class="form__button"
+type="button"
+ng-disabled="isRequestingAccess"
+ng-click="submitRequestAccess()"
+>
+Request access
+</button>
+</div>
+</form>
+</div>
+<div class="request-access-step-3" ng-class="{ 
+on: $parent.step === 3,
+left: $parent.step > 3,
+right: $parent.step < 3
+}">
+<img
+src="assets/apps/share/img/request-access-sent.svg"
+class="request-access-sent"
+/>
+<h2>Sent!</h2>
+<p>Your request is en route to the team owner's inbox. Once it's accepted, we'll email you an invite to use Inspect.</p>
+<div>
+<button
+class="form__button"
+type="button"
+ng-click="closeRequestForm()"
+>
+Back to prototype
+</button>
+</div>
+</div>
+<div class="request-access-step-none" ng-class="{ 
+on: $parent.step === 4,
+right: $parent.step != 4
+}" ng-show="$parent.step === 4">
+<a ng-click="trackRequestWindowClose();toggleRequestAccess();" class="close-inspect">
+<img
+src="assets/apps/share/img/close5-V2.png"
+class="close-inspect-img"
+/>
+</a>
+<img
+src="assets/apps/share/img/request-access-hero.svg"
+class="request-access-hero"
+/>
+<h2>Get pixel-perfect code with Inspect.</h2>
+<p>Use Inspect to pull developer assets directly from your prototype.</p>
+<div>
+<a
+class="form__button"
+ng-click="trackRequestLearnHow()"
+ng-href="https://www.invisionapp.com/feature/inspect"
+target="_blank"
+>
+Learn how
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- BEGIN: Toolbar. -->
+<div
+inv-toolbar
+class="toolbar"
+ng-class="{
+active: isActive,
+'highlight-tour': !hasSeenTour,
+'initialized':  $parent.UILoaded,
+'off': $parent.isV2 && isBrowseOpen
+}">
+<!-- helper -->
+<div
+class="begin-share-tour"
+ng-show=" false "
+>
+<!-- bouncy tooltip -->
+<div
+class="comment-tip-wrapper"
+ng-show="shouldShowBounceToolTip()">
+<span
+inv-bouncy-tooltip
+msg="Learn how to explore this design"
+callback="hasSeenCommentTooltip()"></span>
+</div> <!-- comment-tip-wrapper -->
+<div class="helper" ng-class="{'hasSeenCommentsTooltip': hasSeenCommentsTooltip}" ng-click="showShareTour()">?</div>
+</div> <!-- begin-share-tour -->
+<!-- AQUA-421 comment cta tooltip -->
+<div
+class="comments-cta-tooltip"
+ng-class="{ transition: commentToolTipVisible }"
+ng-if="includeCommentsTool" ng-hide="$parent.isV2">
+<div class="popover top comments-tip">
+<div class="arrow"></div>
+<div class="popover-content">
+<i ng-click="closeCommentTooltipExperiment()" class="comments-tooltip-close"></i>Turn on comment mode to collaborate on this prototype
+</div>
+</div>
+</div> <!-- comment cta tooltip -->
+<!-- Since we're doing some rearranging of DOM, I'm splitting this code into two replicated blocks. -->
+<div class="tools" ng-hide="$parent.isV2">
+<div ng-if=" deviceTemplate.deviceType == 'phone' && !! shareUrl " class="tool share-sms-tool">
+<a ng-click="toggleSmsShareForm()"><span class="toolbar-menu-device"></span></a>
+</div>
+<div
+ng-show="includeBrowseTool"
+ng-class="{ active: tourSubView == 'thumbnails' }"
+class="tool browse-toggle-tool">
+<a ng-click="toggleBrowse()" ng-class="{ on: isBrowseOpen }"><span class="toolbar-menu-sprite"></span></a>
+</div>
+<div
+ng-show="includeCommentsTool"
+ng-class="{
+active: tourSubView == 'comments',
+'no-browse': !includeBrowseTool && ( deviceTemplate.deviceType != 'phone' )
+}"
+class="tool comments-toggle-tool">
+<div class="clickable"></div>
+<span class="description">
+<i ng-if="!unreadCommentCount" class="comment-count-old"></i><i ng-if="unreadCommentCount" class="comment-count-new"></i>&nbsp;{{ commentCount }}&nbsp;Comments
+</span>
+<div ng-model="isShowingComments" inv-toggle></div>
+</div>
+</div>
+<!-- V2 -->
+<div class="tools" ng-show="$parent.isV2">
+<div ng-if=" deviceTemplate.deviceType == 'phone' && !! shareUrl " class="tool share-sms-tool" ng-class="{ on: isShowingSmsForm }">
+<div class="description" ng-click="toggleSmsShareFormV2()">
+<i class="toolbar-menu-device"></i>
+<span class="device-text">View on mobile</span>
+</div>
+</div>
+<div
+ng-show="includeCommentsTool"
+ng-class="{
+active: tourSubView == 'comments',
+'no-browse': !includeBrowseTool && ( deviceTemplate.deviceType != 'phone' )
+}"
+class="tool comments-toggle-tool">
+<div class="clickable" ng-mouseenter="handleCommentWidth($event)" ng-mouseleave="isShowingComments ? '' : commentWidth=0"></div>
+<div ng-class="{ on: $parent.isCommentContextOpen }" class="comment-context">
+<ul>
+<li ng-repeat="option in typeFilterOptions" ng-hide="(option.isPrivate && !user.canViewPrivateComments)">
+<a ng-click="changeTypeFilter( option )" ng-class="{ on: filters.type === option || (option.label === 'All Types' && filters.type.value === 'all') }" ng-hide="$parent.isV2 && option.label==='All Types'">
+<span ng-hide="option.label==='All Types'">{{ option.label }} </span>
+({{ option.count }})
+</a>
+</li>
+<li>
+<a ng-click="changeShowCompletedFilterV2()" ng-class='{ on: filters.showCompleted.value }'>
+<span class="comment-context-divider"></span>
+<span>Resolved</span>
+<span>({{ filters.showCompleted.count }})</span>
+<label class="switch">
+<span class="slider" ng-class="{ on: filters.showCompleted.value }"></span>
+</label>							
+</a>
+</li>
+</ul>
+</div>
+<div class="description" ng-click="toggleContextMenu()" ng-mouseenter="handleCommentWidth($event)" ng-mouseleave="isShowingComments ? '' : commentWidth=0">
+<i class="comment-count-old"></i>
+<span class="comment-text" style="width: {{ commentWidth }}">Comments {{ commentCount > 0 && !isAuthenticated ? "(" + commentCount + ")" : "" }}</span>
+<i class="comment-context-arrow"></i>
+</div>
+<div class="comment-bubble" ng-if="unreadCommentCount && isAuthenticated">{{ unreadCommentCount }}</div>
+<div class="comment-bubble unauthenticated" ng-if="!isAuthenticated && commentCount > 0"></div>
+<div ng-model="isShowingComments" inv-toggle class="comment-toggle-controller"></div>
+</div>
+<div class="tool inspect-toggle-tool" ng-class="{ on: $parent.isInspectOpen }">
+<div class="description" ng-click="toggleRequestAccess()">
+<i class="toolbar-inspect-sprite"></i>
+<span class="inspect-text">Inspect</span>
+</div>
+</div>
+<div
+ng-show="includeBrowseTool"
+ng-class="{ active: tourSubView == 'thumbnails', on: isBrowseOpen }"
+class="tool browse-toggle-tool" ng>
+<div class="description" ng-click="toggleBrowse()" ng-mouseenter="handleBrowseWidth($event)" ng-mouseleave="browseWidth=0">
+<i class="toolbar-menu-sprite"></i>
+<span class="browse-text" style="width: {{ browseWidth }}">Screens ({{ $parent.screenCnt }})</span>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Toolbar. -->
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/presentations/slides.htm"><div ng-switch on="subview">
+<div ng-switch-when="comments">
+<div 
+id="comments_bar" 
+ng-controller="toolbar.ToolbarController"
+ng-hide="isShowingSketchBuilder">
+<h2>Click anywhere on the image to leave a comment</h2>
+<p class="close"><a ng-click="switchToPreview()">Close</a></p>
+</div> <!-- share_bar -->
+</div>
+</div>
+<!-- desktop projects -->
+<div 	
+ng-if=" !project.isMobile || subview == 'comments' "
+inv-screens
+ng-controller="screens.ScreensController"
+class="m-screens desktop"
+ng-style="bodyStyle"
+ng-class="{ 
+isScaledCommentMode: project.isMobile,
+'comment-mode': subview == 'comments'
+}">
+<div 
+class="screen visible {{ screen.alignment }}"
+ng-style="{ 
+width: ( (screen.width * screen.displayScale) + 'px' ), 
+height: ( (screen.height * screen.displayScale) + 'px' ) 
+}">
+<img 
+ng-src="{{ getScreenUrl() }}"
+ng-style="{ 
+width: ( (screen.width * screen.displayScale) + 'px' ), 
+height: ( (screen.height * screen.displayScale) + 'px' ) 
+}" />
+</div>
+</div>
+<!-- mobile projects-->
+<div 	
+ng-if=" project.isMobile && subview == 'preview' "
+class="m-screens" >
+<div class="screen mobile visible {{ screen.alignment }}">
+<img ng-src="{{ getScreenUrl() }}" />
+</div> <!-- screen mobile visible -->
+</div> <!-- m-screens -->
+</script><script type="text/ng-template" id="/assets/apps/share/views/powered-by/powered-by.htm"><!-- Hide this object for a specific customer project shares. Everyone else should see it. -->
+<div ng-hide="project.companyID == 71 || hideNavBar">
+<a
+ng-if=" !project.isMobile || share.isEmbed "
+class="powered-by"
+href="http://www.invisionapp.com/?utm_medium=virality&utm_source=Share%20CTA"
+target="_blank">
+<img src="assets/apps/share/img/made-with-invision.png" />
+</a>
+<a
+ng-if="project.isMobile && !share.isEmbed && !$parent.isV2"
+class="mobile-powered-by"
+href="http://www.invisionapp.com/?utm_medium=virality&utm_source=Share%20CTA"
+target="_blank">
+made with InVision
+</a>
+<a
+ng-if="!share.isEmbed && $parent.isV2"
+ng-class="{ 
+off: isBrowseOpen,
+'initialized': $parent.UILoaded
+}"
+class="powered-by"
+ng-click="goToWWW()"
+target="_blank">
+<img src="assets/apps/share/img/logo-icon-v2.png" /> 
+<p>Made in InVision</p>
+</a>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/preview/browser-compatibility.htm"><a ng-click="closeBrowserCompatibilityAlert()" class="browser-overlay">
+<br />
+</a>
+<div class="browser-alert">
+<a ng-click="closeBrowserCompatibilityAlert()" class="close-alert">x</a>
+<h1>
+We're sorry, your browser isn't fully supported to display this content properly.
+</h1>
+<div ng-switch="browserCompatibility.reason">
+<p ng-switch-when="version">
+We encourage you to <a href="http://browsehappy.com" target="updateBrowser">upgrade to a modern web browser</a>.
+</p>
+<p ng-switch-when="mode">
+Looks like you're running in &quot;compatibility mode&quot;, simply follow these
+<a href="https://www.youtube.com/results?search_query=ie+turn+off+compatibility+mode" target="updateBrowser">instructions to switch back to &quot;normal view&quot;</a>.
+</p>
+</div>
+<a ng-click="closeBrowserCompatibilityAlert()" class="no-thanks">
+No thanks, continue...
+</a>
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/preview/preview-tour-comments.htm"><div ng-controller="preview.TourCommentsController">
+<div ng-if=" tourPoints.length > 0 " ng-controller="comments.CommentsController">
+<div
+inv-comments-markers
+ng-controller="comments.MarkersController">
+<div
+ng-if=" tooltipTourPoint "
+class="tour-point-tooltip left"
+ng-class=" tooltipClass() "
+ng-mouseenter=" clearTooltipTimeout() "
+ng-mouseleave=" clearTooltipTourPoint() "
+ng-click=" selectTourPoint(tooltipTourPoint) "
+inv-tour-point-tooltip>
+<div class="m-avatar" ng-class="{ 'system-avatar': tooltipTourPoint.comment.userHasSystemAvatar }">
+<span class="rendering">{{ tooltipTourPoint.comment.userInitials }}</span>
+<img
+ng-if=" ! tooltipTourPoint.comment.userHasSystemAvatar "
+ng-src="/avatars/{{ tooltipTourPoint.comment.userAvatarID }}"
+class="rendering" />
+</div>
+<div class="excerpt" ng-bind-html="tooltipExcerpt()"></div>
+</div>
+<!-- Only include the form if a tour point has been selected.-->
+<div
+class="comments-mentions"
+ng-if="selectedConversation"
+ng-include=" '/assets/apps/share/views/preview/tour-point-form.htm' ">
+</div>
+<!--  View controlled by switch to overlay everything -->
+<div inv-share-sketch-builder
+ng-if=" isShowingSketchBuilder " >
+</div>
+<!-- Sketch viewer modal-->
+<div inv-share-sketch-viewer
+ng-if=" isShowingSketchViewer ">
+</div>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/preview/tour-point-form.htm"><form
+ng-controller="comments.FormController"
+ng-submit="submitForm({ comment: newComment, sketches: tempSketches })"
+inv-comments-tour-form-key-combos
+inv-tour-comments-form
+class="conversation comment-thread-container tour-point-form">
+<div class="comment-thread tour-point">
+<header>
+<button
+class="close"
+type="button"
+ng-click="clearTourPointForm()">
+&times;
+</button>
+</header>
+<section class="primary-comment">
+<div class="m-avatar" ng-class="{ 'system-avatar': comments[0].userHasSystemAvatar }">
+<span class="rendering">{{ comments[0].userInitials }}</span>
+<img
+ng-if=" ! comments[0].userHasSystemAvatar "
+ng-src="/avatars/{{ comments[0].userAvatarID }}"
+class="rendering" />
+</div>
+<div class="post-content">
+<div
+class="post-comment"
+ng-bind-html="comments[0].html">
+</div>
+</div>
+<footer ng-if=" ! commentsExpanded ">
+<div
+ng-click="toggleCommentsExpanded()"
+ng-class="{ 'no-comments': comments.length == 1 }"
+class="reply-section">
+Reply <span ng-if="comments.length > 1" class="comment-count">{{ comments.length - 1 }}</span>
+</div>
+<nav class="tour-point-nav">
+<a
+ng-click="previousTourPoint()"
+ng-show="hasPreviousTourPoint()"
+class="prev">Prev
+</a>
+<a
+ng-click="nextTourPoint()"
+ng-show="hasNextTourPoint()"
+class="next">Next
+</a>
+</nav>
+</footer>
+</section>
+<section
+class="comments-expanded"
+ng-class="{
+visible: !! commentsExpanded}"
+>
+<div class="comments-expanded-inner">
+<!-- BEGIN: Comments. -->
+<div
+ng-repeat="comment in comments"
+ng-init=" showDeleteCommentConfirmation = false ; "
+class="comment-item comment"
+ng-class="{
+first: $first,
+unread: comment.isUnread,
+collapsed: comment.isCollapsed,
+'first-collapsed': comment.isFirstCollapsed,
+last: $last
+}"
+inv-fade-show="!comment.isCollapsed || ( comment.isCollapsed && comment.isFirstCollapsed )">
+<span ng-if=" ! $first ">
+<!-- Special section for collapsed area -->
+<div ng-if=" comment.isCollapsed " class="collapsed-comments">
+<span ng-click="expandComments( )">View All {{ comments.length }} Comments</span>
+</div>
+<div class="m-avatar" ng-class="{ 'system-avatar': comment.userHasSystemAvatar }">
+<span class="rendering">{{ comment.userInitials }}</span>
+<img
+ng-if=" ! comment.userHasSystemAvatar "
+ng-src="/avatars/{{ comment.userAvatarID }}"
+class="rendering" />
+<!-- Status -->
+<span
+class="online-status"
+ng-class="{ online: ( comment.userOnlineStatus == 'Online' ), away: ( comment.userOnlineStatus == 'Away' ) }">
+{{ comment.userOnlineStatus }}
+</span>
+</div>
+<div class="post-content post-emojis">
+<h2 ng-hide="$first && conversation.isTourPoint">
+<span>{{ comment.userName }}</span>
+<span class="created-at">{{ comment.dateLabel }}</span>
+</h2>
+<div
+class="post-options"
+ng-show=" !comment.isEditing "
+ng-class="{'is-collapsed': comment.isCollapsed}">
+<ul class="tools">
+<li
+class="view-history hidden"
+ng-show="( ! comment.isEditing && ( comment.screenImageVersion != screen.imageVersion ) && comment.imageUrl )">
+<a>View History</a>
+</li>
+<li
+class="edit-comment hidden"
+ng-show=" comment.isOwnedByUser || project.isOwnedByUser ">
+<a
+ng-click="editComment( comment )"
+inv-tooltip="Edit comment">
+Edit
+</a>
+</li>
+<li
+class="delete-comment hidden"
+ng-show=" comment.isOwnedByUser || project.isOwnedByUser ">
+<a
+ng-click="showDeleteConfirmation( comment, $first )"
+inv-tooltip="Delete comment">
+Delete
+</a>
+</li>
+</ul>
+<div inv-history-overlay class="history-overlay" ng-if="( ( comment.screenImageVersion != screen.imageVersion ) && comment.imageUrl )">
+<div class="history-overlay-image-container">
+<img 	inv-screen-version-image-scaler
+ng-src="{{ comment.imageUrl }}"
+ng-style="{
+top: - ( ( conversation.y * screen.displayScale ) - 130 ) + 'px',
+left: - ( ( conversation.x * screen.displayScale ) - 270 )+ 'px'
+}" />
+</div>
+<div class="hover-buffer"></div>
+</div> <!-- history-overlay -->
+</div> <!-- post-options -->
+<a class="thumbs-up"
+ng-show=" canLike "
+ng-hide=" $first && conversation.isTourPoint "
+ng-class="{ 'liked': comment.numberOfLikes, 'by-user': comment.hasUserLiked  }"
+ng-click="toggleLike( comment )"
+inv-tooltip="{{ comment.likedByList }}">
+<i class="icon thumbs up"></i>
+{{comment.numberOfLikes}}
+</a>
+<div
+ng-show="! comment.isEditing"
+ng-bind-html="comment.html"
+class="post-comment">
+</div>
+<div ng-if="comment.isEditing" class="editing-mode">
+<div
+inv-comment
+comment="comment.comment"
+name="post-comment"
+screen-id="screen.id"
+class-string="{{ getClassesString('existing') }}"
+tab-index="101"
+has-emojis="true"
+has-who-is-notified="false">
+</div>
+</div>
+<div
+class="sketchList"
+ng-show="comment.sketches.length > 0 && ( ! $first || ! conversation.isTourPoint )">
+<div
+ng-repeat="sketch in comment.sketches"
+class="sketch">
+<a
+class="text"
+ng-click=" startSketchViewer( sketch , false, conversation ) "
+ng-class="{
+editing: comment.isEditing
+}">
+<strong>{{ comment.userFirstName }}&rsquo;s attached a sketch.</strong> View?
+<span inv-tooltip="delete" class="delete" ng-show="comment.isEditing" ng-click=" deleteSketch( sketch.id )">x</span>
+</a>
+</div> <!-- sketch -->
+</div> <!-- sketchList -->
+<div class="post-buttons" ng-show="( comment.isEditing )">
+<button
+type="button"
+class="save"
+ng-show="comment.isEditing"
+tabindex="102"
+ng-click="saveComment( comment, false )">
+Save
+</button>
+<button
+type="button"
+class="cancel"
+ng-show="comment.isEditing"
+tabindex="103"
+ng-click="stopEditingComments( comment )">
+Cancel
+</button>
+</div>
+</div> <!-- post-content -->
+<!-- Delete confirmation for single comment. -->
+<div inv-fade-show="comment.isDeleting" class="delete-confirmation">
+<p>Delete this comment?</p>
+<div class="action">
+<a ng-click="deleteComment( comment )" class="confirm">Yes, Delete</a>
+<a ng-click="hideDeleteConfirmation( comment )" class="cancel">Cancel</a>
+</div>
+</div>
+</span>
+</div>
+<!-- END: Comments. -->
+<div class="comment-item post-new-comment">
+<div class="post post-emojis">
+<div
+class="post-comment"
+ng-class="{ 'has-sketch': tempSketches.length > 0 }">
+<div
+inv-comment
+comment="newComment"
+name="post-comment"
+screen-id="screen.id"
+class-string="{{ getClassesString('existing') }}"
+placeholder="Leave a comment..."
+tab-index="201"
+on-focus-callback="showCommentInput()"
+has-emojis="true"
+has-who-is-notified="true">
+</div>
+<div class="error-message" ng-show="hasUnauthorizedEmail">
+<p>The administrator of the {{ enterpriseConfig.name }} InVision account has disabled sharing to users outside of the account.</p>
+</div>
+<div class="comment-item footer submit actions">
+<button
+class="button"
+tabindex="202"
+ng-click="submitForm({ comment: newComment, sketches: tempSketches })"
+type="button"
+inv-success-button
+after-success="onReplyFinished()"
+delay="0">Reply</button>
+<button class="close" type="button" ng-click="toggleCommentsExpanded()">cancel</button>
+</div> <!-- footer -->
+<div
+class="sketchList"
+ng-show="tempSketches.length > 0">
+<div ng-repeat="sketch in tempSketches" class="sketch new-sketch">
+<a ng-click=" startSketchViewer( sketch , true, conversation ) ">
+<strong>Your sketch is attached.</strong> View?
+<span class="delete" inv-tooltip="delete" ng-click=" deleteTempSketch(sketch.tempID) ">
+&times;
+</span>
+</a>
+</div> <!-- sketch -->
+</div> <!-- sketchList -->
+<div
+class="add-sketch"
+ng-if="!sketchesDisabled"
+ng-show="tempSketches.length == 0 && isCommentInputVisible && ( ! conversation.isTourPoint || ! comments.length == 0 )">
+<a ng-click=" startSketchBuilder() " inv-tooltip="Attach a sketch"></a>
+</div>
+</div> <!-- post-comment -->
+</div> <!-- post -->
+</div>
+<!-- Delete confirmation for entire conversation. -->
+<div inv-fade-show="isDeleting" class="delete-confirmation delete-conversation">
+<p>Delete this <strong>entire</strong> conversation?</p>
+<div class="action">
+<a ng-click="deleteConversation( conversation )" class="btn btn-small flat dkgray">Yes, Delete</a>
+<a ng-click="hideDeleteConfirmation()" class="cancel">Cancel</a>
+</div>
+</div>
+<!-- Identification Form -->
+<div inv-fade-show="isIdentifying" class="overlay identification">
+<div class="form">
+<h2>Let us know who you are</h2>
+<h3>In order to leave a comment, we need to know who you are.</h3>
+<div ng-show="errorMessage" class="alert alert-error">
+{{ errorMessage }}
+</div>
+<div class="field" ng-class="{ 'defined': identity.name.length }">
+<input
+type="text"
+id="identity.name"
+ng-model="identity.name"
+inv-autofocus
+tabindex="301"
+/>
+<label for="identity.name">
+Your name
+</label>
+</div>
+<div class="field" ng-class="{ 'defined': identity.email.length }">
+<input
+type="text"
+id="identity.email"
+ng-model="identity.email"
+tabindex="302"
+/>
+<label for="identity.email">Email address</label>
+</div>
+<div class="actions">
+<button
+class="close"
+type="button"
+ng-click="selectTourPoint(null)"
+>
+Cancel
+</button>
+<button
+class="button"
+type="button"
+ng-click="submitForm({ comment: newComment, sketches: tempSketches })"
+tabindex="303"
+>
+Submit
+</button>
+</div>
+</div> <!-- /form -->
+</div> <!-- /identification -->
+<div inv-fade-show="isAuthenticating" class="overlay authentication">
+<div class="form">
+<h2>We've recognized that account, what's the password?</h2>
+<h3>Enter your password to leave a comment</h3>
+<div class="field" ng-class="{ 'defined': identity.name.length }">
+<input
+type="password"
+id="identity.password"
+ng-model="identity.password"
+inv-autofocus
+tabindex="301"
+/>
+<label for="identity.name">
+Password
+</label>
+</div>
+<div
+ng-show="errorMessage"
+class="alert alert-error"
+ng-bind-html="errorMessage"
+>
+</div>
+<div class="actions">
+<button
+class="close"
+type="button"
+ng-click="selectTourPoint(null)"
+>
+Cancel
+</button>
+<button
+class="button"
+type="button"
+ng-click="submitFormPassword()"
+tabindex="302"
+>
+Post Comment
+</button>
+</div>
+</div> <!-- form -->
+</div> <!-- authentication -->
+</div>
+</section>
+</div> <!-- comment-thread-container -->
+</form>
+</script><script type="text/ng-template" id="/assets/apps/share/views/preview/preview.htm"><div
+ng-controller="preview.PreviewController"
+inv-preview-helper
+class="m-preview {{ screen.alignment }}"
+mobile-skin-name="{{ project.mobileTemplate.mobileSkin }}"
+ng-class="{ mobile: project.isMobile, 'is-watch': project.isWatch }">
+<div
+ng-if="project.isMobile"
+inv-mobile-transition-layer
+id="mobile_transition_layer"
+class="{{ deviceTemplate.className }} {{ chromeClass }}"></div>
+<inv-share-screen-viewer></inv-share-screen-viewer>
+<div class="slideshow-nav">
+<div class="slideshow-status" ng-show=" ! project.isMobile " >{{ currentScreenIndex }} of {{ screenCount }}</div>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/modal/welcome-user.htm"><div ng-controller="modal.WelcomeUser" inv-modal class="modal animate welcome-user-modal" id="welcome-user">
+<div class="welcome-user-modal__content modal-body">
+<a ng-click="closeModal()" class="close-x"></a>
+<div class="welcome-user__avatar">
+<div class="m-avatar" ng-class="{ 'system-avatar': user.hasSystemAvatar }">
+<span class="rendering">{{ user.initials }}</span>
+<img class="rendering" ng-src="/avatars/{{ user.avatarID }}" />
+</div>
+</div>
+<h2 class="welcome-user__header">
+{{ signedUp ? 'Welcome to InVision' : 'Welcome back'}}{{user.name ? ', ' + user.name : ''}}!
+</h2>
+<div class="welcome-user__secondary-text">
+Click anywhere to leave a comment
+</div>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/modal/auth.htm"><div ng-controller="modal.Auth" inv-modal class="modal animate auth-modal" id="auth"
+ng-class="{
+'full-screen-auth': isFullScreenMode
+}">
+<div class="auth-modal__content modal-body">
+<form
+ng-controller="comments.FormController"
+ng-keydown="$event.which === 13 && handleKeyDownAuth($event)">
+<a ng-if="!isFullScreenMode" ng-click="!isSigningUp && closeModal()" class="close-x"></a>
+<a ng-if="isFullScreenMode" ng-click="!isSigningUp && closeModal()" class="nav-back">BACK</a>
+<div ng-if="isFullScreenMode" class="main-panel__switch">
+<!-- top right switch to sign up trigger -->
+<div ng-if="showLogin">
+<span class="main-panel__switch__text">
+Don't have an account?
+</span>
+<a ng-click="!isSigningUp && switchPrompt()" class="main-panel__switch__button">
+Get Started
+</a>
+</div>
+<!-- top right switch to sign in trigger -->
+<div ng-if="showSignup">
+<span class="main-panel__switch__text">
+Already have an account?
+</span>
+<a ng-click="!isSigningUp && switchPrompt()" class="main-panel__switch__button">
+Sign In
+</a>
+</div>
+</div>
+<div class="main-panel__table">
+<div class="main-panel__table-cell">
+<div class="main-panel__content">
+<!-- Login Form -->
+<div class="overlay login" ng-if="showLogin">
+<div class="form">
+<h2 ng-if="!isFullScreenMode" class="main-panel__heading">
+Sign in to InVision to post <br />your comment
+</h2>
+<h2 ng-if="isFullScreenMode" class="main-panel__heading">
+Sign in to InVision. <br />
+<span>Enter your details below.</span>
+</h2>
+<div class="form__group" ng-class="{ 'defined': identity.email.length }">
+<label class="form__label" for="identity.login-email">Email</label>
+<input
+type="text"
+inv-autofocus
+id="identity.login-email"
+ng-model="identity.email"
+tabindex="302"
+class="form__input"
+placeholder="julie@widgetco.com"
+/>
+</div>
+<div
+class="form__group"
+ng-class="{ 'defined': identity.password.length }"
+>
+<label class="form__label" for="identity.login-password">Password</label>
+<input
+type="password"
+id="identity.login-password"
+ng-model="identity.password"
+tabindex="303"
+class="form__input"
+placeholder="Enter your password"
+/>
+<a class="form__help" href="/d/password/requestReset" target="_blank" class="forgot-password">Forgot password?</a>
+</div>
+<div
+ng-show="errorMessage"
+class="alert alert-error"
+ng-bind-html="errorMessage"
+>
+</div>
+<div class="text--center">
+<button
+class="form__button"
+type="button"
+ng-click="submitLoginForm()"
+ng-disabled="isSigningIn"
+>
+{{ isSigningIn ? "Signing In" : "Sign In" }}
+</button>
+</div>
+</div>
+<div class="footer-actions">
+<div class="switch-prompt" ng-if="!isFullScreenMode" >
+Don't have an account? <a ng-click="!isSigningUp && switchPrompt()">Get Started</a>
+</div>
+</div>
+<div ng-if="ssoEnabled" class="sso">
+<div class="sso__content">
+<img class="sso__company--image" ng-if="companyImage" src="{{companyImage}}" />
+Existing member of the {{companyName}} InVision account? <a class="sso__signin-link" ng-click="ssoLinkClick()" href="{{ssoURL}}">Sign in with SSO</a>
+</div>
+</div>
+</div>
+<!-- Sign Up Form -->
+<div class="overlay signup" ng-if="showSignup">
+<div class="form">
+<h2 ng-if="!isFullScreenMode" class="main-panel__heading">
+Create a free InVision account to <br /> post your comment
+</h2>
+<h2 ng-if="isFullScreenMode" class="main-panel__heading">
+Get started absolutely free. <br />
+<span>Free forever. No credit card needed.</span>
+</h2>
+<div class="form__group" ng-class="{ 'defined': identity.email.length }">
+<label class="form__label" for="identity.signup-email">Work email</label>
+<input
+type="text"
+inv-autofocus
+id="identity.signup-email"
+ng-model="identity.email"
+tabindex="302"
+class="form__input"
+/>
+</div>
+<div class="form__group" ng-class="{ 'defined': identity.email.length }">
+<label class="form__label" for="identity.signup-name">Name</label>
+<input
+type="text"
+id="identity.signup-name"
+ng-model="identity.name"
+tabindex="303"
+class="form__input"
+/>
+</div>
+<div
+class="form__group"
+ng-class="{ 'defined': identity.password.length }"
+>
+<label class="form__label" for="identity.signup-password">Password</label>
+<input
+type="password"
+id="identity.signup-password"
+ng-model="identity.password"
+tabindex="304"
+class="form__input"
+placeholder="5+ characters"
+/>
+</div>
+<div
+ng-show="errorMessage"
+class="alert alert-error"
+ng-bind-html="errorMessage"
+>
+</div>
+<div ng-if="gdprOptOutEnabled" class="form__legal">
+<div class="opt-out">
+<label for="identity.signup-opt-out">
+<input
+type="checkbox"
+id="identity.signup-opt-out"
+ng-model="identity.optout" />
+I'm not interested in updates about InVision products and services.
+</label> <a href="https://www.invisionapp.com/privacy" target="_blank">Privacy Policy</a>
+</div>
+By clicking "Sign up free" I agree to InVision's <a href="https://www.invisionapp.com/terms_of_service" target="_blank">Terms of Service</a>.
+</div>
+<div ng-if="!gdprOptOutEnabled" class="form__legal">
+By clicking "Sign up free" I agree to InVision's
+<a href="https://www.invisionapp.com/terms_of_service" target="_blank">Terms of Service</a> and
+<a href="https://www.invisionapp.com/privacy" target="_blank">Privacy Policy</a>.
+</div>
+<div class="text--center">
+<button
+class="form__button"
+type="button"
+ng-disabled="isSigningUp"
+ng-click="submitFormSignup()"
+>
+{{ isSigningUp ? "Signing Up" : "Sign Up Free" }}
+</button>
+</div>
+<div class="footer-actions">
+<div class="switch-prompt" ng-if="!isFullScreenMode">
+Already have an account? <a ng-click="!isSigningUp && switchPrompt()">Sign In</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/modal/error.htm"><div ng-controller="modal.ErrorController" inv-modal class="modal errorModal">
+<div class="modal-header">
+<a ng-click="closeModalWindow()" class="close" aria-hidden="true">&times;</a>
+<h3>
+Oops!
+</h3>
+</div>
+<div class="modal-body">
+{{ errorMessage }}
+</div>
+<div class="modal-footer">
+<a ng-click="closeModalWindow()" class="btn btn-primary">Close</a>
+</div>
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/modal/share-tour.htm"><div ng-controller="modal.ShareTour" inv-modal class="modal animate" id="shareTour">
+<div class="modal-body">
+<div class="video-container"
+inv-video-overlay
+id="video_share_tour"
+player-id="video_share_tour"
+video-id="n7kgs97nk4"
+video-width="701"
+video-height="394">
+<div class="play-overlay">
+<a href=""></a>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<h2>Get Started in 30 Seconds</h2>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/directives/share-sketch-builder.htm"><div id="shareSketchBuilder">
+<div id="builderWindow">
+<div id="sketchToolbar">
+<div class="whiteboard_tools">
+<a ng-click="setWhiteboardOpacity(0, 'none')" id="whiteboard_none" class="whiteboard_tool none overlay" ng-class="{ active: whiteboardSelected == 'none'}"><span>Transparent</span></a>
+<a ng-click="setWhiteboardOpacity(.7, 'half')" id="whiteboard_half" class="whiteboard_tool half overlay" ng-class="{ active: whiteboardSelected == 'half'}"><span>50%</span></a>
+<a ng-click="setWhiteboardOpacity(1, 'full')" id="whiteboard_full" class="whiteboard_tool full overlay" ng-class="{ active: whiteboardSelected == 'full'}"><span>100%</span></a>
+</div> <!-- whiteboard_tools -->
+<div class="tools">
+<a id="pencil" class="sketch_tool pencil">
+<i class="tool_icon tool_pencil"></i>
+</a>
+<a id="rect" class="sketch_tool square">
+<i class="tool_icon tool_square"></i>
+</a>
+<a id="circle" class="sketch_tool circle">
+<i class="tool_icon tool_circle"></i>
+</a>
+<a id="line" class="sketch_tool line">
+<i class="tool_icon tool_line"></i>
+</a>
+<!--
+<a id="arrow" class="sketch_tool arrow">
+<i class="tool_icon tool_arrow"></i>
+</a>
+-->
+<a id="text" class="sketch_tool text">
+<i class="tool_icon tool_text"></i>
+</a>
+<a id="move" class="sketch_tool move">
+<i class="tool_icon tool_move"></i>
+</a>
+<div class="actions_toolbar">
+<a id="undo" rel="tooltip" data-placement="bottom" title="Undo action" class="sketch_action undo inactive">
+<i class="tool_icon tool_undo"></i>
+</a>
+<a id="redo" rel="tooltip" data-placement="bottom" title="Redo action" class="sketch_action redo inactive">
+<i class="tool_icon tool_redo"></i>
+</a>
+<a id="delete" rel="tooltip"  data-placement="bottom" title="Remove element" class="sketch_action delete inactive">
+<i class="tool_icon tool_delete"></i>
+</a>
+</div>
+</div>
+<div class="sketch_btns">
+<a ng-click=" hideSketchBuilder() " class="btn cancel">Cancel</a>
+<a ng-click=" saveSketch() " class="btn save">I'm Done</a>
+</div>
+</div>
+<div class="scroll-wrap">
+<div class="sketchImage_wrapper">
+<img  
+ng-src="{{ screen.imageUrl }}"
+ng-style="{ width: screen.width * screen.displayScale + 'px',
+height: screen.height * screen.displayScale + 'px'}"
+class="sketch_image"
+/>
+</div>
+<div id="whiteboard_overlay" ng-class="whiteboardSelected"></div>
+</div> <!-- scroll-wrap -->
+</div> <!-- end builderWindow -->
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/directives/toggle.htm">
+<div class="m-toggle off">	
+<!-- BEGIN: Labels Track. -->
+<div class="toggle-labels-track">
+<div class="toggle-labels">
+<div class="toggle-label on">
+<span class="text">On</span>
+</div>
+<div class="toggle-label off">
+<span class="text">Off</span>
+</div>
+</div>
+</div>
+<!-- END: Labels Track. -->
+<!-- BEGIN: Thumb Track. -->
+<div class="toggle-thumb-track">
+<a href="" class="toggle-thumb">
+<span class="toggle-end">
+<br />
+</span>
+</a>
+</div>
+<!-- END: Thumb Track. -->
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/directives/share-sketch-viewer.htm"><div id="shareSketchViewer"  ng-show=" isShowingSketchViewer ">
+<div class="modalOverlay">
+<div  class="sketchViewer">
+<div class="closeViewer" ng-click=" closeSketchViewer() "></div>
+<div ng-show=" sketchImageIsProcessing " class="isProcessing">
+<p>
+<img src="assets/apps/share/img/draw.png"/><br/>
+This sketch is currently being processed.<br/>
+<span class="sub">It'll be available shortly!</span>
+</p>
+</div>
+<!-- Non-Temporaray sketches here -->
+<div ng-if=" !sketchViewerSketchIsTemp " class="imageContainer">
+<img ng-src="/api/comments/{{sketchViewerSketch.commentID}}/sketch/{{sketchViewerSketch.id}}"
+inv-console-sketch-viewer-image
+ng-style="{	width: screen.width * screen.displayScale + 'px',
+height: screen.height * screen.displayScale + 'px'
+}"/>
+</div>
+<!-- Temporary sketches here -->
+<div ng-if=" sketchViewerSketchIsTemp " class="imageContainer">
+<img 	ng-src="{{ screen.imageUrl }}"
+ng-style="{	width: screen.width * screen.displayScale + 'px',
+height: screen.height * screen.displayScale + 'px'
+}" />
+<div class="whiteOverlay" ng-style="{ opacity : sketchViewerSketch.opacity }"></div>
+<div class="tempSketchOverlay" ng-bind-html=" sketchViewerSketch.svg ">
+</div>
+</div>
+</div>
+</div>
+</div></script><script type="text/ng-template" id="/assets/apps/share/views/screens/screens.htm">
+<!-- desktop projects -->
+<div
+ng-if=" !project.isMobile || subview == 'comments' "
+ng-controller="screens.ScreensController"
+inv-screens
+inv-add-padding-on-scroll
+class="m-screens desktop"
+ng-class="{ isScaledCommentMode: project.isMobile }">
+<div
+ng-repeat="screen in screens track by screen.id"
+data-distance="{{ screen.distanceFromStartScreen }}"
+class="screen {{ screen.alignment }}"
+ng-class="{ visible: (screen.id == selectedScreen.id) }"
+ng-style="{ 
+width: ( Math.round(screen.width * screen.displayScale) + 'px' ), 
+height: ( Math.round(screen.height * screen.displayScale) + 'px' ) 
+}"
+data-displayScale="{{screen.displayScale}}">
+<img
+inv-screen
+ng-src="{{ screen.imageUrl }}"
+ng-style="{ 
+width: ( Math.round(screen.width * screen.displayScale) + 'px' ), 
+height: ( Math.round(screen.height * screen.displayScale) + 'px' ) 
+}" />
+</div>
+</div>
+<!-- mobile projects-->
+<div
+ng-if=" project.isMobile && subview == 'preview' "
+ng-controller="screens.ScreensController"
+inv-screens
+data-distance="{{ screen.distanceFromStartScreen }}"
+class="m-screens" >
+<div
+ng-repeat="screen in screens track by screen.id"
+class="screen mobile {{ screen.alignment }}"
+ng-class="{ visible: (screen.id == selectedScreen.id) }">
+<img inv-screen ng-src="{{ screen.imageUrl }}" />
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/partials/preload.htm">	<!--
+BEGIN: HACKY CSS PRELOAD. 
+Until we have better sprite technology, let's at least pre-load the images this way so that 
+the parallel loading of Screen images is less likely to conflict. 
+-->
+<div style="height: 1px ; left: -100px ; overflow: hidden ; position: absolute ; top: -100px ; width: 1px ;">
+<img src="assets/apps/share/img/app-switch.png" />
+<img src="assets/apps/share/img/browse-background.png" />
+<img src="assets/apps/share/img/browse-pillnav-icons.png" />
+<img src="assets/apps/share/img/browse-pillnav.png" />
+<img src="assets/apps/share/img/close3.png" />
+<img src="assets/apps/share/img/comments-context-tab.png" />
+<img src="assets/apps/share/img/comments-vrule.png" />
+<img src="assets/apps/share/img/grey-screen-divider.png" />
+<img src="assets/apps/share/img/loader-sprite.png?v=06112014" />
+<img src="assets/apps/share/img/marker.png?v=2" />
+<img src="assets/apps/share/img/screens-search.png" />
+<img src="assets/apps/share/img/scrollbar-mid.png" />
+<img src="assets/apps/share/img/sketch-viewer-close.png" />
+<img src="assets/apps/share/img/sketch_tools.png" />
+<img src="assets/apps/share/img/share-lite-sprites.png" />
+<img src="assets/apps/share/img/share-lite-sprites@2x.png" />
+<img src="assets/apps/share/img/share-loading-sprites.png" />
+<img src="assets/apps/share/img/share-loading-sprites@2x.png" />
+</div>
+<!-- END: Hacky CSS Preload. </script><script type="text/ng-template" id="/assets/apps/share/views/partials/auth-ask-banner.htm"><div ng-controller="banner.AuthAskController">
+<div ng-if="showAuthAskBanner">
+<div class="auth-ask-banner-overlay" ng-click="closeAuthAskBanner()"></div>
+<div class="auth-ask-banner">
+<a ng-click="closeAuthAskBanner()" class="auth-ask-banner__close"></a>
+<h3 class="auth-ask-banner__header">Create a free InVision account to leave your feedback!</h3>
+<button class="auth-ask-banner__button" ng-click="triggerAuthModal(true)">
+Sign Up Free
+</button>
+<div class="auth-ask-banner__secondary-text">
+Already have an account? <a ng-click="triggerAuthModal(false)"> Sign In </a>
+</div>
+</div>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/browse/list.htm">
+<div class="name-list" ng-class="{ 'without-comments': excludeComments }">
+<!-- BEGIN: Header Row. -->
+<div class="header-row">
+<span class="col name-col">
+<a ng-click class="name">
+Name
+</a>
+</span>
+<span class="col comments-col">
+<a ng-click class="comments">
+Comments
+</a>
+</span>
+<span class="col version-col">
+<a ng-click class="version">
+Version
+</a>
+</span>
+<span class="col updated-at-col">
+<a ng-click class="updated-at">
+Last Updated
+</a>
+</span>
+<span class="col updated-by-col">
+<a ng-click class="updated-by">
+Updated By
+</a>
+</span>
+</div>
+<!-- END: Header Row. -->
+<!-- BEGIN: Data Rows. -->
+<div ng-repeat="displayItem in displayObjects | filter:search" class="data-row">
+<div ng-if=" displayItem.type == 'divider' " class="divider">
+<div class="line">
+<span class="dividerLabel">{{displayItem.label}}</span>
+</div>
+</div>
+<a ng-if="displayItem.type == 'screenObj' "
+ng-click="applyScreenNavigation( displayItem )"
+class="item"
+ng-class="{ selected: ( displayItem == selectedScreen ) }">
+<span class="col name-col">
+<span class="name">
+{{ displayItem.name }}
+</span>
+</span>
+<span class="col comments-col">
+<span class="comments" ng-class="{ new: displayItem.unreadCommentCount, old: ( displayItem.commentCount && ! displayItem.unreadCommentCount ) }">
+<span class="unread">{{ displayItem.unreadCommentCount }}</span>
+<span class="total">{{ displayItem.commentCount }}</span>
+</span>
+</span>
+<span class="col version-col">
+<span class="version">
+{{ displayItem.imageVersion }}
+</span>
+</span>
+<span class="col updated-at-col">
+<span class="updated-at">
+{{ displayItem.updatedAtDateLabel }}
+</span>
+</span>
+<span class="col updated-by-col">
+<span class="updated-by">
+{{ displayItem.updatedByUserName }}
+</span>
+</span>
+</a>
+</div>
+<!-- END: Data Rows. -->
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/browse/browse.htm">
+<div
+ng-controller="browse.BrowseController"
+inv-browse-key-combos
+class="m-browse"
+ng-class="{
+mobile: project.isMobile,
+phone: deviceTemplate.deviceType == 'phone',
+tablet: isTabletPortrait
+} ">
+<!-- BEGIN: Header. -->
+<div class="header" ng-hide="$parent.isV2">
+<span ng-if=" project.isMobile ">
+<img ng-if=" !! appIcon.imageUrl " class="appIcon" ng-src="{{ appIcon.imageUrl }}" alt="{{ project.name }}">
+<img ng-if=" ! appIcon.imageUrl " class="appIcon" ng-src="assets/apps/share/img/icon.png">
+</span>
+<h2>
+{{ project.name }}
+</h2>
+<a class="btnClose" href="javascript:;" ng-click=" toggleBrowse() ">x</a>
+</div>
+<!-- END: Header. -->
+<!-- BEGIN: Screens. -->
+<div class="screens">
+<div ng-include=" '/assets/apps/share/views/browse/thumbnails.htm' "></div>
+</div>
+<!-- END: Screens. -->
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/browse/thumbnails.htm">
+<div class="thumbnail-list" ng-class="{ 'without-comments': excludeComments }">
+<div class="header" ng-show="$parent.isV2">
+<h2>
+{{ project.name }}
+</h2>
+<a class="btnClose" href="javascript:;" ng-click=" toggleBrowse() ">x</a>
+</div>
+<div ng-repeat="displayItem in displayObjects" 
+class="{{displayItem.type}}" 
+ng-class="{ 'invisible-group': displayItem.type == 'divider' && displayItem.sort == 0}" >
+<div ng-if=" shouldDividerDisplay(displayItem) " class="divider">
+<p class="dividerLabel">
+<span class="title">{{ displayItem.label }}</span>
+<span ng-hide="$parent.isV2" class="count">{{ displayItem.screenCount }}</span>
+<span ng-show="$parent.isV2" class="count">({{ displayItem.screenCount }})</span>
+</p>
+</div>
+<a  ng-if="displayItem.type == 'screenObj' "
+ng-click="applyScreenNavigation( displayItem )"
+class="item"
+ng-class="{ selected: ( displayItem == selectedScreen ) }">
+<span class="thumbnail-viewport " style="background: #{{displayItem.backgroundColor}}">
+<span class="thumbnail-overlay" ng-if="$parent.isV2"></span>
+<img ng-src="{{ displayItem.thumbnailUrl }}" />
+<div class="name-container" ng-show="$parent.isV2">
+<span class="name">
+{{ displayItem.name }}
+</span>
+</div>
+</span>
+<span class="name" ng-hide="$parent.isV2">
+{{ displayItem.name }}
+</span>
+<span class="hasComments" ng-if=" displayItem.unreadCommentCount && !isV2">&bull;</span>
+<span class="hasComments" ng-if=" displayItem.unreadCommentCount && isV2">{{ displayItem.unreadCommentCount }}</span>
+</a>
+</div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/share/views/layouts/modal.htm"><div ng-controller="layouts.ModalController" class="l-modal">
+<div ng-if="subview == 'error'" ng-include=" '/assets/apps/share/views/modal/error.htm' "></div>
+<div ng-if="subview == 'shareTour'" ng-include=" '/assets/apps/share/views/modal/share-tour.htm' "></div>
+<div ng-if="subview == 'auth'" ng-include=" '/assets/apps/share/views/modal/auth.htm' "></div>
+<div ng-if="subview == 'welcomeUser'" ng-include=" '/assets/apps/share/views/modal/welcome-user.htm' "></div>
+</div>
+</script><script type="text/ng-template" id="/assets/apps/common/views/directives/mobile-transition-layer.htm"><div class="inner">
+<div class="inner2">
+<div
+id="current-screen"
+class="current-screen"
+ng-if="currentScreen"
+ng-style="{
+'background-color': getBackgroundColor(currentScreen)
+}">
+<img
+ng-src="{{ getImageUrl( currentScreen.imageUrl ) }}"
+height="{{ Math.round(currentScreen.height * (currentScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(currentScreen.width * (currentScreen.displayScale || screen.displayScale)) }}" />
+<div
+class="fixed-header"
+ng-style="{
+height: (currentScreen.fixedHeaderHeight * (currentScreen.displayScale || screen.displayScale)),
+marginTop: pushDownFixedHeader
+}">
+<img
+ng-src="{{ getImageUrl( currentScreen.imageUrl ) }}"
+height="{{ Math.round(currentScreen.height * (currentScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(currentScreen.width * (currentScreen.displayScale || screen.displayScale)) }}" />
+</div>
+<div
+class="fixed-footer"
+ng-style="{
+height: (currentScreen.fixedFooterHeight * (currentScreen.displayScale || screen.displayScale))
+}">
+<img
+ng-src="{{ getImageUrl( currentScreen.imageUrl ) }}"
+height="{{ Math.round(currentScreen.height * (currentScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(currentScreen.width * (currentScreen.displayScale || screen.displayScale)) }}" />
+</div>
+</div>
+<div
+id="next-screen"
+ng-if="targetScreen"
+class="target-screen"
+ng-style="{
+'background-color': getBackgroundColor(targetScreen)
+}">
+<img
+ng-src="{{ getImageUrl( targetScreen.imageUrl ) }}"
+height="{{ Math.round(targetScreen.height * (targetScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(targetScreen.width * (targetScreen.displayScale || screen.displayScale)) }}" />
+<div
+class="fixed-header"
+ng-style="{
+height: (targetScreen.fixedHeaderHeight * (targetScreen.displayScale || screen.displayScale)),
+marginTop: pushDownFixedHeader
+}">
+<img
+ng-src="{{ getImageUrl( targetScreen.imageUrl ) }}"
+height="{{ Math.round(targetScreen.height * (targetScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(targetScreen.width * (targetScreen.displayScale || screen.displayScale)) }}" />
+</div>
+<div
+class="fixed-footer"
+ng-style="{
+height: (targetScreen.fixedFooterHeight * (targetScreen.displayScale || screen.displayScale))
+}">
+<img
+ng-src="{{ getImageUrl( targetScreen.imageUrl ) }}"
+height="{{ Math.round(targetScreen.height * (targetScreen.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(targetScreen.width * (targetScreen.displayScale || screen.displayScale)) }}" />
+</div>
+</div>
+<div
+id="transition-picture-{{picture.id}}"
+ng-repeat="picture in transitionScreens track by picture.id"
+ng-style="{
+'background-color': getBackgroundColor(picture)
+}"
+ng-class="{
+'current-screen': picture.id == transitionScreen.id,
+'target-screen': picture.id == transitionData.targetScreen.id
+}"
+class="transition-picture">
+<img
+ng-src="{{ getImageUrl( picture.imageUrl ) }}"
+height="{{ Math.round(picture.height * (picture.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(picture.width * (picture.displayScale || screen.displayScale)) }}" />
+<div
+class="fixed-header"
+ng-style="{
+height: (picture.fixedHeaderHeight * (picture.displayScale || screen.displayScale)),
+marginTop: pushDownFixedHeader
+}">
+<img
+ng-src="{{ getImageUrl( picture.imageUrl ) }}"
+height="{{ Math.round(picture.height * (picture.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(picture.width * (picture.displayScale || screen.displayScale)) }}" />
+</div> <!-- fixed-header -->
+<div
+class="fixed-footer"
+ng-style="{
+height: (picture.fixedFooterHeight * (picture.displayScale || screen.displayScale))
+}">
+<img
+ng-src="{{ getImageUrl( picture.imageUrl ) }}"
+height="{{ Math.round(picture.height * (picture.displayScale || screen.displayScale)) }}"
+width="{{ Math.round(picture.width * (picture.displayScale || screen.displayScale)) }}" />
+</div> <!-- fixed-footer -->
+</div> <!-- current-picture -->
+</div><!-- inner2 -->
+</div> <!-- inner -->
+</script>
+	
+
+
+</body>
+</html>
